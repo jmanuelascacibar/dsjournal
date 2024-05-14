@@ -205,7 +205,7 @@ window.Quarto = {
 <p><a href="coefdetermai.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="coefdetermai.jpeg" class="img-fluid"></a></p>
 <section id="introduction" class="level3">
 <h3 class="anchored" data-anchor-id="introduction">Introduction</h3>
-<p>I’m working working in a playground kaggle competition called <a href="https://www.kaggle.com/competitions/playground-series-s4e5">Regression with a Flood Prediction Dataset</a>. The goal of the competition is to predict the probability of a flood event in a given region based on a set of features. The submission are evaluated using <span class="math inline">\(R^2\)</span> score.</p>
+<p>I’m working in a playground kaggle competition called <a href="https://www.kaggle.com/competitions/playground-series-s4e5">Regression with a Flood Prediction Dataset</a>. The goal of the competition is to predict the probability of a flood event in a given region based on a set of features. The submission are evaluated using <span class="math inline">\(R^2\)</span> score.</p>
 <p>A good way to start is to understand the evaluation metric that, in this case, we are going to try to maximize. So what is <span class="math inline">\(R^2\)</span> score?</p>
 <p>You might have heard from school that <span class="math inline">\(R^2\)</span> measure the proportion of the variance in the dependent variable that is predictable from the independent variable. But what does that mean?</p>
 </section>
@@ -221,7 +221,7 @@ window.Quarto = {
 <p>The residuals are the differences between the observed values (y) and the predicted values (ŷ) based on the regression line. The mean of the observed values is <span class="math inline">\(\bar{y} = \frac{1}{n}\sum y_i\)</span>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="r2.png" class="lightbox" data-glightbox="description: .lightbox-desc-2" data-gallery="quarto-lightbox-gallery-2" title="Wikipedia"><img src="r2.png" class="img-fluid figure-img" alt="Wikipedia"></a></p>
+<p><a href="r2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" data-glightbox="description: .lightbox-desc-2" title="Wikipedia"><img src="r2.png" class="img-fluid figure-img" alt="Wikipedia"></a></p>
 <figcaption>Wikipedia</figcaption>
 </figure>
 </div>
@@ -694,7 +694,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"loop":false,"selector":".lightbox","openEffect":"zoom","closeEffect":"zoom","descPosition":"bottom"});
+<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","selector":".lightbox","loop":false,"descPosition":"bottom","closeEffect":"zoom"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;

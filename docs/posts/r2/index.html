@@ -221,14 +221,13 @@ window.Quarto = {
 <p>The residuals are the differences between the observed values (y) and the predicted values (ŷ) based on the regression line. The mean of the observed values is <span class="math inline">\(\bar{y} = \frac{1}{n}\sum y_i\)</span>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="r2.png" class="lightbox" data-glightbox="description: .lightbox-desc-2" data-gallery="quarto-lightbox-gallery-2" title="Wikipedia"><img src="r2.png" class="img-fluid figure-img" alt="Wikipedia"></a></p>
+<p><a href="r2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" data-glightbox="description: .lightbox-desc-2" title="Wikipedia"><img src="r2.png" class="img-fluid figure-img" alt="Wikipedia"></a></p>
 <figcaption>Wikipedia</figcaption>
 </figure>
 </div>
 </section>
 <section id="rss-and-sst" class="level3">
 <h3 class="anchored" data-anchor-id="rss-and-sst">RSS and SST</h3>
-<hr>
 <p>Once we have the mean, we can calculate the variability of the observed values. We can calculate with two sum of squares. The total sum of squares (SST) is the sum of the squared differences between the observed values and the mean of the observed values, $SST=_i{(y_i-{y})^2} $ (red squares in the plot). So the total sum of squares is proportional to the variance of the observed values.</p>
 <p>The residual sum of squares (RSS) is the sum of the squared differences between the observed values and the predicted values, <span class="math inline">\(SSR = \sum{(y_i - f_i)^2} = \sum_i{e_i^2}\)</span> (blue squares in the plot).</p>
 <p>SSR/SST is the fraction of variance unexplained. The fraction of variance explained is <span class="math inline">\(R^2 = 1 - SSR/SST\)</span>.</p>
@@ -695,7 +694,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","loop":false,"selector":".lightbox","closeEffect":"zoom","openEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","openEffect":"zoom","closeEffect":"zoom","loop":false,"descPosition":"bottom"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;

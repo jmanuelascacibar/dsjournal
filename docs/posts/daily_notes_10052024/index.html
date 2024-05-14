@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="JM Ascacibar">
+<meta name="dcterms.date" content="2024-05-10">
 
-<title>About</title>
+<title>Daily Note - 10-05-2024</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,21 +25,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -66,14 +69,43 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<link rel="stylesheet" href="styles.css">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
             <div id="quarto-search" class="" title="Search"></div>
@@ -83,11 +115,11 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./about.html" aria-current="page"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
 </ul>
@@ -110,45 +142,92 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Daily Note - 10-05-2024</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">Statistics</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>JM Ascacibar </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">May 10, 2024</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="4">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#working-plan-for-the-next-weeks" id="toc-working-plan-for-the-next-weeks" class="nav-link active" data-scroll-target="#working-plan-for-the-next-weeks">Working plan for the next weeks</a></li>
+  <li><a href="#daily-note---10052024" id="toc-daily-note---10052024" class="nav-link" data-scroll-target="#daily-note---10052024">Daily Note - 10/05/2024</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<div class="quarto-about-jolla content">
-  <img src="profile.jpg" class="about-image
-  round " style="height: 15em; width: 15em;">
- <header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">About</h1>
-</div>
-<div class="quarto-title-meta">
-  </div>
-</header><main class="content" id="quarto-document-content">
-<p>Welcome to my blog, if this can be called blog…</p>
-<p>As I dive deeper into machine learning and deep learning, I’ve realized I need a space to process and reflect on what I’m learning. This blog is that space. I’ll be writing about what I’m learning, what I’m building, and what I’m thinking about. So be warned, this is a work in progress. I’m learning as I go, so expect to see a lot of mistakes and a lot of learning. But that’s the point, right? It won’t be original or groundbreaking but it will be the resource that I can refer to when I’ve inevitably forgotten something. I’m sharing my journey publicly in the hopes that it might help others who are also learning, and to hold myself accountable to my own learning goals.</p>
-<p>If you stumble upon and find it useful, that’s great! If you find a mistake, please let me know. And if you need any help or guidance, I’m more than happy to assist.</p>
-<p>So, welcome to my blog. I hope you find something useful.</p>
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
-<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> 
-  <hr class="about-sep">
-   <div class="about-links">
-  <a href="https://twitter.com" class="about-link" rel="" target="">
-    <i class="bi bi-twitter"></i>
-     <span class="about-link-text">Twitter</span>
-  </a>
-  <a href="https://linkedin.com" class="about-link" rel="" target="">
-    <i class="bi bi-linkedin"></i>
-     <span class="about-link-text">LinkedIn</span>
-  </a>
-  <a href="https://github.com/jmanuelascacibar" class="about-link" rel="" target="">
-    <i class="bi bi-github"></i>
-     <span class="about-link-text">Github</span>
-  </a>
-</div>
-</div>
- <!-- /main -->
+
+
+
+<p><em>Order statistics definition</em></p>
+<p><img src="designer.jpeg" class="img-fluid"></p>
+<section id="working-plan-for-the-next-weeks" class="level1">
+<h1>Working plan for the next weeks</h1>
+<ul class="task-list">
+<li><label><input type="checkbox">Coefficient of determination, <span class="math inline">\(R^2\)</span></label></li>
+<li><label><input type="checkbox">Flood Competition. Modelling the data and making predictions</label></li>
+<li><label><input type="checkbox">AMEX competition</label></li>
+<li><label><input type="checkbox">Concrete competition. Modelling the data and making predictions</label></li>
+<li><label><input type="checkbox">Shapley</label></li>
+<li><label><input type="checkbox">Inference and prediction</label></li>
+<li><label><input type="checkbox">PCA</label></li>
+<li><label><input type="checkbox">Target Transformations</label></li>
+<li><label><input type="checkbox">Richard Dawking explanation of FP and FN</label></li>
+<li><label><input type="checkbox">Finish Quarto blog</label></li>
+</ul>
+</section>
+<section id="daily-note---10052024" class="level1">
+<h1>Daily Note - 10/05/2024</h1>
+<section id="order-statistics-more" class="level4">
+<h4 class="anchored" data-anchor-id="order-statistics-more">1. Order Statistics (<a href="https://en.wikipedia.org/wiki/Order_statistic">more</a>)</h4>
+<p>In statistics, the k-th order statistic of a statistical sample is equal to its k-th smallest value. Together with rank statistics, order statistics are among the most fundamental tools in non-parametric statistics and inference. Important special cases are the minimum and maximum value of a sample. Together with <a href="https://en.wikipedia.org/wiki/Ranking_(statistics)">rank statistics</a>, order statistics are among the most fundamental tools in non-parametric statistics and inference.</p>
+<p>The first order statistic is always the minimum of the sample. It’s denoted by <span class="math inline">\(X_{(1)} = \min\{X_{1}, ..., X_{n}\}\)</span>.</p>
+<p>Similarly, for a sample size n, the largest order statistic is the maximum, denoted by <span class="math inline">\(X_{(n)} = \max\{X_{1}, ..., X_{n}\}\)</span>.</p>
+<p>The sample range is the difference between the maximum and minimum order statistics: <span class="math inline">\(R = X_{(n)} - X_{(1)}\)</span>.</p>
+<p>Similar is the interquantile range, which is the difference between the 75th and 25th percentiles, denoted by <span class="math inline">\(IQR = X_{(0.75n)} - X_{(0.25n)}\)</span>.</p>
+<p>The sample median may or may not be an order statistic, since there is a single middle value only when the number n of observations is odd.</p>
+<p><a href="https://mathworld.wolfram.com/OrderStatistic.html">A most simple an beautiful explanation</a>:</p>
+<p>Given a sample of <span class="math inline">\(n\)</span> variates <span class="math inline">\(X_{1}, ..., X_{n}\)</span>, reorder them so that <span class="math inline">\(Y_{1} &lt; Y_{2} &lt; ... &lt; Y_{N}\)</span>. Then <span class="math inline">\(Y_{i}\)</span> is called the <span class="math inline">\(i^{th}\)</span> oder statistic, sometimes also denote by <span class="math inline">\(X_{(i)}\)</span>.</p>
+
+
+</section>
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -169,6 +248,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
   const isCodeAnnotation = (el) => {
     for (const clz of el.classList) {
       if (clz.startsWith('code-annotation-')) {                     

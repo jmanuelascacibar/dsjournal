@@ -3,14 +3,26 @@ project:
   output-dir: docs
 
 website:
-  title: "dsjournal"
+  search: true
   navbar:
     right:
-      - about.qmd
       - icon: github
         href: https://github.com/jmanuelascacibar
       - icon: twitter
         href: https://twitter.com
+    left:
+      - text: "Home"
+        href: index.qmd
+      - about.qmd
+  page-footer: 
+    center: "Copyright 2024, Jose Manuel Ascaibar" 
+    border: true
+    background: light
+
+
+  back-to-top-navigation: true
+  
+
 format:
   html:
     theme: sandstone

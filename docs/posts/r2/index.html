@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="JM Ascacibar">
-<meta name="dcterms.date" content="2024-05-13">
+<meta name="dcterms.date" content="2024-05-14">
 
-<title>Daily Note - 13-05-2024</title>
+<title>Plot from Wikipedia</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,40 +21,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -75,6 +41,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -179,13 +148,9 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Daily Note - 13-05-2024</h1>
+      <h1 class="title">Plot from Wikipedia</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">git</div>
-                <div class="quarto-category">github</div>
-                <div class="quarto-category">bash</div>
-                <div class="quarto-category">tmux</div>
-                <div class="quarto-category">quarto</div>
+                <div class="quarto-category">Statistics</div>
               </div>
                   </div>
   </div>
@@ -203,7 +168,7 @@ window.Quarto = {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">May 13, 2024</p>
+        <p class="date">May 14, 2024</p>
       </div>
     </div>
     
@@ -219,9 +184,13 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#working-plan-for-the-next-weeks" id="toc-working-plan-for-the-next-weeks" class="nav-link active" data-scroll-target="#working-plan-for-the-next-weeks">Working plan for the next weeks</a></li>
-  <li><a href="#daily-note---13052024" id="toc-daily-note---13052024" class="nav-link" data-scroll-target="#daily-note---13052024">Daily Note - 13/05/2024</a></li>
-  <li><a href="#findings-and-resources" id="toc-findings-and-resources" class="nav-link" data-scroll-target="#findings-and-resources">Findings and resources:</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#evaluation-metric" id="toc-evaluation-metric" class="nav-link" data-scroll-target="#evaluation-metric">Evaluation metric</a></li>
+  <li><a href="#residuals" id="toc-residuals" class="nav-link" data-scroll-target="#residuals">Residuals</a></li>
+  <li><a href="#rss-and-sst" id="toc-rss-and-sst" class="nav-link" data-scroll-target="#rss-and-sst">RSS and SST</a></li>
+  <li><a href="#adjusted-r2" id="toc-adjusted-r2" class="nav-link" data-scroll-target="#adjusted-r2">Adjusted R2</a></li>
+  <li><a href="#proof-that-the-sum-of-the-residuals-is-zero" id="toc-proof-that-the-sum-of-the-residuals-is-zero" class="nav-link" data-scroll-target="#proof-that-the-sum-of-the-residuals-is-zero">Proof that the sum of the residuals is zero</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
     </div>
@@ -232,102 +201,72 @@ window.Quarto = {
 
 
 
-<p><em>Introduction to git, copying files in the terminal, tmux, GitHub Pages, and create a blog in Quarto</em></p>
-<p><img src="designer.jpeg" class="img-fluid"></p>
-<section id="working-plan-for-the-next-weeks" class="level1">
-<h1>Working plan for the next weeks</h1>
-<ul class="task-list">
-<li><label><input type="checkbox">Coefficient of determination, <span class="math inline">\(R^2\)</span></label></li>
-<li><label><input type="checkbox">Flood Competition. Modelling the data and making predictions</label></li>
-<li><label><input type="checkbox">AMEX competition</label></li>
-<li><label><input type="checkbox">Concrete competition. Modelling the data and making predictions</label></li>
-<li><label><input type="checkbox">Shapley</label></li>
-<li><label><input type="checkbox">Inference and prediction</label></li>
-<li><label><input type="checkbox">PCA</label></li>
-<li><label><input type="checkbox">Target Transformations</label></li>
-<li><label><input type="checkbox">Richard Dawking explanation of FP and FN</label></li>
-<li><label><input type="checkbox">Finish Quarto blog</label></li>
-</ul>
+<section id="introduction" class="level3">
+<h3 class="anchored" data-anchor-id="introduction">Introduction</h3>
+<p>I’m working working in a playground kaggle competition called <a href="https://www.kaggle.com/competitions/playground-series-s4e5">Regression with a Flood Prediction Dataset</a>. The goal of the competition is to predict the probability of a flood event in a given region based on a set of features. The submission are evaluated using <span class="math inline">\(R^2\)</span> score.</p>
+<p>A good way to start is to understand the evaluation metric that, in this case, we are going to try to maximize. So what is <span class="math inline">\(R^2\)</span> score?</p>
+<p>You might have heard from school that <span class="math inline">\(R^2\)</span> measure the proportion of the variance in the dependent variable that is predictable from the independent variable. But what does that mean?</p>
 </section>
-<section id="daily-note---13052024" class="level1">
-<h1>Daily Note - 13/05/2024</h1>
-<section id="introduciton-to-git" class="level4">
-<h4 class="anchored" data-anchor-id="introduciton-to-git">1. Introduciton to git</h4>
-<p>Git repository is a folder that contains all the files and folders of a project. It is a version control system that allows you to keep track of changes in your code. It is a distributed version control system, which means that you can work on your code locally and then push it to a remote repository.</p>
-<p>When you save, you basically take a snapshot of your code at that point in time (versoin control). This snapshot is called a commit. You can then go back to that commit at any time. You can also create branches, which are like parallel universes where you can work on different features of your code without affecting the main branch.</p>
-<p>To put your repository in your computer, you can use the command <code>git clone &lt;repository_url&gt;</code>. This will create a folder with the name of the repository in your computer. You can then navigate to that folder and start working on your code.</p>
-<p>We are going to clone it with something called SSH, which is a secure way to connect to a remote repository. To do this, you need to generate a SSH key in your computer and then add it to your GitHub account.</p>
-<p>Using the command <code>git status</code> you can see the status of your repository. This will show you the files that have been modified, added or deleted.</p>
-<p>If you want to add all the files that have been modified, you can use the command <code>git add .</code>. If you want to add a specific file, you can use <code>git add &lt;file_name&gt;</code>.</p>
-<p>After adding the files, you need to commit them. To do this, you can use the command <code>git commit -m "message"</code>. The message is a short description of the changes you made in that commit.</p>
-<p>After committing the changes, you need to push them to the remote repository. To do this, you can use the command <code>git push origin main</code>. This will push the changes to the main branch of the remote repository.</p>
+<section id="evaluation-metric" class="level3">
+<h3 class="anchored" data-anchor-id="evaluation-metric">Evaluation metric</h3>
+<p>An evaluation metric is a way to measure how good your model is. This arise the question: what is a good model? A good model is a model that is able to generalize well. That is, a model that is able to make good predictions on unseen data. A good prediction is a prediction that is close to the true value. In statistics, we define residuals as the difference between the true value and the predicted value from the model.</p>
 </section>
-<section id="copying-multiple-files-at-once-in-the-terminal-to-a-specific-directory" class="level4">
-<h4 class="anchored" data-anchor-id="copying-multiple-files-at-once-in-the-terminal-to-a-specific-directory">2. Copying multiple files at once in the terminal to a specific directory</h4>
-<p>You can use a list of files to copy multiple files at once to a specific directory.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Terminal</span> </span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> test.csv sample_submission.csv train.csv ~/git/PSS3E9</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This will copy the files <code>test.csv</code>, <code>sample_submission.csv</code> and <code>train.csv</code> to the directory <code>~/git/PSS3E9</code>.</p>
-<p>You can also use pattern with wildcards to copy multiple files at once. For example, to copy all the files that end with <code>.csv</code> to a specific directory, you can use the following command:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Terminal</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="pp">*</span>.csv ~/git/PSS3E9</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Also you can use a pattern with curly braces to copy multiple files at once.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Terminal</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="dt">{test</span><span class="op">,</span><span class="dt">sample_submission</span><span class="op">,</span><span class="dt">train}</span>.csv ~/git/PSS3E9</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="residuals" class="level3">
+<h3 class="anchored" data-anchor-id="residuals">Residuals</h3>
+<p><span class="math display">\[y = [y_1, ..., y_n]\]</span> <span class="math display">\[ r = [r_1, ..., r_2] = [y_1 - \hat{y}_1, ..., y_n - \hat{y}_n]\]</span> Where <span class="math inline">\(y\)</span> is the true value, <span class="math inline">\(\hat{y}\)</span> is the predicted value and <span class="math inline">\(r\)</span> is the residual.</p>
+<p>The sum of the residuals will be zero and there’s a mathematical proof (at the end).</p>
+<p>In linear regression, we’re trying to find the best-fitting line that minimizes the distance between the observed data points and the line. The best-fitting line is the one that minimizes the sum of the squared residuals.</p>
+<p>The residuals are the differences between the observed values (y) and the predicted values (ŷ) based on the regression line. The mean of the observed values is <span class="math inline">\(\bar{y} = \frac{1}{n}\sum y_i\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="r2.png" class="lightbox" data-glightbox="description: .lightbox-desc-1" data-gallery="quarto-lightbox-gallery-1" title="Wikipedia"><img src="r2.png" class="img-fluid figure-img" alt="Wikipedia"></a></p>
+<figcaption>Wikipedia</figcaption>
+</figure>
+</div>
 </section>
-<section id="change-to-your-most-recent-directory-in-the-terminal" class="level4">
-<h4 class="anchored" data-anchor-id="change-to-your-most-recent-directory-in-the-terminal">3. Change to your most recent directory in the terminal</h4>
-<p>You can use the command <code>cd -</code> to change to your most recent directory in the terminal. This is useful when you want to go back to the directory you were before.</p>
-<p><code>pushd</code> and <code>popd</code> are also useful commands to navigate between directories. <code>pushd</code> saves the current directory and changes to the directory you specify. <code>popd</code> goes back to the directory you saved with <code>pushd</code>.</p>
+<section id="rss-and-sst" class="level3">
+<h3 class="anchored" data-anchor-id="rss-and-sst">RSS and SST</h3>
+<hr>
+<p>Once we have the mean, we can calculate the variability of the observed values. We can calculate with two sum of squares. The total sum of squares (SST) is the sum of the squared differences between the observed values and the mean of the observed values, $SST=_i{(y_i-{y})^2} $ (red squares in the plot). So the total sum of squares is proportional to the variance of the observed values.</p>
+<p>The residual sum of squares (RSS) is the sum of the squared differences between the observed values and the predicted values, <span class="math inline">\(SSR = \sum{(y_i - f_i)^2} = \sum_i{e_i^2}\)</span> (blue squares in the plot).</p>
+<p>SSR/SST is the fraction of variance unexplained. The fraction of variance explained is <span class="math inline">\(R^2 = 1 - SSR/SST\)</span>.</p>
+<p>The best model posible will be one with SSR = 0 and the R2 score will be 1. So R2 score measure goodness of fit.</p>
+<p>Values outside the range [0,1] are possible when the model is worse than the mean model, the SSR is greater than the SST, and the R2 score is negative.</p>
 </section>
-<section id="instead-of-using-multiple-tab-terminals-use-tmux" class="level4">
-<h4 class="anchored" data-anchor-id="instead-of-using-multiple-tab-terminals-use-tmux">4. Instead of using multiple tab terminals, use tmux</h4>
-<p>Tmux is a terminal multiplexer that allows you to split your terminal into multiple panes. This is useful when you want to work on multiple things at once. You can create a new pane with <code>Ctrl+b %</code> and navigate between panes with <code>Ctrl+b arrow keys</code>. To create a new pane down, you can use <code>Ctrl+b "</code>.</p>
-<p>You can close the panes with <code>exit</code> or <code>Ctrl+d</code>. To close tmux, you can use <code>Ctrl+b d</code>.</p>
-<p>To get more room in the pane you are working on, you can use <code>Ctrl+b z</code> to zoom in and out.</p>
-<p>The good thing about tmux is that runs in the background, so you can close your terminal and open it again and your panes will still be there. You need to first detach from tmux with <code>Ctrl+b d</code> and then close your terminal. To attach to tmux again, you can use <code>tmux attach</code>.</p>
+<section id="adjusted-r2" class="level3">
+<h3 class="anchored" data-anchor-id="adjusted-r2">Adjusted R2</h3>
+<p>The R2 score has a problem. It increases as we add more features to the model. This is because the model will always explain more variance with more features. The adjusted R2 score is a modified version of the R2 score that has been adjusted for the number of features in the model. The adjusted R2 score is calculated as:</p>
+<p><span class="math display">\[R^2_{adj} = 1 - \frac{(1 - R^2)(n - 1)}{n - k - 1}\]</span></p>
+<p>where n is the number of observations and k is the number of features in the model. The adjusted R2 score will be less than the R2 score when the number of features is greater than 1.</p>
+<p>Or from the definition of R2 we can write the adjusted R2 as:</p>
+<p><span class="math display">\[R^2_{adj} = 1 - \frac{SSR/(n-k-1)}{SST/(n-1)}\]</span></p>
+<p>where n is the number of observations and k is the number of features in the model. We basically divide the SSR and SST by the degrees of freedom, define as the number of observations minus the number of parameters in the model.</p>
 </section>
-<section id="quick-start-for-github-pages" class="level4">
-<h4 class="anchored" data-anchor-id="quick-start-for-github-pages">5. Quick start for GitHub pages</h4>
-<p>GitHub pages is a free service that allows you to host a website directly from a GitHub repository. You can use it to create a personal website, a blog, a portfolio, or a project page.</p>
-<p>Check the <a href="https://docs.github.com/en/pages/quickstart">GitHub Pages documentation</a> for more information on how to get started.</p>
+<section id="proof-that-the-sum-of-the-residuals-is-zero" class="level3">
+<h3 class="anchored" data-anchor-id="proof-that-the-sum-of-the-residuals-is-zero">Proof that the sum of the residuals is zero</h3>
+<p>The OLS method estimates the regression coefficients (β) by minimizing the sum of the squared residuals (SSR). The SSR is calculated as: <span class="math display">\[SSR = \sum (y - \hat{y})^2\]</span> where y is the observed value, ŷ is the predicted value, and the sum is taken over all data points.</p>
+<p>When we minimize the SSR, we’re essentially finding the regression line that passes through the mean of the data points. Imagine a regression line that doesn’t pass through the mean of the data points. In this case, the residuals would not sum to zero, as the line would be biased upwards or downwards. By minimizing the SSR, we’re forcing the regression line to pass through the mean of the data points, which means that the sum of the residuals must be zero.</p>
+<p>Proof:</p>
+<p>Let’s denote <span class="math inline">\(e = y- \hat{y}\)</span>, we want to show that <span class="math inline">\(\sum e = 0\)</span>.</p>
+<p>We know that <span class="math inline">\(\hat{y} = \beta_0 + \beta_1x\)</span></p>
+<p>Using the definition of <span class="math inline">\(\hat{y}\)</span>, <span class="math inline">\(e = y - \beta_0 - \beta_1x\)</span>.</p>
+<p>Taking the sum of both sides we have: <span class="math display">\[\sum e = \sum y - \sum \left(\beta_0 - \beta_1x\right)\]</span> <span class="math display">\[\sum e = \sum y - n\beta_0 - \beta_1\sum x\]</span> where n is the number of observations.</p>
+<p>Recall that the OLS estimates of β0 and β1 are chosen to minimize the SSR. This means that the following conditions must be satisfied.</p>
+<p><span class="math display">\[\frac{\partial SSR}{\partial \beta_0} = -2\sum (y - (\beta_0 + \beta_1 x)) = 0\]</span> <span class="math display">\[\frac{\partial SSR}{\partial \beta_1} = -2\sum x(y - (\beta_0 + \beta_1 x)) = 0\]</span></p>
+<p>Simplyfing the first and second equation we have: <span class="math display">\[\sum y = n\beta_0 + \beta_1\sum x\]</span> <span class="math display">\[\sum xy = \beta_0\sum x + \beta_1\sum x^2\]</span></p>
+<p>Substituting the first equation into the expresion <span class="math inline">\(\sum e = \sum y - \sum \left(\beta_0 - \beta_1x\right)\)</span> we have: <span class="math display">\[\sum e = 0\]</span></p>
 </section>
-<section id="create-a-quarto-blog" class="level4">
-<h4 class="anchored" data-anchor-id="create-a-quarto-blog">6 Create a Quarto blog</h4>
-<p>Quarto is a tool that allows you to create documents in markdown and publish them as a website. You can use it to create a blog, a journal, a report, or a book.</p>
-<p>First create a github repository with the same name of your project.</p>
-<p>Using Quarto extension in VSCode, you can start a new Quarto project from the command palette with <code>Quarto: New Project</code>. You can then select the type of project you want to create (e.g., blog, journal, report, book). This will create a new folder with the necessary files to start writing your document.</p>
-<p>Write the same name project that your github repository.</p>
-<p>Once all the files are in the folder, <a href="https://quarto.org/docs/publishing/github-pages.html">you need to change your project configuration</a>.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="at">_quarto.yml</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">project</span><span class="kw">:</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">type</span><span class="kw">:</span><span class="at"> website</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">output-dir</span><span class="kw">:</span><span class="at"> docs</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Go to the terminal and run <code>quarto render</code> to render the website.</p>
-<p>Then you need to push the changes to the repository.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Terminal</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Initial commit"</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Go to the settings of your repository and select the source of your GitHub pages as <code>main</code> and the folder as <code>docs</code>.</p>
-<p>You can then access your website at <code>https://&lt;username&gt;.github.io/&lt;repository_name&gt;</code>.</p>
-</section>
-</section>
-<section id="findings-and-resources" class="level1">
-<h1>Findings and resources:</h1>
+<section id="references" class="level3">
+<h3 class="anchored" data-anchor-id="references">References</h3>
 <ul>
-<li>Very good video about version control and jupyter notebooks <a href="https://www.youtube.com/watch?v=jLgkMa9DvaQ">here</a></li>
-<li>Joel Grus book about why he doesn’t like notebooks. His website is <a href="https://joelgrus.com/">here</a>. He has a book called Data Science from Scratch.</li>
-<li>Joel Grus talk about why he doesn’t like notebooks <a href="https://www.youtube.com/watch?v=3Fa6uzHxTkQ">here</a></li>
-</ul>
-<p>Quarto Resources:</p>
-<ul>
-<li><a href="https://quarto.org/docs/websites/website-navigation.html">Set up navigation</a></li>
-<li><a href="https://quarto.org/docs/websites/website-tools.html">Website tools</a> (Google Analytics!)</li>
-<li><a href="https://quarto.org/docs/websites/website-listings.html">Customize your listing (front blog page)</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Coefficient_of_determination">Wikipedia</a></li>
+<li><a href="https://www.kaggle.com/competitions/playground-series-s4e5">Kaggle Flood Prediction</a></li>
 </ul>
 
 
+<div class="hidden" aria-hidden="true">
+<span class="glightbox-desc lightbox-desc-1">Wikipedia</span>
+</div>
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
@@ -754,6 +693,31 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","closeEffect":"zoom","selector":".lightbox","loop":false,"descPosition":"bottom"});
+window.onload = () => {
+  lightboxQuarto.on('slide_before_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    const href = trigger.getAttribute('href');
+    if (href !== null) {
+      const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+      if (imgEl !== null) {
+        const srcAttr = imgEl.getAttribute("src");
+        if (srcAttr && srcAttr.startsWith("data:")) {
+          slideConfig.href = srcAttr;
+        }
+      }
+    } 
+  });
+
+  lightboxQuarto.on('slide_after_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    if (window.Quarto?.typesetMath) {
+      window.Quarto.typesetMath(slideNode);
+    }
+  });
+
+};
+          </script>
 
 
 

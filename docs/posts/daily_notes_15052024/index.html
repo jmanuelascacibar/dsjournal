@@ -197,11 +197,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#units-of-digital-information-bits-and-bytes" id="toc-units-of-digital-information-bits-and-bytes" class="nav-link" data-scroll-target="#units-of-digital-information-bits-and-bytes">2. Units of digital information: bits and bytes</a></li>
   <li><a href="#common-encodings" id="toc-common-encodings" class="nav-link" data-scroll-target="#common-encodings">3. Common Encodings</a></li>
   <li><a href="#hexadecimal-strings" id="toc-hexadecimal-strings" class="nav-link" data-scroll-target="#hexadecimal-strings">4. Hexadecimal strings</a></li>
-  <li><a href="#amex-competition-customer_id-convert-to-int32-or-int64" id="toc-amex-competition-customer_id-convert-to-int32-or-int64" class="nav-link" data-scroll-target="#amex-competition-customer_id-convert-to-int32-or-int64">4. AMEX Competition <code>customer_ID</code> convert to <code>int32</code> or <code>int64</code></a></li>
-  <li><a href="#abort-any-preprocessing-in-the-amex-competition" id="toc-abort-any-preprocessing-in-the-amex-competition" class="nav-link" data-scroll-target="#abort-any-preprocessing-in-the-amex-competition">5. Abort any preprocessing in the AMEX competition</a></li>
-  <li><a href="#installing-mamba" id="toc-installing-mamba" class="nav-link" data-scroll-target="#installing-mamba">6. Installing mamba</a></li>
-  <li><a href="#installing-dask" id="toc-installing-dask" class="nav-link" data-scroll-target="#installing-dask">7. Installing dask</a></li>
-  <li><a href="#getting-the-number-of-rows-from-your-csv-file-in-the-terminal" id="toc-getting-the-number-of-rows-from-your-csv-file-in-the-terminal" class="nav-link" data-scroll-target="#getting-the-number-of-rows-from-your-csv-file-in-the-terminal">8. Getting the number of rows from your csv file in the terminal</a></li>
+  <li><a href="#amex-competition-customer_id-convert-to-int32-or-int64" id="toc-amex-competition-customer_id-convert-to-int32-or-int64" class="nav-link" data-scroll-target="#amex-competition-customer_id-convert-to-int32-or-int64">5. AMEX Competition <code>customer_ID</code> convert to <code>int32</code> or <code>int64</code></a></li>
+  <li><a href="#abort-any-preprocessing-in-the-amex-competition" id="toc-abort-any-preprocessing-in-the-amex-competition" class="nav-link" data-scroll-target="#abort-any-preprocessing-in-the-amex-competition">6. Abort any preprocessing in the AMEX competition</a></li>
+  <li><a href="#installing-mamba" id="toc-installing-mamba" class="nav-link" data-scroll-target="#installing-mamba">7. Installing mamba</a></li>
+  <li><a href="#installing-dask" id="toc-installing-dask" class="nav-link" data-scroll-target="#installing-dask">8. Installing dask</a></li>
+  <li><a href="#getting-the-number-of-rows-from-your-csv-file-in-the-terminal" id="toc-getting-the-number-of-rows-from-your-csv-file-in-the-terminal" class="nav-link" data-scroll-target="#getting-the-number-of-rows-from-your-csv-file-in-the-terminal">9. Getting the number of rows from your csv file in the terminal</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -332,20 +332,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 </section>
 <section id="amex-competition-customer_id-convert-to-int32-or-int64" class="level2">
-<h2 class="anchored" data-anchor-id="amex-competition-customer_id-convert-to-int32-or-int64">4. AMEX Competition <code>customer_ID</code> convert to <code>int32</code> or <code>int64</code></h2>
+<h2 class="anchored" data-anchor-id="amex-competition-customer_id-convert-to-int32-or-int64">5. AMEX Competition <code>customer_ID</code> convert to <code>int32</code> or <code>int64</code></h2>
 <p>The <code>customer_ID</code> is a variable that store customer ids in a string format of length 64. This implies that each custormer id consist of 64 characters, which is equivalent to 64 bytes (1 byte each character) each string.</p>
 <p>If you convert these strings to a more compact numerical representation (such as an integer), you can significantly reduce the memory usage.</p>
 <p>We know that <code>int32</code> (32-bit integer) uses 4 bytes of memory (1 byte = 8 bits, 4 bytes = 32 bits) and <code>int64</code> (64-bit integer) uses 8 bytes of memory (1 byte = 8 bits, 8 bytes = 64 bits).</p>
 <p>So converting the <code>customer_ID</code> to <code>int32</code> or <code>int64</code> will reduce the memory usage per row to 4 bytes or 8 bytes respectively. This can be a significant reduction in memory usage, especially in this competiton where the data is 50GB.</p>
 </section>
 <section id="abort-any-preprocessing-in-the-amex-competition" class="level2">
-<h2 class="anchored" data-anchor-id="abort-any-preprocessing-in-the-amex-competition">5. Abort any preprocessing in the AMEX competition</h2>
+<h2 class="anchored" data-anchor-id="abort-any-preprocessing-in-the-amex-competition">6. Abort any preprocessing in the AMEX competition</h2>
 <p>In order to save time and because my computer can not handle the size of the data set. I’m going to abort any preprocessing and I’m going to use the <code>AMEX data - integer dtypes - parquet format</code> from <span class="citation" data-cites="raddar">@raddar</span> which is 4.94GB.</p>
 <p>To download <a href="https://www.kaggle.com/competitions/amex-default-prediction/discussion/328514"><span class="citation" data-cites="raddar">@raddar</span> dataset</a>:</p>
 <pre><code>kaggle datasets download -d raddar/amex-data-integer-dtypes-parquet-format</code></pre>
 </section>
 <section id="installing-mamba" class="level2">
-<h2 class="anchored" data-anchor-id="installing-mamba">6. Installing mamba</h2>
+<h2 class="anchored" data-anchor-id="installing-mamba">7. Installing mamba</h2>
 <p><a href="https://mamba.readthedocs.io/en/latest/installation/mamba-installation.html">Documentation</a></p>
 <p>After messing around with <code>.bashrc</code> and having issues with the PATH of all my programs, I decided to install <code>mamba</code></p>
 <ol type="1">
@@ -365,17 +365,17 @@ alias jlab='jupyter lab'</code></pre>
 <p>Save and close the file. If you’re using nano, you can do this by pressing <code>Ctrl+O</code>, Enter, and then <code>Ctrl+X</code> to exit.</p>
 </section>
 <section id="installing-dask" class="level2">
-<h2 class="anchored" data-anchor-id="installing-dask">7. Installing dask</h2>
+<h2 class="anchored" data-anchor-id="installing-dask">8. Installing dask</h2>
 <p><a href="https://docs.dask.org/en/stable/install.html">Documentation</a></p>
 <pre><code>mamba install dask -c conda-forge</code></pre>
 </section>
 <section id="getting-the-number-of-rows-from-your-csv-file-in-the-terminal" class="level2">
-<h2 class="anchored" data-anchor-id="getting-the-number-of-rows-from-your-csv-file-in-the-terminal">8. Getting the number of rows from your csv file in the terminal</h2>
+<h2 class="anchored" data-anchor-id="getting-the-number-of-rows-from-your-csv-file-in-the-terminal">9. Getting the number of rows from your csv file in the terminal</h2>
 <p>This can be done efficiently using a tool like <code>wc -l</code>. The <code>-l</code> flag tells wc to count the number of lines in the file.</p>
 <pre><code>wc -l train_data.csv
 5531452 train_data.csv</code></pre>
 <section id="using-random.sample-to-get-a-random-sample" class="level4">
-<h4 class="anchored" data-anchor-id="using-random.sample-to-get-a-random-sample">9. Using <code>random.sample()</code> to get a random sample</h4>
+<h4 class="anchored" data-anchor-id="using-random.sample-to-get-a-random-sample">10. Using <code>random.sample()</code> to get a random sample</h4>
 <p>The <code>random.sample()</code> function can be used to get a random sample of items from a list or other sequence. It takes two arguments: the sequence to sample from and the number of items to sample.</p>
 <pre><code>random.sample(population, k)</code></pre>
 <p>Where <code>population</code> is the sequence to sample from and <code>k</code> is the number of items to sample.</p>
@@ -391,7 +391,7 @@ alias jlab='jupyter lab'</code></pre>
 </div>
 </section>
 <section id="difference-between-sorted-and-sort" class="level4">
-<h4 class="anchored" data-anchor-id="difference-between-sorted-and-sort">10. Difference between sorted() and sort()</h4>
+<h4 class="anchored" data-anchor-id="difference-between-sorted-and-sort">11. Difference between sorted() and sort()</h4>
 <ul>
 <li><code>sorted()</code>: This function returns a new sorted list from the elements of any iterable. It does not modify the original list.</li>
 <li><code>sort()</code>: This method sorts the list in place. It modifies the original list and returns <code>None</code>.</li>
@@ -407,7 +407,7 @@ None [1, 2, 3, 4, 5]</code></pre>
 </div>
 </section>
 <section id="im-going-to-preprocess-the-data-in-the-amex-competition" class="level4">
-<h4 class="anchored" data-anchor-id="im-going-to-preprocess-the-data-in-the-amex-competition">11. I’m going to preprocess the data in the AMEX competition</h4>
+<h4 class="anchored" data-anchor-id="im-going-to-preprocess-the-data-in-the-amex-competition">12. I’m going to preprocess the data in the AMEX competition</h4>
 <p>After a break and say that I’m going to use the data from <span class="citation" data-cites="raddar">@raddar</span>, I decided to preprocess the data in the AMEX competition.</p>
 <p>I’ve realised that I can read a few numbers of rows in order to see the data and the columns. This will help me to understand the dataset.</p>
 <pre><code>data = pd.read_csv('train_data.csv', nrows=35000)</code></pre>
@@ -415,7 +415,7 @@ None [1, 2, 3, 4, 5]</code></pre>
 <pre><code>data.select_dtypes(include=['object'])</code></pre>
 </section>
 <section id="pd.options.display.max_columns-and-pd.options.display.max_rows" class="level4">
-<h4 class="anchored" data-anchor-id="pd.options.display.max_columns-and-pd.options.display.max_rows">12. <code>pd.options.display.max_columns</code> and <code>pd.options.display.max_rows</code></h4>
+<h4 class="anchored" data-anchor-id="pd.options.display.max_columns-and-pd.options.display.max_rows">13. <code>pd.options.display.max_columns</code> and <code>pd.options.display.max_rows</code></h4>
 <p>These options allow you to control the maximum number of columns and rows displayed when printing a DataFrame.</p>
 <pre><code>pd.options.display.max_columns = 50
 pd.options.display.max_rows = 50</code></pre>

@@ -152,7 +152,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div class="quarto-title column-body">
       <h1 class="title">Daily Note - 15-05-2024</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category"></div>
                 <div class="quarto-category">AMEX</div>
                 <div class="quarto-category">bash</div>
                 <div class="quarto-category">python</div>
@@ -187,12 +186,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="4">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="2">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
   <li><a href="#working-plan-for-the-next-weeks" id="toc-working-plan-for-the-next-weeks" class="nav-link active" data-scroll-target="#working-plan-for-the-next-weeks">Working plan for the next weeks</a></li>
-  <li><a href="#daily-note---15052024" id="toc-daily-note---15052024" class="nav-link" data-scroll-target="#daily-note---15052024">Daily Note - 15/05/2024</a></li>
+  <li><a href="#daily-note---15052024" id="toc-daily-note---15052024" class="nav-link" data-scroll-target="#daily-note---15052024">Daily Note - 15/05/2024</a>
+  <ul class="collapse">
+  <li><a href="#string-encoding" id="toc-string-encoding" class="nav-link" data-scroll-target="#string-encoding">1. String encoding</a></li>
+  <li><a href="#units-of-digital-information-bits-and-bytes" id="toc-units-of-digital-information-bits-and-bytes" class="nav-link" data-scroll-target="#units-of-digital-information-bits-and-bytes">2. Units of digital information: bits and bytes</a></li>
+  <li><a href="#common-encodings" id="toc-common-encodings" class="nav-link" data-scroll-target="#common-encodings">3. Common Encodings</a></li>
+  <li><a href="#hexadecimal-strings" id="toc-hexadecimal-strings" class="nav-link" data-scroll-target="#hexadecimal-strings">4. Hexadecimal strings</a></li>
+  <li><a href="#amex-competition-customer_id-convert-to-int32-or-int64" id="toc-amex-competition-customer_id-convert-to-int32-or-int64" class="nav-link" data-scroll-target="#amex-competition-customer_id-convert-to-int32-or-int64">4. AMEX Competition <code>customer_ID</code> convert to <code>int32</code> or <code>int64</code></a></li>
+  <li><a href="#abort-any-preprocessing-in-the-amex-competition" id="toc-abort-any-preprocessing-in-the-amex-competition" class="nav-link" data-scroll-target="#abort-any-preprocessing-in-the-amex-competition">5. Abort any preprocessing in the AMEX competition</a></li>
+  <li><a href="#installing-mamba" id="toc-installing-mamba" class="nav-link" data-scroll-target="#installing-mamba">6. Installing mamba</a></li>
+  <li><a href="#installing-dask" id="toc-installing-dask" class="nav-link" data-scroll-target="#installing-dask">7. Installing dask</a></li>
+  <li><a href="#getting-the-number-of-rows-from-your-csv-file-in-the-terminal" id="toc-getting-the-number-of-rows-from-your-csv-file-in-the-terminal" class="nav-link" data-scroll-target="#getting-the-number-of-rows-from-your-csv-file-in-the-terminal">8. Getting the number of rows from your csv file in the terminal</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -220,19 +230,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="daily-note---15052024" class="level1">
 <h1>Daily Note - 15/05/2024</h1>
-<section id="string-encoding" class="level4">
-<h4 class="anchored" data-anchor-id="string-encoding">1. String encoding</h4>
+<section id="string-encoding" class="level2">
+<h2 class="anchored" data-anchor-id="string-encoding">1. String encoding</h2>
 <p>String encoding refers to the process of converting a string of characters into a sequence of bytes. When a string is stored or transmitted, it is encoded into bytes, When it is read or received, it is decoded back into a string. The encoding ensures that the text remains consistent and interpretable across different systems.</p>
 </section>
-<section id="units-of-digital-information-bits-and-bytes" class="level4">
-<h4 class="anchored" data-anchor-id="units-of-digital-information-bits-and-bytes">2. Units of digital information: bits and bytes</h4>
+<section id="units-of-digital-information-bits-and-bytes" class="level2">
+<h2 class="anchored" data-anchor-id="units-of-digital-information-bits-and-bytes">2. Units of digital information: bits and bytes</h2>
 <p>Bits and bytes are the basic units of digital information. It’s the most basic unit of data in computing. A bit is a binary digit that can have a value of 0 or 1. They are used to represent binary data.</p>
 <p>A byte is larger unit of data, typically consisting of 8 bits. It’s used to represent characters, numbers, and other data. Bytes are the standard unit for measuring data storage and transmission.</p>
 <p>1 byte = 8 bits, this means that a byte can represent 256 different values (2^8).</p>
 <p>For example the character ‘A’ is represented by the byte 01000001 in ASCII encoding. This is a 8-bit sequence, so it’s a byte.</p>
 </section>
-<section id="common-encodings" class="level4">
-<h4 class="anchored" data-anchor-id="common-encodings">3. Common Encodings</h4>
+<section id="common-encodings" class="level2">
+<h2 class="anchored" data-anchor-id="common-encodings">3. Common Encodings</h2>
 <ul>
 <li><p>ASCII: American Standard Code for Information Interchange. It is a character encoding standard for electronic communication. Uses 7 or 8 bits (Extended ASCII) to represent each character. It can represent 128 character or 256 characters in the extended version.</p></li>
 <li><p>UTF-8 (Unicode Transformation Format): It is a variable-width character encoding standard that represent every character in the Unicode character set. Each character is represented by 1 to 4 bytes. It is backward compatible with ASCII for the first 128 characters (1 byte each)</p></li>
@@ -240,11 +250,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>UTF-32: It is a fixed-width character encoding standard that uses 32 bits to represent each character. Represent every character in the Unicode standard using a fixed width.</p></li>
 </ul>
 </section>
-<section id="hexadecimal-strings" class="level4">
-<h4 class="anchored" data-anchor-id="hexadecimal-strings">4. Hexadecimal strings</h4>
+<section id="hexadecimal-strings" class="level2">
+<h2 class="anchored" data-anchor-id="hexadecimal-strings">4. Hexadecimal strings</h2>
 <p>Hexadecimal, often abbreviated as “hex,” is a base-16 numeral system used in mathematics and computing. It extends the decimal (base-10) system by adding six additional symbols, using digits 0-9 and letters A-F</p>
-<section id="hexadecimal-table" class="level5">
-<h5 class="anchored" data-anchor-id="hexadecimal-table">Hexadecimal Table</h5>
+<section id="hexadecimal-table" class="level4">
+<h4 class="anchored" data-anchor-id="hexadecimal-table">Hexadecimal Table</h4>
 <table class="table">
 <thead>
 <tr class="header">
@@ -321,21 +331,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </section>
 </section>
-<section id="amex-competition-customer_id-convert-to-int32-or-int64" class="level4">
-<h4 class="anchored" data-anchor-id="amex-competition-customer_id-convert-to-int32-or-int64">4. AMEX Competition <code>customer_ID</code> convert to <code>int32</code> or <code>int64</code></h4>
+<section id="amex-competition-customer_id-convert-to-int32-or-int64" class="level2">
+<h2 class="anchored" data-anchor-id="amex-competition-customer_id-convert-to-int32-or-int64">4. AMEX Competition <code>customer_ID</code> convert to <code>int32</code> or <code>int64</code></h2>
 <p>The <code>customer_ID</code> is a variable that store customer ids in a string format of length 64. This implies that each custormer id consist of 64 characters, which is equivalent to 64 bytes (1 byte each character) each string.</p>
 <p>If you convert these strings to a more compact numerical representation (such as an integer), you can significantly reduce the memory usage.</p>
 <p>We know that <code>int32</code> (32-bit integer) uses 4 bytes of memory (1 byte = 8 bits, 4 bytes = 32 bits) and <code>int64</code> (64-bit integer) uses 8 bytes of memory (1 byte = 8 bits, 8 bytes = 64 bits).</p>
 <p>So converting the <code>customer_ID</code> to <code>int32</code> or <code>int64</code> will reduce the memory usage per row to 4 bytes or 8 bytes respectively. This can be a significant reduction in memory usage, especially in this competiton where the data is 50GB.</p>
 </section>
-<section id="abort-any-preprocessing-in-the-amex-competition" class="level4">
-<h4 class="anchored" data-anchor-id="abort-any-preprocessing-in-the-amex-competition">5. Abort any preprocessing in the AMEX competition</h4>
+<section id="abort-any-preprocessing-in-the-amex-competition" class="level2">
+<h2 class="anchored" data-anchor-id="abort-any-preprocessing-in-the-amex-competition">5. Abort any preprocessing in the AMEX competition</h2>
 <p>In order to save time and because my computer can not handle the size of the data set. I’m going to abort any preprocessing and I’m going to use the <code>AMEX data - integer dtypes - parquet format</code> from <span class="citation" data-cites="raddar">@raddar</span> which is 4.94GB.</p>
 <p>To download <a href="https://www.kaggle.com/competitions/amex-default-prediction/discussion/328514"><span class="citation" data-cites="raddar">@raddar</span> dataset</a>:</p>
 <pre><code>kaggle datasets download -d raddar/amex-data-integer-dtypes-parquet-format</code></pre>
 </section>
-<section id="installing-mamba" class="level4">
-<h4 class="anchored" data-anchor-id="installing-mamba">6. Installing mamba</h4>
+<section id="installing-mamba" class="level2">
+<h2 class="anchored" data-anchor-id="installing-mamba">6. Installing mamba</h2>
 <p><a href="https://mamba.readthedocs.io/en/latest/installation/mamba-installation.html">Documentation</a></p>
 <p>After messing around with <code>.bashrc</code> and having issues with the PATH of all my programs, I decided to install <code>mamba</code></p>
 <ol type="1">
@@ -354,17 +364,16 @@ bash Miniforge3-$(uname)-$(uname -m).sh</code></pre>
 alias jlab='jupyter lab'</code></pre>
 <p>Save and close the file. If you’re using nano, you can do this by pressing <code>Ctrl+O</code>, Enter, and then <code>Ctrl+X</code> to exit.</p>
 </section>
-<section id="installing-dask" class="level4">
-<h4 class="anchored" data-anchor-id="installing-dask">7. Installing dask</h4>
+<section id="installing-dask" class="level2">
+<h2 class="anchored" data-anchor-id="installing-dask">7. Installing dask</h2>
 <p><a href="https://docs.dask.org/en/stable/install.html">Documentation</a></p>
 <pre><code>mamba install dask -c conda-forge</code></pre>
 </section>
-<section id="getting-the-number-of-rows-from-your-csv-file-in-the-terminal" class="level4">
-<h4 class="anchored" data-anchor-id="getting-the-number-of-rows-from-your-csv-file-in-the-terminal">8. Getting the number of rows from your csv file in the terminal</h4>
+<section id="getting-the-number-of-rows-from-your-csv-file-in-the-terminal" class="level2">
+<h2 class="anchored" data-anchor-id="getting-the-number-of-rows-from-your-csv-file-in-the-terminal">8. Getting the number of rows from your csv file in the terminal</h2>
 <p>This can be done efficiently using a tool like <code>wc -l</code>. The <code>-l</code> flag tells wc to count the number of lines in the file.</p>
 <pre><code>wc -l train_data.csv
 5531452 train_data.csv</code></pre>
-</section>
 <section id="using-random.sample-to-get-a-random-sample" class="level4">
 <h4 class="anchored" data-anchor-id="using-random.sample-to-get-a-random-sample">9. Using <code>random.sample()</code> to get a random sample</h4>
 <p>The <code>random.sample()</code> function can be used to get a random sample of items from a list or other sequence. It takes two arguments: the sequence to sample from and the number of items to sample.</p>
@@ -414,6 +423,7 @@ pd.options.display.max_rows = 50</code></pre>
 <p><a href="https://pandas.pydata.org/docs/user_guide/options.html">Pandas documentation</a></p>
 
 
+</section>
 </section>
 </section>
 

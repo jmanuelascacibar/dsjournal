@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="JM Ascacibar">
-<meta name="dcterms.date" content="2024-05-14">
+<meta name="dcterms.date" content="2024-05-15">
 
-<title>Coefficient of determination (R2)</title>
+<title>Daily Note - 15-05-2024</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -41,9 +75,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
-<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
-<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -72,35 +103,6 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -148,9 +150,14 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Coefficient of determination (R2)</h1>
+      <h1 class="title">Daily Note - 15-05-2024</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">Statistics</div>
+                <div class="quarto-category"></div>
+                <div class="quarto-category">AMEX</div>
+                <div class="quarto-category">bash</div>
+                <div class="quarto-category">python</div>
+                <div class="quarto-category">mamba</div>
+                <div class="quarto-category">pandas</div>
               </div>
                   </div>
   </div>
@@ -168,7 +175,7 @@ window.Quarto = {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">May 14, 2024</p>
+        <p class="date">May 15, 2024</p>
       </div>
     </div>
     
@@ -184,13 +191,8 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#evaluation-metric" id="toc-evaluation-metric" class="nav-link" data-scroll-target="#evaluation-metric">Evaluation metric</a></li>
-  <li><a href="#residuals" id="toc-residuals" class="nav-link" data-scroll-target="#residuals">Residuals</a></li>
-  <li><a href="#rss-and-sst" id="toc-rss-and-sst" class="nav-link" data-scroll-target="#rss-and-sst">RSS and SST</a></li>
-  <li><a href="#adjusted-r2" id="toc-adjusted-r2" class="nav-link" data-scroll-target="#adjusted-r2">Adjusted R2</a></li>
-  <li><a href="#proof-that-the-sum-of-the-residuals-is-zero" id="toc-proof-that-the-sum-of-the-residuals-is-zero" class="nav-link" data-scroll-target="#proof-that-the-sum-of-the-residuals-is-zero">Proof that the sum of the residuals is zero</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#working-plan-for-the-next-weeks" id="toc-working-plan-for-the-next-weeks" class="nav-link active" data-scroll-target="#working-plan-for-the-next-weeks">Working plan for the next weeks</a></li>
+  <li><a href="#daily-note---15052024" id="toc-daily-note---15052024" class="nav-link" data-scroll-target="#daily-note---15052024">Daily Note - 15/05/2024</a></li>
   </ul>
 </nav>
     </div>
@@ -201,73 +203,218 @@ window.Quarto = {
 
 
 
-<p><em>Understanding R2</em></p>
-<p><a href="coefdetermai.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="coefdetermai.jpeg" class="img-fluid"></a></p>
-<section id="introduction" class="level3">
-<h3 class="anchored" data-anchor-id="introduction">Introduction</h3>
-<p>I’m working in a playground kaggle competition called <a href="https://www.kaggle.com/competitions/playground-series-s4e5">Regression with a Flood Prediction Dataset</a>. The goal of the competition is to predict the probability of a flood event in a given region based on a set of features. The submission are evaluated using <span class="math inline">\(R^2\)</span> score.</p>
-<p>A good way to start is to understand the evaluation metric that, in this case, we are going to try to maximize. So what is <span class="math inline">\(R^2\)</span> score?</p>
-<p>You might have heard from school that <span class="math inline">\(R^2\)</span> measure the proportion of the variance in the dependent variable that is predictable from the independent variable. But what does that mean?</p>
-</section>
-<section id="evaluation-metric" class="level3">
-<h3 class="anchored" data-anchor-id="evaluation-metric">Evaluation metric</h3>
-<p>An evaluation metric is a way to measure how good your model is. This arise the question: what is a good model? A good model is a model that is able to generalize well. That is, a model that is able to make good predictions on unseen data. A good prediction is a prediction that is close to the true value. In statistics, we define residuals as the difference between the true value and the predicted value from the model.</p>
-</section>
-<section id="residuals" class="level3">
-<h3 class="anchored" data-anchor-id="residuals">Residuals</h3>
-<p><span class="math display">\[y = [y_1, ..., y_n]\]</span> <span class="math display">\[ r = [r_1, ..., r_n] = [y_1 - \hat{y}_1, ..., y_n - \hat{y}_n]\]</span> Where <span class="math inline">\(y\)</span> is the true value, <span class="math inline">\(\hat{y}\)</span> is the predicted value and <span class="math inline">\(r\)</span> is the residual.</p>
-<p>The sum of the residuals will be zero and there’s a mathematical proof (at the end).</p>
-<p>In linear regression, we’re trying to find the best-fitting line that minimizes the distance between the observed data points and the line. The best-fitting line is the one that minimizes the sum of the squared residuals.</p>
-<p>The residuals are the differences between the observed values (y) and the predicted values (ŷ) based on the regression line. The mean of the observed values is <span class="math inline">\(\bar{y} = \frac{1}{n}\sum y_i\)</span>.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="r2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" data-glightbox="description: .lightbox-desc-2" title="Wikipedia"><img src="r2.png" class="img-fluid figure-img" alt="Wikipedia"></a></p>
-<figcaption>Wikipedia</figcaption>
-</figure>
-</div>
-</section>
-<section id="rss-and-sst" class="level3">
-<h3 class="anchored" data-anchor-id="rss-and-sst">RSS and SST</h3>
-<p>Once we have the mean, we can calculate the variability of the observed values. We can calculate with two sum of squares. The total sum of squares (SST) is the sum of the squared differences between the observed values and the mean of the observed values, $SST=_i{(y_i-{y})^2} $ (red squares in the plot). So the total sum of squares is proportional to the variance of the observed values.</p>
-<p>The residual sum of squares (RSS) is the sum of the squared differences between the observed values and the predicted values, <span class="math inline">\(SSR = \sum{(y_i - f_i)^2} = \sum_i{e_i^2}\)</span> (blue squares in the plot).</p>
-<p>SSR/SST is the fraction of variance unexplained. The fraction of variance explained is <span class="math inline">\(R^2 = 1 - SSR/SST\)</span>.</p>
-<p>The best model posible will be one with SSR = 0 and the R2 score will be 1. So R2 score measure goodness of fit.</p>
-<p>Values outside the range [0,1] are possible when the model is worse than the mean model, the SSR is greater than the SST, and the R2 score is negative.</p>
-</section>
-<section id="adjusted-r2" class="level3">
-<h3 class="anchored" data-anchor-id="adjusted-r2">Adjusted R2</h3>
-<p>The R2 score has a problem. It increases as we add more features to the model. This is because the model will always explain more variance with more features. The adjusted R2 score is a modified version of the R2 score that has been adjusted for the number of features in the model. The adjusted R2 score is calculated as:</p>
-<p><span class="math display">\[R^2_{adj} = 1 - \frac{(1 - R^2)(n - 1)}{n - k - 1}\]</span></p>
-<p>where n is the number of observations and k is the number of features in the model. The adjusted R2 score will be less than the R2 score when the number of features is greater than 1.</p>
-<p>Or from the definition of R2 we can write the adjusted R2 as:</p>
-<p><span class="math display">\[R^2_{adj} = 1 - \frac{SSR/(n-k-1)}{SST/(n-1)}\]</span></p>
-<p>where n is the number of observations and k is the number of features in the model. We basically divide the SSR and SST by the degrees of freedom, define as the number of observations minus the number of parameters in the model.</p>
-</section>
-<section id="proof-that-the-sum-of-the-residuals-is-zero" class="level3">
-<h3 class="anchored" data-anchor-id="proof-that-the-sum-of-the-residuals-is-zero">Proof that the sum of the residuals is zero</h3>
-<p>The OLS method estimates the regression coefficients (β) by minimizing the sum of the squared residuals (SSR). The SSR is calculated as: <span class="math display">\[SSR = \sum (y - \hat{y})^2\]</span> where y is the observed value, ŷ is the predicted value, and the sum is taken over all data points.</p>
-<p>When we minimize the SSR, we’re essentially finding the regression line that passes through the mean of the data points. Imagine a regression line that doesn’t pass through the mean of the data points. In this case, the residuals would not sum to zero, as the line would be biased upwards or downwards. By minimizing the SSR, we’re forcing the regression line to pass through the mean of the data points, which means that the sum of the residuals must be zero.</p>
-<p>Proof:</p>
-<p>Let’s denote <span class="math inline">\(e = y- \hat{y}\)</span>, we want to show that <span class="math inline">\(\sum e = 0\)</span>.</p>
-<p>We know that <span class="math inline">\(\hat{y} = \beta_0 + \beta_1x\)</span></p>
-<p>Using the definition of <span class="math inline">\(\hat{y}\)</span>, <span class="math inline">\(e = y - \beta_0 - \beta_1x\)</span>.</p>
-<p>Taking the sum of both sides we have: <span class="math display">\[\sum e = \sum y - \sum \left(\beta_0 - \beta_1x\right)\]</span> <span class="math display">\[\sum e = \sum y - n\beta_0 - \beta_1\sum x\]</span> where n is the number of observations.</p>
-<p>Recall that the OLS estimates of β0 and β1 are chosen to minimize the SSR. This means that the following conditions must be satisfied.</p>
-<p><span class="math display">\[\frac{\partial SSR}{\partial \beta_0} = -2\sum (y - (\beta_0 + \beta_1 x)) = 0\]</span> <span class="math display">\[\frac{\partial SSR}{\partial \beta_1} = -2\sum x(y - (\beta_0 + \beta_1 x)) = 0\]</span></p>
-<p>Simplyfing the first and second equation we have: <span class="math display">\[\sum y = n\beta_0 + \beta_1\sum x\]</span> <span class="math display">\[\sum xy = \beta_0\sum x + \beta_1\sum x^2\]</span></p>
-<p>Substituting the first equation into the expresion <span class="math inline">\(\sum e = \sum y - \sum \left(\beta_0 - \beta_1x\right)\)</span> we have: <span class="math display">\[\sum e = 0\]</span></p>
-</section>
-<section id="references" class="level3">
-<h3 class="anchored" data-anchor-id="references">References</h3>
-<ul>
-<li><a href="https://en.wikipedia.org/wiki/Coefficient_of_determination">Wikipedia</a></li>
-<li><a href="https://www.kaggle.com/competitions/playground-series-s4e5">Kaggle Flood Prediction</a></li>
+<p><em>String encoding, bits and bytes, Hexadecimal strings, installing mamba, installing dask, <code>wc -l</code>, <code>random.sample()</code>, <code>sorted()</code> and <code>sort()</code>, <code>pd.options</code></em></p>
+<p><img src="designer.jpeg" class="img-fluid"></p>
+<section id="working-plan-for-the-next-weeks" class="level1">
+<h1>Working plan for the next weeks</h1>
+<ul class="task-list">
+<li><label><input type="checkbox">Flood Competition. Modelling the data and making predictions</label></li>
+<li><label><input type="checkbox">AMEX competition</label></li>
+<li><label><input type="checkbox">Concrete competition. Modelling the data and making predictions</label></li>
+<li><label><input type="checkbox">Shapley</label></li>
+<li><label><input type="checkbox">Inference and prediction</label></li>
+<li><label><input type="checkbox">PCA</label></li>
+<li><label><input type="checkbox">Target Transformations</label></li>
+<li><label><input type="checkbox">Richard Dawking explanation of FP and FN</label></li>
 </ul>
-
-
-<div class="hidden" aria-hidden="true">
-<span class="glightbox-desc lightbox-desc-2">Wikipedia</span>
+</section>
+<section id="daily-note---15052024" class="level1">
+<h1>Daily Note - 15/05/2024</h1>
+<section id="string-encoding" class="level4">
+<h4 class="anchored" data-anchor-id="string-encoding">1. String encoding</h4>
+<p>String encoding refers to the process of converting a string of characters into a sequence of bytes. When a string is stored or transmitted, it is encoded into bytes, When it is read or received, it is decoded back into a string. The encoding ensures that the text remains consistent and interpretable across different systems.</p>
+</section>
+<section id="units-of-digital-information-bits-and-bytes" class="level4">
+<h4 class="anchored" data-anchor-id="units-of-digital-information-bits-and-bytes">2. Units of digital information: bits and bytes</h4>
+<p>Bits and bytes are the basic units of digital information. It’s the most basic unit of data in computing. A bit is a binary digit that can have a value of 0 or 1. They are used to represent binary data.</p>
+<p>A byte is larger unit of data, typically consisting of 8 bits. It’s used to represent characters, numbers, and other data. Bytes are the standard unit for measuring data storage and transmission.</p>
+<p>1 byte = 8 bits, this means that a byte can represent 256 different values (2^8).</p>
+<p>For example the character ‘A’ is represented by the byte 01000001 in ASCII encoding. This is a 8-bit sequence, so it’s a byte.</p>
+</section>
+<section id="common-encodings" class="level4">
+<h4 class="anchored" data-anchor-id="common-encodings">3. Common Encodings</h4>
+<ul>
+<li><p>ASCII: American Standard Code for Information Interchange. It is a character encoding standard for electronic communication. Uses 7 or 8 bits (Extended ASCII) to represent each character. It can represent 128 character or 256 characters in the extended version.</p></li>
+<li><p>UTF-8 (Unicode Transformation Format): It is a variable-width character encoding standard that represent every character in the Unicode character set. Each character is represented by 1 to 4 bytes. It is backward compatible with ASCII for the first 128 characters (1 byte each)</p></li>
+<li><p>UTF-16: It is a variable-width character encoding standard that uses 16 bits to represent each character. It can represent over a million characters.</p></li>
+<li><p>UTF-32: It is a fixed-width character encoding standard that uses 32 bits to represent each character. Represent every character in the Unicode standard using a fixed width.</p></li>
+</ul>
+</section>
+<section id="hexadecimal-strings" class="level4">
+<h4 class="anchored" data-anchor-id="hexadecimal-strings">4. Hexadecimal strings</h4>
+<p>Hexadecimal, often abbreviated as “hex,” is a base-16 numeral system used in mathematics and computing. It extends the decimal (base-10) system by adding six additional symbols, using digits 0-9 and letters A-F</p>
+<section id="hexadecimal-table" class="level5">
+<h5 class="anchored" data-anchor-id="hexadecimal-table">Hexadecimal Table</h5>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Decimal</th>
+<th>Hexadecimal</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td>5</td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td>6</td>
+</tr>
+<tr class="even">
+<td>7</td>
+<td>7</td>
+</tr>
+<tr class="odd">
+<td>8</td>
+<td>8</td>
+</tr>
+<tr class="even">
+<td>9</td>
+<td>9</td>
+</tr>
+<tr class="odd">
+<td>10</td>
+<td>A</td>
+</tr>
+<tr class="even">
+<td>11</td>
+<td>B</td>
+</tr>
+<tr class="odd">
+<td>12</td>
+<td>C</td>
+</tr>
+<tr class="even">
+<td>13</td>
+<td>D</td>
+</tr>
+<tr class="odd">
+<td>14</td>
+<td>E</td>
+</tr>
+<tr class="even">
+<td>15</td>
+<td>F</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="amex-competition-customer_id-convert-to-int32-or-int64" class="level4">
+<h4 class="anchored" data-anchor-id="amex-competition-customer_id-convert-to-int32-or-int64">4. AMEX Competition <code>customer_ID</code> convert to <code>int32</code> or <code>int64</code></h4>
+<p>The <code>customer_ID</code> is a variable that store customer ids in a string format of length 64. This implies that each custormer id consist of 64 characters, which is equivalent to 64 bytes (1 byte each character) each string.</p>
+<p>If you convert these strings to a more compact numerical representation (such as an integer), you can significantly reduce the memory usage.</p>
+<p>We know that <code>int32</code> (32-bit integer) uses 4 bytes of memory (1 byte = 8 bits, 4 bytes = 32 bits) and <code>int64</code> (64-bit integer) uses 8 bytes of memory (1 byte = 8 bits, 8 bytes = 64 bits).</p>
+<p>So converting the <code>customer_ID</code> to <code>int32</code> or <code>int64</code> will reduce the memory usage per row to 4 bytes or 8 bytes respectively. This can be a significant reduction in memory usage, especially in this competiton where the data is 50GB.</p>
+</section>
+<section id="abort-any-preprocessing-in-the-amex-competition" class="level4">
+<h4 class="anchored" data-anchor-id="abort-any-preprocessing-in-the-amex-competition">5. Abort any preprocessing in the AMEX competition</h4>
+<p>In order to save time and because my computer can not handle the size of the data set. I’m going to abort any preprocessing and I’m going to use the <code>AMEX data - integer dtypes - parquet format</code> from <span class="citation" data-cites="raddar">@raddar</span> which is 4.94GB.</p>
+<p>To download <a href="https://www.kaggle.com/competitions/amex-default-prediction/discussion/328514"><span class="citation" data-cites="raddar">@raddar</span> dataset</a>:</p>
+<pre><code>kaggle datasets download -d raddar/amex-data-integer-dtypes-parquet-format</code></pre>
+</section>
+<section id="installing-mamba" class="level4">
+<h4 class="anchored" data-anchor-id="installing-mamba">6. Installing mamba</h4>
+<p><a href="https://mamba.readthedocs.io/en/latest/installation/mamba-installation.html">Documentation</a></p>
+<p>After messing around with <code>.bashrc</code> and having issues with the PATH of all my programs, I decided to install <code>mamba</code></p>
+<ol type="1">
+<li>Install <code>mamba</code>:</li>
+</ol>
+<pre><code>wget "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
+bash Miniforge3-$(uname)-$(uname -m).sh</code></pre>
+<ol start="2" type="1">
+<li>Install <code>Jupyter</code>:</li>
+</ol>
+<pre><code>mamba install -c conda-forge jupyterlab</code></pre>
+<ol start="3" type="1">
+<li>Create alias for Jupyter Lab with no-browser:</li>
+</ol>
+<pre><code>nano ~/.bashrc
+alias jlab='jupyter lab'</code></pre>
+<p>Save and close the file. If you’re using nano, you can do this by pressing <code>Ctrl+O</code>, Enter, and then <code>Ctrl+X</code> to exit.</p>
+</section>
+<section id="installing-dask" class="level4">
+<h4 class="anchored" data-anchor-id="installing-dask">7. Installing dask</h4>
+<p><a href="https://docs.dask.org/en/stable/install.html">Documentation</a></p>
+<pre><code>mamba install dask -c conda-forge</code></pre>
+</section>
+<section id="getting-the-number-of-rows-from-your-csv-file-in-the-terminal" class="level4">
+<h4 class="anchored" data-anchor-id="getting-the-number-of-rows-from-your-csv-file-in-the-terminal">8. Getting the number of rows from your csv file in the terminal</h4>
+<p>This can be done efficiently using a tool like <code>wc -l</code>. The <code>-l</code> flag tells wc to count the number of lines in the file.</p>
+<pre><code>wc -l train_data.csv
+5531452 train_data.csv</code></pre>
+</section>
+<section id="using-random.sample-to-get-a-random-sample" class="level4">
+<h4 class="anchored" data-anchor-id="using-random.sample-to-get-a-random-sample">9. Using <code>random.sample()</code> to get a random sample</h4>
+<p>The <code>random.sample()</code> function can be used to get a random sample of items from a list or other sequence. It takes two arguments: the sequence to sample from and the number of items to sample.</p>
+<pre><code>random.sample(population, k)</code></pre>
+<p>Where <code>population</code> is the sequence to sample from and <code>k</code> is the number of items to sample.</p>
+<div id="cell-4" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>items <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>sample <span class="op">=</span> random.sample(items, <span class="dv">3</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sample)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1, 5, 3]</code></pre>
 </div>
+</div>
+</section>
+<section id="difference-between-sorted-and-sort" class="level4">
+<h4 class="anchored" data-anchor-id="difference-between-sorted-and-sort">10. Difference between sorted() and sort()</h4>
+<ul>
+<li><code>sorted()</code>: This function returns a new sorted list from the elements of any iterable. It does not modify the original list.</li>
+<li><code>sort()</code>: This method sorts the list in place. It modifies the original list and returns <code>None</code>.</li>
+</ul>
+<div id="cell-6" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>L <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">sorted</span>(L), L)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(L.sort(), L)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1, 2, 3, 4, 5] [1, 5, 4, 2, 3]
+None [1, 2, 3, 4, 5]</code></pre>
+</div>
+</div>
+</section>
+<section id="im-going-to-preprocess-the-data-in-the-amex-competition" class="level4">
+<h4 class="anchored" data-anchor-id="im-going-to-preprocess-the-data-in-the-amex-competition">11. I’m going to preprocess the data in the AMEX competition</h4>
+<p>After a break and say that I’m going to use the data from <span class="citation" data-cites="raddar">@raddar</span>, I decided to preprocess the data in the AMEX competition.</p>
+<p>I’ve realised that I can read a few numbers of rows in order to see the data and the columns. This will help me to understand the dataset.</p>
+<pre><code>data = pd.read_csv('train_data.csv', nrows=35000)</code></pre>
+<p>To select the object columns:</p>
+<pre><code>data.select_dtypes(include=['object'])</code></pre>
+</section>
+<section id="pd.options.display.max_columns-and-pd.options.display.max_rows" class="level4">
+<h4 class="anchored" data-anchor-id="pd.options.display.max_columns-and-pd.options.display.max_rows">12. <code>pd.options.display.max_columns</code> and <code>pd.options.display.max_rows</code></h4>
+<p>These options allow you to control the maximum number of columns and rows displayed when printing a DataFrame.</p>
+<pre><code>pd.options.display.max_columns = 50
+pd.options.display.max_rows = 50</code></pre>
+<p>This will display up to 50 columns and 50 rows when printing a DataFrame.</p>
+<p><a href="https://pandas.pydata.org/docs/user_guide/options.html">Pandas documentation</a></p>
+
+
+</section>
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
@@ -694,31 +841,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","closeEffect":"zoom","loop":false,"selector":".lightbox","descPosition":"bottom"});
-window.onload = () => {
-  lightboxQuarto.on('slide_before_load', (data) => {
-    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-    const href = trigger.getAttribute('href');
-    if (href !== null) {
-      const imgEl = window.document.querySelector(`a[href="${href}"] img`);
-      if (imgEl !== null) {
-        const srcAttr = imgEl.getAttribute("src");
-        if (srcAttr && srcAttr.startsWith("data:")) {
-          slideConfig.href = srcAttr;
-        }
-      }
-    } 
-  });
-
-  lightboxQuarto.on('slide_after_load', (data) => {
-    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-    if (window.Quarto?.typesetMath) {
-      window.Quarto.typesetMath(slideNode);
-    }
-  });
-
-};
-          </script>
 
 
 

@@ -67,7 +67,35 @@
     "href": "posts/daily_notes_15052024/index.html#getting-the-number-of-rows-from-your-csv-file-in-the-terminal",
     "title": "Daily Note - 15-05-2024",
     "section": "9. Getting the number of rows from your csv file in the terminal",
-    "text": "9. Getting the number of rows from your csv file in the terminal\nThis can be done efficiently using a tool like wc -l. The -l flag tells wc to count the number of lines in the file.\nwc -l train_data.csv\n5531452 train_data.csv\n\n10. Using random.sample() to get a random sample\nThe random.sample() function can be used to get a random sample of items from a list or other sequence. It takes two arguments: the sequence to sample from and the number of items to sample.\nrandom.sample(population, k)\nWhere population is the sequence to sample from and k is the number of items to sample.\n\nimport random\n\nitems = [1, 2, 3, 4, 5]\nsample = random.sample(items, 3)\nprint(sample)\n\n[1, 5, 3]\n\n\n\n\n11. Difference between sorted() and sort()\n\nsorted(): This function returns a new sorted list from the elements of any iterable. It does not modify the original list.\nsort(): This method sorts the list in place. It modifies the original list and returns None.\n\n\nL = [1, 5, 4, 2, 3]\nprint(sorted(L), L)\nprint(L.sort(), L)\n\n[1, 2, 3, 4, 5] [1, 5, 4, 2, 3]\nNone [1, 2, 3, 4, 5]\n\n\n\n\n12. I’m going to preprocess the data in the AMEX competition\nAfter a break and say that I’m going to use the data from @raddar, I decided to preprocess the data in the AMEX competition.\nI’ve realised that I can read a few numbers of rows in order to see the data and the columns. This will help me to understand the dataset.\ndata = pd.read_csv('train_data.csv', nrows=35000)\nTo select the object columns:\ndata.select_dtypes(include=['object'])\n\n\n13. pd.options.display.max_columns and pd.options.display.max_rows\nThese options allow you to control the maximum number of columns and rows displayed when printing a DataFrame.\npd.options.display.max_columns = 50\npd.options.display.max_rows = 50\nThis will display up to 50 columns and 50 rows when printing a DataFrame.\nPandas documentation"
+    "text": "9. Getting the number of rows from your csv file in the terminal\nThis can be done efficiently using a tool like wc -l. The -l flag tells wc to count the number of lines in the file.\nwc -l train_data.csv\n5531452 train_data.csv"
+  },
+  {
+    "objectID": "posts/daily_notes_15052024/index.html#using-random.sample-to-get-a-random-sample",
+    "href": "posts/daily_notes_15052024/index.html#using-random.sample-to-get-a-random-sample",
+    "title": "Daily Note - 15-05-2024",
+    "section": "10. Using random.sample() to get a random sample",
+    "text": "10. Using random.sample() to get a random sample\nThe random.sample() function can be used to get a random sample of items from a list or other sequence. It takes two arguments: the sequence to sample from and the number of items to sample.\nrandom.sample(population, k)\nWhere population is the sequence to sample from and k is the number of items to sample.\n\nimport random\n\nitems = [1, 2, 3, 4, 5]\nsample = random.sample(items, 3)\nprint(sample)\n\n[1, 5, 3]"
+  },
+  {
+    "objectID": "posts/daily_notes_15052024/index.html#difference-between-sorted-and-sort",
+    "href": "posts/daily_notes_15052024/index.html#difference-between-sorted-and-sort",
+    "title": "Daily Note - 15-05-2024",
+    "section": "11. Difference between sorted() and sort()",
+    "text": "11. Difference between sorted() and sort()\n\nsorted(): This function returns a new sorted list from the elements of any iterable. It does not modify the original list.\nsort(): This method sorts the list in place. It modifies the original list and returns None.\n\n\nL = [1, 5, 4, 2, 3]\nprint(sorted(L), L)\nprint(L.sort(), L)\n\n[1, 2, 3, 4, 5] [1, 5, 4, 2, 3]\nNone [1, 2, 3, 4, 5]"
+  },
+  {
+    "objectID": "posts/daily_notes_15052024/index.html#im-going-to-preprocess-the-data-in-the-amex-competition",
+    "href": "posts/daily_notes_15052024/index.html#im-going-to-preprocess-the-data-in-the-amex-competition",
+    "title": "Daily Note - 15-05-2024",
+    "section": "12. I’m going to preprocess the data in the AMEX competition",
+    "text": "12. I’m going to preprocess the data in the AMEX competition\nAfter a break and say that I’m going to use the data from @raddar, I decided to preprocess the data in the AMEX competition.\nI’ve realised that I can read a few numbers of rows in order to see the data and the columns. This will help me to understand the dataset.\ndata = pd.read_csv('train_data.csv', nrows=35000)\nTo select the object columns:\ndata.select_dtypes(include=['object'])"
+  },
+  {
+    "objectID": "posts/daily_notes_15052024/index.html#pd.options.display.max_columns-and-pd.options.display.max_rows",
+    "href": "posts/daily_notes_15052024/index.html#pd.options.display.max_columns-and-pd.options.display.max_rows",
+    "title": "Daily Note - 15-05-2024",
+    "section": "13. pd.options.display.max_columns and pd.options.display.max_rows",
+    "text": "13. pd.options.display.max_columns and pd.options.display.max_rows\nThese options allow you to control the maximum number of columns and rows displayed when printing a DataFrame.\npd.options.display.max_columns = 50\npd.options.display.max_rows = 50\nThis will display up to 50 columns and 50 rows when printing a DataFrame.\nPandas documentation"
   },
   {
     "objectID": "posts/r2/index.html",

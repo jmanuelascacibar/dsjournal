@@ -202,6 +202,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#installing-mamba" id="toc-installing-mamba" class="nav-link" data-scroll-target="#installing-mamba">7. Installing mamba</a></li>
   <li><a href="#installing-dask" id="toc-installing-dask" class="nav-link" data-scroll-target="#installing-dask">8. Installing dask</a></li>
   <li><a href="#getting-the-number-of-rows-from-your-csv-file-in-the-terminal" id="toc-getting-the-number-of-rows-from-your-csv-file-in-the-terminal" class="nav-link" data-scroll-target="#getting-the-number-of-rows-from-your-csv-file-in-the-terminal">9. Getting the number of rows from your csv file in the terminal</a></li>
+  <li><a href="#using-random.sample-to-get-a-random-sample" id="toc-using-random.sample-to-get-a-random-sample" class="nav-link" data-scroll-target="#using-random.sample-to-get-a-random-sample">10. Using <code>random.sample()</code> to get a random sample</a></li>
+  <li><a href="#difference-between-sorted-and-sort" id="toc-difference-between-sorted-and-sort" class="nav-link" data-scroll-target="#difference-between-sorted-and-sort">11. Difference between sorted() and sort()</a></li>
+  <li><a href="#im-going-to-preprocess-the-data-in-the-amex-competition" id="toc-im-going-to-preprocess-the-data-in-the-amex-competition" class="nav-link" data-scroll-target="#im-going-to-preprocess-the-data-in-the-amex-competition">12. I’m going to preprocess the data in the AMEX competition</a></li>
+  <li><a href="#pd.options.display.max_columns-and-pd.options.display.max_rows" id="toc-pd.options.display.max_columns-and-pd.options.display.max_rows" class="nav-link" data-scroll-target="#pd.options.display.max_columns-and-pd.options.display.max_rows">13. <code>pd.options.display.max_columns</code> and <code>pd.options.display.max_rows</code></a></li>
   </ul></li>
   </ul>
 </nav>
@@ -374,8 +378,9 @@ alias jlab='jupyter lab'</code></pre>
 <p>This can be done efficiently using a tool like <code>wc -l</code>. The <code>-l</code> flag tells wc to count the number of lines in the file.</p>
 <pre><code>wc -l train_data.csv
 5531452 train_data.csv</code></pre>
-<section id="using-random.sample-to-get-a-random-sample" class="level4">
-<h4 class="anchored" data-anchor-id="using-random.sample-to-get-a-random-sample">10. Using <code>random.sample()</code> to get a random sample</h4>
+</section>
+<section id="using-random.sample-to-get-a-random-sample" class="level2">
+<h2 class="anchored" data-anchor-id="using-random.sample-to-get-a-random-sample">10. Using <code>random.sample()</code> to get a random sample</h2>
 <p>The <code>random.sample()</code> function can be used to get a random sample of items from a list or other sequence. It takes two arguments: the sequence to sample from and the number of items to sample.</p>
 <pre><code>random.sample(population, k)</code></pre>
 <p>Where <code>population</code> is the sequence to sample from and <code>k</code> is the number of items to sample.</p>
@@ -390,8 +395,8 @@ alias jlab='jupyter lab'</code></pre>
 </div>
 </div>
 </section>
-<section id="difference-between-sorted-and-sort" class="level4">
-<h4 class="anchored" data-anchor-id="difference-between-sorted-and-sort">11. Difference between sorted() and sort()</h4>
+<section id="difference-between-sorted-and-sort" class="level2">
+<h2 class="anchored" data-anchor-id="difference-between-sorted-and-sort">11. Difference between sorted() and sort()</h2>
 <ul>
 <li><code>sorted()</code>: This function returns a new sorted list from the elements of any iterable. It does not modify the original list.</li>
 <li><code>sort()</code>: This method sorts the list in place. It modifies the original list and returns <code>None</code>.</li>
@@ -406,16 +411,16 @@ None [1, 2, 3, 4, 5]</code></pre>
 </div>
 </div>
 </section>
-<section id="im-going-to-preprocess-the-data-in-the-amex-competition" class="level4">
-<h4 class="anchored" data-anchor-id="im-going-to-preprocess-the-data-in-the-amex-competition">12. I’m going to preprocess the data in the AMEX competition</h4>
+<section id="im-going-to-preprocess-the-data-in-the-amex-competition" class="level2">
+<h2 class="anchored" data-anchor-id="im-going-to-preprocess-the-data-in-the-amex-competition">12. I’m going to preprocess the data in the AMEX competition</h2>
 <p>After a break and say that I’m going to use the data from <span class="citation" data-cites="raddar">@raddar</span>, I decided to preprocess the data in the AMEX competition.</p>
 <p>I’ve realised that I can read a few numbers of rows in order to see the data and the columns. This will help me to understand the dataset.</p>
 <pre><code>data = pd.read_csv('train_data.csv', nrows=35000)</code></pre>
 <p>To select the object columns:</p>
 <pre><code>data.select_dtypes(include=['object'])</code></pre>
 </section>
-<section id="pd.options.display.max_columns-and-pd.options.display.max_rows" class="level4">
-<h4 class="anchored" data-anchor-id="pd.options.display.max_columns-and-pd.options.display.max_rows">13. <code>pd.options.display.max_columns</code> and <code>pd.options.display.max_rows</code></h4>
+<section id="pd.options.display.max_columns-and-pd.options.display.max_rows" class="level2">
+<h2 class="anchored" data-anchor-id="pd.options.display.max_columns-and-pd.options.display.max_rows">13. <code>pd.options.display.max_columns</code> and <code>pd.options.display.max_rows</code></h2>
 <p>These options allow you to control the maximum number of columns and rows displayed when printing a DataFrame.</p>
 <pre><code>pd.options.display.max_columns = 50
 pd.options.display.max_rows = 50</code></pre>
@@ -423,7 +428,6 @@ pd.options.display.max_rows = 50</code></pre>
 <p><a href="https://pandas.pydata.org/docs/user_guide/options.html">Pandas documentation</a></p>
 
 
-</section>
 </section>
 </section>
 

@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="JM Ascacibar">
-<meta name="dcterms.date" content="2024-05-14">
+<meta name="dcterms.date" content="2024-05-16">
 
-<title>Coefficient of determination (R2)</title>
+<title>Daily Note - 17-05-2024</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -41,9 +41,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
-<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
-<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -72,35 +69,6 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -148,9 +116,9 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Coefficient of determination (R2)</h1>
+      <h1 class="title">Daily Note - 17-05-2024</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">Statistics</div>
+                <div class="quarto-category">git</div>
               </div>
                   </div>
   </div>
@@ -168,7 +136,7 @@ window.Quarto = {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">May 14, 2024</p>
+        <p class="date">May 16, 2024</p>
       </div>
     </div>
     
@@ -184,13 +152,11 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#evaluation-metric" id="toc-evaluation-metric" class="nav-link" data-scroll-target="#evaluation-metric">Evaluation metric</a></li>
-  <li><a href="#residuals" id="toc-residuals" class="nav-link" data-scroll-target="#residuals">Residuals</a></li>
-  <li><a href="#rss-and-sst" id="toc-rss-and-sst" class="nav-link" data-scroll-target="#rss-and-sst">RSS and SST</a></li>
-  <li><a href="#adjusted-r2" id="toc-adjusted-r2" class="nav-link" data-scroll-target="#adjusted-r2">Adjusted R2</a></li>
-  <li><a href="#proof-that-the-sum-of-the-residuals-is-zero" id="toc-proof-that-the-sum-of-the-residuals-is-zero" class="nav-link" data-scroll-target="#proof-that-the-sum-of-the-residuals-is-zero">Proof that the sum of the residuals is zero</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#working-plan-for-the-next-weeks" id="toc-working-plan-for-the-next-weeks" class="nav-link active" data-scroll-target="#working-plan-for-the-next-weeks">Working plan for the next weeks</a></li>
+  <li><a href="#daily-note---17052024" id="toc-daily-note---17052024" class="nav-link" data-scroll-target="#daily-note---17052024">Daily Note - 17/05/2024</a>
+  <ul class="collapse">
+  <li><a href="#modify-gitignore-to-prevent-uploading-parquet-files" id="toc-modify-gitignore-to-prevent-uploading-parquet-files" class="nav-link" data-scroll-target="#modify-gitignore-to-prevent-uploading-parquet-files">1. Modify <code>gitignore</code> to prevent uploading Parquet files</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -201,73 +167,36 @@ window.Quarto = {
 
 
 
-<p><em>Understanding R2</em></p>
-<p><a href="coefdetermai.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="coefdetermai.jpeg" class="img-fluid"></a></p>
-<section id="introduction" class="level3">
-<h3 class="anchored" data-anchor-id="introduction">Introduction</h3>
-<p>I’m working in a playground kaggle competition called <a href="https://www.kaggle.com/competitions/playground-series-s4e5">Regression with a Flood Prediction Dataset</a>. The goal of the competition is to predict the probability of a flood event in a given region based on a set of features. The submission are evaluated using <span class="math inline">\(R^2\)</span> score.</p>
-<p>A good way to start is to understand the evaluation metric that, in this case, we are going to try to maximize. So what is <span class="math inline">\(R^2\)</span> score?</p>
-<p>You might have heard from school that <span class="math inline">\(R^2\)</span> measure the proportion of the variance in the dependent variable that is predictable from the independent variable. But what does that mean?</p>
-</section>
-<section id="evaluation-metric" class="level3">
-<h3 class="anchored" data-anchor-id="evaluation-metric">Evaluation metric</h3>
-<p>An evaluation metric is a way to measure how good your model is. This arise the question: what is a good model? A good model is a model that is able to generalize well. That is, a model that is able to make good predictions on unseen data. A good prediction is a prediction that is close to the true value. In statistics, we define residuals as the difference between the true value and the predicted value from the model.</p>
-</section>
-<section id="residuals" class="level3">
-<h3 class="anchored" data-anchor-id="residuals">Residuals</h3>
-<p><span class="math display">\[y = [y_1, ..., y_n]\]</span> <span class="math display">\[ r = [r_1, ..., r_n] = [y_1 - \hat{y}_1, ..., y_n - \hat{y}_n]\]</span> Where <span class="math inline">\(y\)</span> is the true value, <span class="math inline">\(\hat{y}\)</span> is the predicted value and <span class="math inline">\(r\)</span> is the residual.</p>
-<p>The sum of the residuals will be zero and there’s a mathematical proof (at the end).</p>
-<p>In linear regression, we’re trying to find the best-fitting line that minimizes the distance between the observed data points and the line. The best-fitting line is the one that minimizes the sum of the squared residuals.</p>
-<p>The residuals are the differences between the observed values (y) and the predicted values (ŷ) based on the regression line. The mean of the observed values is <span class="math inline">\(\bar{y} = \frac{1}{n}\sum y_i\)</span>.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="r2.png" class="lightbox" data-glightbox="description: .lightbox-desc-2" data-gallery="quarto-lightbox-gallery-2" title="Wikipedia"><img src="r2.png" class="img-fluid figure-img" alt="Wikipedia"></a></p>
-<figcaption>Wikipedia</figcaption>
-</figure>
-</div>
-</section>
-<section id="rss-and-sst" class="level3">
-<h3 class="anchored" data-anchor-id="rss-and-sst">RSS and SST</h3>
-<p>Once we have the mean, we can calculate the variability of the observed values. We can calculate with two sum of squares. The total sum of squares (SST) is the sum of the squared differences between the observed values and the mean of the observed values, $SST=_i{(y_i-{y})^2} $ (red squares in the plot). So the total sum of squares is proportional to the variance of the observed values.</p>
-<p>The residual sum of squares (RSS) is the sum of the squared differences between the observed values and the predicted values, <span class="math inline">\(SSR = \sum{(y_i - f_i)^2} = \sum_i{e_i^2}\)</span> (blue squares in the plot).</p>
-<p>SSR/SST is the fraction of variance unexplained. The fraction of variance explained is <span class="math inline">\(R^2 = 1 - SSR/SST\)</span>.</p>
-<p>The best model posible will be one with SSR = 0 and the R2 score will be 1. So R2 score measure goodness of fit.</p>
-<p>Values outside the range [0,1] are possible when the model is worse than the mean model, the SSR is greater than the SST, and the R2 score is negative.</p>
-</section>
-<section id="adjusted-r2" class="level3">
-<h3 class="anchored" data-anchor-id="adjusted-r2">Adjusted R2</h3>
-<p>The R2 score has a problem. It increases as we add more features to the model. This is because the model will always explain more variance with more features. The adjusted R2 score is a modified version of the R2 score that has been adjusted for the number of features in the model. The adjusted R2 score is calculated as:</p>
-<p><span class="math display">\[R^2_{adj} = 1 - \frac{(1 - R^2)(n - 1)}{n - k - 1}\]</span></p>
-<p>where n is the number of observations and k is the number of features in the model. The adjusted R2 score will be less than the R2 score when the number of features is greater than 1.</p>
-<p>Or from the definition of R2 we can write the adjusted R2 as:</p>
-<p><span class="math display">\[R^2_{adj} = 1 - \frac{SSR/(n-k-1)}{SST/(n-1)}\]</span></p>
-<p>where n is the number of observations and k is the number of features in the model. We basically divide the SSR and SST by the degrees of freedom, define as the number of observations minus the number of parameters in the model.</p>
-</section>
-<section id="proof-that-the-sum-of-the-residuals-is-zero" class="level3">
-<h3 class="anchored" data-anchor-id="proof-that-the-sum-of-the-residuals-is-zero">Proof that the sum of the residuals is zero</h3>
-<p>The OLS method estimates the regression coefficients (β) by minimizing the sum of the squared residuals (SSR). The SSR is calculated as: <span class="math display">\[SSR = \sum (y - \hat{y})^2\]</span> where y is the observed value, ŷ is the predicted value, and the sum is taken over all data points.</p>
-<p>When we minimize the SSR, we’re essentially finding the regression line that passes through the mean of the data points. Imagine a regression line that doesn’t pass through the mean of the data points. In this case, the residuals would not sum to zero, as the line would be biased upwards or downwards. By minimizing the SSR, we’re forcing the regression line to pass through the mean of the data points, which means that the sum of the residuals must be zero.</p>
-<p>Proof:</p>
-<p>Let’s denote <span class="math inline">\(e = y- \hat{y}\)</span>, we want to show that <span class="math inline">\(\sum e = 0\)</span>.</p>
-<p>We know that <span class="math inline">\(\hat{y} = \beta_0 + \beta_1x\)</span></p>
-<p>Using the definition of <span class="math inline">\(\hat{y}\)</span>, <span class="math inline">\(e = y - \beta_0 - \beta_1x\)</span>.</p>
-<p>Taking the sum of both sides we have: <span class="math display">\[\sum e = \sum y - \sum \left(\beta_0 - \beta_1x\right)\]</span> <span class="math display">\[\sum e = \sum y - n\beta_0 - \beta_1\sum x\]</span> where n is the number of observations.</p>
-<p>Recall that the OLS estimates of β0 and β1 are chosen to minimize the SSR. This means that the following conditions must be satisfied.</p>
-<p><span class="math display">\[\frac{\partial SSR}{\partial \beta_0} = -2\sum (y - (\beta_0 + \beta_1 x)) = 0\]</span> <span class="math display">\[\frac{\partial SSR}{\partial \beta_1} = -2\sum x(y - (\beta_0 + \beta_1 x)) = 0\]</span></p>
-<p>Simplyfing the first and second equation we have: <span class="math display">\[\sum y = n\beta_0 + \beta_1\sum x\]</span> <span class="math display">\[\sum xy = \beta_0\sum x + \beta_1\sum x^2\]</span></p>
-<p>Substituting the first equation into the expresion <span class="math inline">\(\sum e = \sum y - \sum \left(\beta_0 - \beta_1x\right)\)</span> we have: <span class="math display">\[\sum e = 0\]</span></p>
-</section>
-<section id="references" class="level3">
-<h3 class="anchored" data-anchor-id="references">References</h3>
-<ul>
-<li><a href="https://en.wikipedia.org/wiki/Coefficient_of_determination">Wikipedia</a></li>
-<li><a href="https://www.kaggle.com/competitions/playground-series-s4e5">Kaggle Flood Prediction</a></li>
+<p><em>Modify <code>gitignore</code></em></p>
+<p><img src="designer.jpeg" class="img-fluid"></p>
+<section id="working-plan-for-the-next-weeks" class="level1">
+<h1>Working plan for the next weeks</h1>
+<ul class="task-list">
+<li><label><input type="checkbox">Flood Competition. Modelling the data and making predictions</label></li>
+<li><label><input type="checkbox">AMEX competition</label></li>
+<li><label><input type="checkbox">Concrete competition. Modelling the data and making predictions</label></li>
+<li><label><input type="checkbox">Shapley</label></li>
+<li><label><input type="checkbox">Inference and prediction</label></li>
+<li><label><input type="checkbox">PCA</label></li>
+<li><label><input type="checkbox">Target Transformations</label></li>
+<li><label><input type="checkbox">Richard Dawking explanation of FP and FN</label></li>
 </ul>
+</section>
+<section id="daily-note---17052024" class="level1">
+<h1>Daily Note - 17/05/2024</h1>
+<section id="modify-gitignore-to-prevent-uploading-parquet-files" class="level2">
+<h2 class="anchored" data-anchor-id="modify-gitignore-to-prevent-uploading-parquet-files">1. Modify <code>gitignore</code> to prevent uploading Parquet files</h2>
+<p>In order to prevent uploading big Parquet files to the repository, I have added the following line to the <code>.gitignore</code> file:</p>
+<pre><code>*.parquet</code></pre>
+<p>This line tells Git to ignore all files in your repository that have the <code>.parquet</code> extension.</p>
+<p>After you’ve updated the <code>.gitignore</code> file, any new Parquet files that you add to your project won’t be tracked by Git.</p>
+<p>If there were any Parquet files already tracked in the repository before you added them to <code>.gitignore</code>, you’ll need to remove them from the repository with the following command:</p>
+<pre><code>git rm --cached *.parquet
+git commit -m "Remove Parquet files from repository"
+git push</code></pre>
 
 
-<div class="hidden" aria-hidden="true">
-<span class="glightbox-desc lightbox-desc-2">Wikipedia</span>
-</div>
+</section>
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
@@ -694,31 +623,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","closeEffect":"zoom","loop":false,"openEffect":"zoom","selector":".lightbox"});
-window.onload = () => {
-  lightboxQuarto.on('slide_before_load', (data) => {
-    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-    const href = trigger.getAttribute('href');
-    if (href !== null) {
-      const imgEl = window.document.querySelector(`a[href="${href}"] img`);
-      if (imgEl !== null) {
-        const srcAttr = imgEl.getAttribute("src");
-        if (srcAttr && srcAttr.startsWith("data:")) {
-          slideConfig.href = srcAttr;
-        }
-      }
-    } 
-  });
-
-  lightboxQuarto.on('slide_after_load', (data) => {
-    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-    if (window.Quarto?.typesetMath) {
-      window.Quarto.typesetMath(slideNode);
-    }
-  });
-
-};
-          </script>
 
 
 

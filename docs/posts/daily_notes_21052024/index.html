@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="JM Ascacibar">
-<meta name="dcterms.date" content="2024-05-20">
+<meta name="dcterms.date" content="2024-05-21">
 
-<title>Daily Note - 20-05-2024</title>
+<title>Daily Note - 21-05-2024</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,40 +21,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -150,10 +116,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Daily Note - 20-05-2024</h1>
+      <h1 class="title">Daily Note - 21-05-2024</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">bash</div>
-                <div class="quarto-category">lightgbm</div>
+                <div class="quarto-category">decision trees</div>
               </div>
                   </div>
   </div>
@@ -171,7 +136,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">May 20, 2024</p>
+        <p class="date">May 21, 2024</p>
       </div>
     </div>
     
@@ -188,10 +153,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#working-plan-for-the-next-weeks" id="toc-working-plan-for-the-next-weeks" class="nav-link active" data-scroll-target="#working-plan-for-the-next-weeks">Working plan for the next weeks</a></li>
-  <li><a href="#daily-note---20052024" id="toc-daily-note---20052024" class="nav-link" data-scroll-target="#daily-note---20052024">Daily Note - 20/05/2024</a>
+  <li><a href="#daily-note---21052024" id="toc-daily-note---21052024" class="nav-link" data-scroll-target="#daily-note---21052024">Daily Note - 21/05/2024</a>
   <ul class="collapse">
-  <li><a href="#installing-lightgbm-gpu-version-linux" id="toc-installing-lightgbm-gpu-version-linux" class="nav-link" data-scroll-target="#installing-lightgbm-gpu-version-linux">1. Installing Lightgbm GPU version (Linux)</a></li>
-  <li><a href="#installing-a-new-version-of-cmake" id="toc-installing-a-new-version-of-cmake" class="nav-link" data-scroll-target="#installing-a-new-version-of-cmake">2. Installing a new version of CMake</a></li>
+  <li><a href="#understanding-decision-trees" id="toc-understanding-decision-trees" class="nav-link" data-scroll-target="#understanding-decision-trees">1. Understanding decision trees</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -203,7 +167,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<p><em>Installing Lightgbm GPU version</em></p>
+<p><em>Understanding decision trees</em></p>
 <p><img src="designer.jpeg" class="img-fluid"></p>
 <section id="working-plan-for-the-next-weeks" class="level1">
 <h1>Working plan for the next weeks</h1>
@@ -218,35 +182,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><label><input type="checkbox">Richard Dawking explanation of FP and FN</label></li>
 </ul>
 </section>
-<section id="daily-note---20052024" class="level1">
-<h1>Daily Note - 20/05/2024</h1>
-<section id="installing-lightgbm-gpu-version-linux" class="level2">
-<h2 class="anchored" data-anchor-id="installing-lightgbm-gpu-version-linux">1. Installing Lightgbm GPU version (Linux)</h2>
-<p>The first thing you need to do is to verify that your WSL version support GPU. You can check it by running <code>nvidia-smi</code> in the terminal. Second thing is to update your package list <code>sudo apt-get update</code>.</p>
-<p>Next step, we are going to check if OpenCL is installed in your system. You can check it by running <code>clinfo</code> in the terminal. If it is not installed, you can install it by running <code>sudo apt-get install clinfo</code>. Once you have installed OpenCL, we need to install OpenCL headers and libraries. You can do it by running <code>sudo apt-get install ocl-icd-opencl-dev</code>.</p>
-<p>Now, we are going to check for Boost installation. You can check it by running <code>dpkg -s libboost-dev | grep 'Version'</code>. If it is not installed, you can install it by running <code>sudo apt install libboost-dev libboost-system-dev libboost-filesystem-dev</code>.</p>
-<p>Next, we need to install CMake and GCC or Clang. You can install CMake by running <code>sudo apt install cmake</code>. For GCC, you can install it by running <code>sudo apt install gcc</code>. For Clang, you can install it by running <code>sudo apt install clang</code>.</p>
-<p>Now, we are ready to clone Lightgbm repository and build with GPU support.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="at">--recursive</span> https://github.com/microsoft/LightGBM</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> LightGBM</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> build</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> build</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>After that, we need to configure the build for GPU. You can do it by running <code>cmake -DUSE_GPU=1 ..</code>. Once the configuration is done, you can build Lightgbm by running <code>make -j4</code>.</p>
-</section>
-<section id="installing-a-new-version-of-cmake" class="level2">
-<h2 class="anchored" data-anchor-id="installing-a-new-version-of-cmake">2. Installing a new version of CMake</h2>
-<p>The first thing you need to do is to download the latest version of CMake from the official website.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://github.com/Kitware/CMake/releases/download/v3.23.1/cmake-3.23.1.tar.gz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Extract the source code</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-xzvf</span> cmake-3.23.1.tar.gz</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> cmake-3.23.1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Compile CMake</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./bootstrap</span> <span class="kw">&amp;&amp;</span> <span class="fu">make</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>I have an error because I didn’t have OpenSSL Development package installed. You can install it by running <code>sudo apt-get install libssl-dev</code>. After that, you can run <code>./bootstrap &amp;&amp; make</code> again.make</p>
-<p>Install CMake</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> make install</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Verify the installation</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cmake</span> <span class="at">--version</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="daily-note---21052024" class="level1">
+<h1>Daily Note - 21/05/2024</h1>
+<section id="understanding-decision-trees" class="level2">
+<h2 class="anchored" data-anchor-id="understanding-decision-trees">1. Understanding decision trees</h2>
 
 
 </section>

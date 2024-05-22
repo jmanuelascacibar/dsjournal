@@ -18,6 +18,7 @@ website:
     center: "Copyright 2024, Jose Manuel Ascaibar" 
     border: true
     background: light
+  google-analytics: "G-RSXXM1QQ7W"
 
 
   back-to-top-navigation: true

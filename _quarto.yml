@@ -19,6 +19,7 @@ website:
     border: true
     background: light
   google-analytics: "G-RSXXM1QQ7W"
+  cookie-consent: true
 
 
   back-to-top-navigation: true
@@ -30,4 +31,6 @@ format:
     css: styles.css
 
 
-
+theme:
+  light: flatly
+  dark: darkly

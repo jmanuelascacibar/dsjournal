@@ -15,7 +15,7 @@ website:
         href: index.qmd
       - about.qmd
   page-footer: 
-    center: "Copyright 2024, Jose Manuel Ascaibar" 
+    center: "Copyright 2024, Jose Manuel Ascacibar" 
     border: true
     background: light
   google-analytics: "G-RSXXM1QQ7W"

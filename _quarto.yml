@@ -22,7 +22,7 @@ website:
   cookie-consent: 
     type: implied
     style: simple
-    palette: dark
+    palette: light
 
 
   back-to-top-navigation: true

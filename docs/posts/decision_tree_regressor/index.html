@@ -960,7 +960,7 @@ Mean alpha: 0.05346</code></pre>
 </div>
 </div>
 <p>By evaluating each pruned tree on a validation set within each fold, you get an accurate assessment of performance on unseen. Selecting the optimal <code>ccp_alpha</code> for each fold individually can potentially adapt better to different subsets of the data. The con is that is computationally expensive.</p>
-<p>Using the GridSearchCV approach simplify the process and if more efficient. The con is rather than adapting to each fold individually, the approach finds a single optimal <code>ccp_alpha</code>. This might be less flexible but is generally robust</p>
+<p>Using the GridSearchCV approach simplify the process and is more efficient. The con is rather than adapting to each fold individually, the approach finds a single optimal <code>ccp_alpha</code>. This might be less flexible but is generally robust</p>
 <div id="cell-27" class="cell" data-execution_count="132">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>grid.best_estimator_</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="132">

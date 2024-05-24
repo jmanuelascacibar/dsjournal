@@ -295,7 +295,7 @@ window.Quarto = {
 </section>
 <section id="gini-index" class="level2">
 <h2 class="anchored" data-anchor-id="gini-index">Gini index</h2>
-<p>In order to avoid this problem, we can use the Gini index or the cross-entropy. The Gini index is defined as:</p>
+<p>In order to avoid this problem, we can use the Gini index or entropy. The Gini index is defined as:</p>
 <p><span class="math display">\[G = \sum_{k=1}^{K}\hat{p}_{mk}(1 - \hat{p}_{mk})\]</span></p>
 <p>where <span class="math inline">\(\hat{p}_{mk}\)</span> is the proportion of training observations in the mth region that are from the kth class. The Gini index is a measure of total variance across the K classes. The Gini index takes on a small value if all of the <span class="math inline">\(\hat{p}_{mk}\)</span>’s are close to zero or one. For this reason, the Gini index is referred to as a measure of node purity. A small value of Gini index indicates that a node contains predominantly observations from a single class.</p>
 <p>Let’s see how works the Gini index in a classification problem.</p>

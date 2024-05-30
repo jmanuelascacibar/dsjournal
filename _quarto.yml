@@ -19,10 +19,7 @@ website:
     border: true
     background: light
   google-analytics: "G-RSXXM1QQ7W"
-  cookie-consent: 
-    type: implied
-    style: simple
-    palette: light
+
 
 
   back-to-top-navigation: true

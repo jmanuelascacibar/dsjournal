@@ -281,7 +281,13 @@ window.Quarto = {
 <p>To reduce the variance of a prediction model, you can train multiple models on diferent training set and average their predictions. So having access to multiple training sets, you could build <span class="math inline">\(B\)</span> separate models <span class="math inline">\(f_1(x), f_2(x), ..., f_B(x)\)</span> and average their predictions to obtain a final model with lower variance than the individual models <span class="math display">\[\hat{f}_{avg}(x) = \frac{1}{B} \sum_{b=1}^{B} f_b(x)\]</span></p>
 <p>In reality, you don’t have access to multiple training sets, but you can simulate this by boostrapping the training data. Boostrapping is a resampling technique that samples with replacement from the training data to create multiple training sets. This procedure allows you to generate B different bootstrapped training sets. <span class="math display">\[\hat{f}_{bag}(x) = \frac{1}{B} \sum_{b=1}^{B} f_{*b}(x)\]</span></p>
 <p>As bagging method provide a way to reduce overfitting, bagging methods works best with strong and complex models like fully developed decision trees in contrast to boosting methods that works best with weak models like shallow decision trees. The reason behind this is that deep trees has high variance, but low bias. Bagging can reduce the variance of the model, but it does not reduce the bias.</p>
-<p>Bagging methods come in many flavors: - Pasting -&gt; random subsets of the dataset are drawn as random susets of the samples - Bagging -&gt; when samples are drawn with replacement. - Random Subspaces -&gt; when features are drawn as random subsets of the features - Random Patches -&gt; when samples and features are drawn as random subsets of the samples and features</p>
+<p>Bagging methods come in many flavors:</p>
+<ul>
+<li>Pasting -&gt; random subsets of the dataset are drawn as random susets of the samples</li>
+<li>Bagging -&gt; when samples are drawn with replacement.</li>
+<li>Random Subspaces -&gt; when features are drawn as random subsets of the features</li>
+<li>Random Patches -&gt; when samples and features are drawn as random subsets of the samples and features</li>
+</ul>
 <div id="cell-3" class="cell" data-execution_count="106">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np  </span>

@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="JM Ascacibar">
-<meta name="dcterms.date" content="2024-05-20">
+<meta name="dcterms.date" content="2024-06-03">
 
-<title>Random Forest</title>
+<title>Daily Note - 03-06-2024</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -43,9 +77,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
-<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
-<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -148,10 +179,12 @@ cookieconsent.run({
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Random Forest</h1>
+      <h1 class="title">Daily Note - 03-06-2024</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">Random Forest</div>
-                <div class="quarto-category">ML models</div>
+                <div class="quarto-category">quarto</div>
+                <div class="quarto-category">pandas</div>
+                <div class="quarto-category">enconding</div>
+                <div class="quarto-category">transformations</div>
               </div>
                   </div>
   </div>
@@ -169,7 +202,7 @@ cookieconsent.run({
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">May 20, 2024</p>
+        <p class="date">June 3, 2024</p>
       </div>
     </div>
     
@@ -185,9 +218,13 @@ cookieconsent.run({
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#why-random-forest" id="toc-why-random-forest" class="nav-link" data-scroll-target="#why-random-forest">Why Random Forest?</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References:</a></li>
+  <li><a href="#working-plan-for-the-next-weeks" id="toc-working-plan-for-the-next-weeks" class="nav-link active" data-scroll-target="#working-plan-for-the-next-weeks">Working plan for the next weeks</a></li>
+  <li><a href="#daily-note---03062024" id="toc-daily-note---03062024" class="nav-link" data-scroll-target="#daily-note---03062024">Daily Note - 03/06/2024</a>
+  <ul class="collapse">
+  <li><a href="#downloading-uciml-datasets-from-their-api" id="toc-downloading-uciml-datasets-from-their-api" class="nav-link" data-scroll-target="#downloading-uciml-datasets-from-their-api">1. Downloading UCIML datasets from their API</a></li>
+  <li><a href="#kernel-machines" id="toc-kernel-machines" class="nav-link" data-scroll-target="#kernel-machines">2. Kernel machines</a></li>
+  <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources">Resources:</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -198,40 +235,39 @@ cookieconsent.run({
 
 
 
-<p><em>Understanding Random Forest</em></p>
-<p><a href="coefdetermai.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="coefdetermai.jpeg" class="img-fluid"></a></p>
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>Random Forest is a popular machine learning algorithm that belongs to the supervised learning technique. The general method of random decision forest was first proposed by Salzberg and Health in 1993. This method involves using a randomized decision tree algorithm to generate multiple differnet decison trees. Once these trees are generate, the final decision or prediction is made by combining the outputs of these trees using a technique known as majority voting. In majority voting, each tree in the forest cast a vote for a particular outcome, and the outcome that receives the most votes is chosen as the final prediction. In the case of regression task, where the outcome to be predicted is a continuous variable, the average of the outputs of all the trees is taken as the final prediction.</p>
-<p>Ho in 1995, established that allowing each tree in the forest to consider only a random subset of the features when making splits, the overall model performance can be improved. This is because it reduces the correlation between the trees in the forest, which in turn reduces the variance of the model. Subsequent work along the same lines concluded that regardless the specific method used for splitting the data, the key to avoid overfitting lis in introducing randomness in the model.</p>
-<p>The early development of Breiman’s notion of random forests was influenced by the work of Amit and Geman, who introduce the idea of searching over a random subset of splits. So instead of considering all possible splits at each node, the algorithm considers only a random subset of these splits, making the tree-growing process more diverse.</p>
-<p>Finally, the idea of randomized node optimization was introduced by Dietterich, who proposed that the decision at each node is selected by a randomized procedure rather than a deterministic one.</p>
-<p>The proper introduction of random forets as a machine learning algorithm is credited to Breiman 2001. His paper describes a method of building a forest of uncorrelated trees using a CART-like (Classification and Regression Trees), combined with randomized node optimization and bagging (bootstrap aggregating). This combination of techniques helps to create a diverse set of trees that are uncorrelated, which improve the accuracy of the predictions.</p>
-<p>He also uses out-of-bag error estimation to estimate the generalization error of the model. This is done by using the data that was not used to train each tree in the forest to estimate the error of the model. This is a powerful technique that allows the model to be evaluated without the need for a separate validation set.</p>
-<p>In addition, he also measure the variable importance through permutation (randomly shuffling) the values of each feature and observing how much this affects the model’s performance. If permuting a feature significantly reduces the model’s performance, then that feature is considered important.</p>
-</section>
-<section id="why-random-forest" class="level2">
-<h2 class="anchored" data-anchor-id="why-random-forest">Why Random Forest?</h2>
-<p>You might be wondering why you should use Random Forest instead of other machine learning algorithms. Why don’t you use somthing simple, like a linear/logistic regression?</p>
-<p>Jeremy Howard, a well-known data scientist, has a great answer to this question. &gt;A lot of people ask, “Why are you using machine learning? Why don’t you use something simple, like logistic regression?” &gt; &gt;In industry, I’ve seen far more examples of people screwing up logistic regression than successfully using it because it’s very difficult to do correctly. &gt; &gt;You’ve got to ensure you have the correct transformations, interactions, outlier handling, and so on. Anything you get wrong, the entire thing falls apart. With random forests, it’s very rare to see someone screw them up in industry. They’re resilient, and you’ll see why.</p>
-</section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References:</h2>
-<ul>
-<li><a href="https://en.wikipedia.org/wiki/Random_forest">Random forest - Wikipedia</a> (History)</li>
-<li><a href="https://www.youtube.com/watch?v=_rXzeWq4C6w&amp;list=PLfYUBJiXbdtSvpQjSnJJ_PmDQB_VyT5iU&amp;index=5">Jeremy Howard’s quote</a> (01:26:44 - How random forests really work)</li>
+<p><em>Quarto draft document, one-hot encoding or label encoding, transforming the target variable</em></p>
+<p><img src="designer.jpeg" class="img-fluid"></p>
+<section id="working-plan-for-the-next-weeks" class="level1">
+<h1>Working plan for the next weeks</h1>
+<ul class="task-list">
+<li><label><input type="checkbox">Flood Competition. Modelling the data and making predictions</label></li>
+<li><label><input type="checkbox">AMEX competition</label></li>
+<li><label><input type="checkbox">Concrete competition. Modelling the data and making predictions</label></li>
+<li><label><input type="checkbox">Shapley</label></li>
+<li><label><input type="checkbox">Inference and prediction</label></li>
+<li><label><input type="checkbox">PCA</label></li>
+<li><label><input type="checkbox">Target Transformations</label></li>
+<li><label><input type="checkbox">Tree-based models</label></li>
+<li><label><input type="checkbox">Richard Dawking explanation of FP and FN</label></li>
 </ul>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="r2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" data-glightbox="description: .lightbox-desc-2" title="Wikipedia"><img src="r2.png" class="img-fluid figure-img" alt="Wikipedia"></a></p>
-<figcaption>Wikipedia</figcaption>
-</figure>
-</div>
+</section>
+<section id="daily-note---03062024" class="level1">
+<h1>Daily Note - 03/06/2024</h1>
+<section id="downloading-uciml-datasets-from-their-api" class="level2">
+<h2 class="anchored" data-anchor-id="downloading-uciml-datasets-from-their-api">1. Downloading UCIML datasets from their API</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip3 install <span class="op">-</span>U ucimlrepo </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Documentation about the API <a href="https://github.com/uci-ml-repo/ucimlrepo">here</a></p>
+</section>
+<section id="kernel-machines" class="level2">
+<h2 class="anchored" data-anchor-id="kernel-machines">2. Kernel machines</h2>
+<p>In machine learning, kernel methods are a class of algorithms for pattern analysis, whose best known member is the support vector machine (SVM). The general task of pattern analysis is to find and study general types of relations (for example clusters, rankings, principal components, correlations, classifications) in datasets.</p>
+<p>For many algorithms that solve these tasks, the data in raw representation is not suitable.</p>
+</section>
+<section id="resources" class="level2">
+<h2 class="anchored" data-anchor-id="resources">Resources:</h2>
 
 
-<div class="hidden" aria-hidden="true">
-<span class="glightbox-desc lightbox-desc-2">Wikipedia</span>
-</div>
+</section>
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
@@ -658,31 +694,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","loop":false,"descPosition":"bottom","selector":".lightbox","closeEffect":"zoom"});
-window.onload = () => {
-  lightboxQuarto.on('slide_before_load', (data) => {
-    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-    const href = trigger.getAttribute('href');
-    if (href !== null) {
-      const imgEl = window.document.querySelector(`a[href="${href}"] img`);
-      if (imgEl !== null) {
-        const srcAttr = imgEl.getAttribute("src");
-        if (srcAttr && srcAttr.startsWith("data:")) {
-          slideConfig.href = srcAttr;
-        }
-      }
-    } 
-  });
-
-  lightboxQuarto.on('slide_after_load', (data) => {
-    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-    if (window.Quarto?.typesetMath) {
-      window.Quarto.typesetMath(slideNode);
-    }
-  });
-
-};
-          </script>
 
 
 

@@ -181,10 +181,11 @@ cookieconsent.run({
     <div class="quarto-title column-body">
       <h1 class="title">Daily Note - 03-06-2024</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">quarto</div>
-                <div class="quarto-category">pandas</div>
-                <div class="quarto-category">enconding</div>
-                <div class="quarto-category">transformations</div>
+                <div class="quarto-category">ucimlrepo</div>
+                <div class="quarto-category">kernel machines</div>
+                <div class="quarto-category">matplotlib</div>
+                <div class="quarto-category">vizualizations</div>
+                <div class="quarto-category">imbalance classes</div>
               </div>
                   </div>
   </div>
@@ -218,12 +219,11 @@ cookieconsent.run({
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#working-plan-for-the-next-weeks" id="toc-working-plan-for-the-next-weeks" class="nav-link active" data-scroll-target="#working-plan-for-the-next-weeks">Working plan for the next weeks</a></li>
-  <li><a href="#daily-note---03062024" id="toc-daily-note---03062024" class="nav-link" data-scroll-target="#daily-note---03062024">Daily Note - 03/06/2024</a>
+  <li><a href="#daily-note---03062024" id="toc-daily-note---03062024" class="nav-link active" data-scroll-target="#daily-note---03062024">Daily Note - 03/06/2024</a>
   <ul class="collapse">
   <li><a href="#downloading-uciml-datasets-from-their-api" id="toc-downloading-uciml-datasets-from-their-api" class="nav-link" data-scroll-target="#downloading-uciml-datasets-from-their-api">1. Downloading UCIML datasets from their API</a></li>
-  <li><a href="#kernel-machines" id="toc-kernel-machines" class="nav-link" data-scroll-target="#kernel-machines">2. Kernel machines</a></li>
-  <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources">Resources:</a></li>
+  <li><a href="#barplot-with-percentages-annotations" id="toc-barplot-with-percentages-annotations" class="nav-link" data-scroll-target="#barplot-with-percentages-annotations">2. Barplot with percentages annotations</a></li>
+  <li><a href="#imbalance-ratio" id="toc-imbalance-ratio" class="nav-link" data-scroll-target="#imbalance-ratio">4. Imbalance ratio</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -235,22 +235,8 @@ cookieconsent.run({
 
 
 
-<p><em>Quarto draft document, one-hot encoding or label encoding, transforming the target variable</em></p>
+<p><em>UCIML datasets from their API, Kernel machines, Barplot with percentages annotations, pie charts, Imbalance ratio</em></p>
 <p><img src="designer.jpeg" class="img-fluid"></p>
-<section id="working-plan-for-the-next-weeks" class="level1">
-<h1>Working plan for the next weeks</h1>
-<ul class="task-list">
-<li><label><input type="checkbox">Flood Competition. Modelling the data and making predictions</label></li>
-<li><label><input type="checkbox">AMEX competition</label></li>
-<li><label><input type="checkbox">Concrete competition. Modelling the data and making predictions</label></li>
-<li><label><input type="checkbox">Shapley</label></li>
-<li><label><input type="checkbox">Inference and prediction</label></li>
-<li><label><input type="checkbox">PCA</label></li>
-<li><label><input type="checkbox">Target Transformations</label></li>
-<li><label><input type="checkbox">Tree-based models</label></li>
-<li><label><input type="checkbox">Richard Dawking explanation of FP and FN</label></li>
-</ul>
-</section>
 <section id="daily-note---03062024" class="level1">
 <h1>Daily Note - 03/06/2024</h1>
 <section id="downloading-uciml-datasets-from-their-api" class="level2">
@@ -258,13 +244,45 @@ cookieconsent.run({
 <div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip3 install <span class="op">-</span>U ucimlrepo </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Documentation about the API <a href="https://github.com/uci-ml-repo/ucimlrepo">here</a></p>
 </section>
-<section id="kernel-machines" class="level2">
-<h2 class="anchored" data-anchor-id="kernel-machines">2. Kernel machines</h2>
-<p>In machine learning, kernel methods are a class of algorithms for pattern analysis, whose best known member is the support vector machine (SVM). The general task of pattern analysis is to find and study general types of relations (for example clusters, rankings, principal components, correlations, classifications) in datasets.</p>
-<p>For many algorithms that solve these tasks, the data in raw representation is not suitable.</p>
+<section id="barplot-with-percentages-annotations" class="level2">
+<h2 class="anchored" data-anchor-id="barplot-with-percentages-annotations">2. Barplot with percentages annotations</h2>
+<p>A barplot with percentages annotations can be very useful to show the distribution of a categorical variable.</p>
+<p>An easy way to do this is using pandas and matplotlib.</p>
+<p>The first thing is to create a <code>fig</code>, <code>ax</code> object with matplotlib and specify the number of subplots that we are going to use.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Then, we can use the <code>value_counts</code> method from pandas to get the counts of each category in the variable.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>yo.value_counts(normalize<span class="op">=</span><span class="va">True</span>).plot(kind<span class="op">=</span><span class="st">'barh'</span>, ax<span class="op">=</span>ax[<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Because we are ploting two plots we are going to do the same with the other one.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df.Target.value_counts(normalize<span class="op">=</span><span class="va">True</span>).plot(kind<span class="op">=</span><span class="st">'barh'</span>, ax<span class="op">=</span>ax[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We can use the <code>set_title</code> method from matplotlib to add a title to each plot</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_title(<span class="st">'Original Dataset'</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_title(<span class="st">'Train Dataset'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Here is the most oscure part of the code. First we need to iterate through the axes by <code>for axis in ax</code>. This line iterates over the axes in the <code>ax</code> array. <code>ax</code> is an array of the axes object created by <code>plt.subplots</code>. So contains the two axes that we created, <code>ax[0]</code> and <code>ax[1]</code>. After this we need to iterate through the patches of the barplot. Each bar in the bar plot is represented as a patch in matplotlib. <code>axis.patches</code> contains all the bars in the current axis.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> axis <span class="kw">in</span> ax:</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> p <span class="kw">in</span> axis.patches:</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>To calculate the percentages, we can retrieves the width of the bar, which corresponds to the normalized value using <code>p.get_width()</code>. <code>f'{p.get_width() * 100:.2f}%'</code> creates a formatted string representing the percentage with a ‘%’ symbol. <code>perc = f'{p.get_width() * 100:.2f}%'</code></p>
+<p>In order to add the percentage to the bar, we can use <code>axis.annotate</code> method. This method adds an annotation to the plot. <code>(p.get_width(), p.get_y() + p.get_height() / 2)</code> sets the position of the annotation. <code>p.get_width()</code> is the x-coordinate of the annotation, placing it at the end of the bar. <code>p.get_y() + p.get_height() / 2</code> is the y-coordinate of the annotation, centering it vertically within the bar. <code>ha='left'</code> sets the horizontal alignment to the left. <code>va='center'</code> sets the vertical alignment to the center. <code>xytext=(-50, 0)</code> specifies an offset for the text position (moving the text 50 points to the left of the bar). <code>textcoords='offset points'</code> tells annotate to interpret the xytext offset as being measured in points from the (x, y) position.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>        axis.annotate(perc, (p.get_width(), p.get_y() <span class="op">+</span> p.get_height() <span class="op">/</span> <span class="dv">2</span>),</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>                       ha<span class="op">=</span><span class="st">'left'</span>, va<span class="op">=</span><span class="st">'center'</span>, xytext<span class="op">=</span>(<span class="op">-</span><span class="dv">50</span>, <span class="dv">0</span>), textcoords<span class="op">=</span><span class="st">'offset points'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The final code is:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">6</span>))</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>yo.value_counts(normalize<span class="op">=</span><span class="va">True</span>).plot(kind<span class="op">=</span><span class="st">'barh'</span>, ax<span class="op">=</span>ax[<span class="dv">0</span>], color<span class="op">=</span><span class="st">'skyblue'</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_title(<span class="st">'Original Dataset'</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>df.Target.value_counts(normalize<span class="op">=</span><span class="va">True</span>).plot(kind<span class="op">=</span><span class="st">'barh'</span>, ax<span class="op">=</span>ax[<span class="dv">1</span>], color<span class="op">=</span><span class="st">'skyblue'</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_title(<span class="st">'Train Dataset'</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> axis <span class="kw">in</span> ax:</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> p <span class="kw">in</span> axis.patches:</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>        perc <span class="op">=</span> <span class="ss">f'</span><span class="sc">{</span>p<span class="sc">.</span>get_width() <span class="op">*</span> <span class="dv">100</span><span class="sc">:.2f}</span><span class="ss">%'</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>        axis.annotate(perc, (p.get_width(), p.get_y() <span class="op">+</span> p.get_height() <span class="op">/</span> <span class="dv">2</span>), ha<span class="op">=</span><span class="st">'left'</span>, va<span class="op">=</span><span class="st">'center'</span>, xytext<span class="op">=</span>(<span class="op">-</span><span class="dv">50</span>, <span class="dv">0</span>), textcoords<span class="op">=</span><span class="st">'offset points'</span>)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="target_distribution.png" class="img-fluid"></p>
+<p>## 3. Don’t use pie charts</p>
+<p>The main issue is that humans are generally not good at accurately estimating areas and angles. In a 2D pie chart, the sie of each slice is determined by the angle and the area it occupies, which can be hard to compare precisely. A bar chart represent data with the length of the bars along a common baseline, which makes it easier to compare the values. This linear representation (lenght of bars) is more intuitive and allows for more accurate visual comparisons than the angular or area-based representations of a pie chart.</p>
 </section>
-<section id="resources" class="level2">
-<h2 class="anchored" data-anchor-id="resources">Resources:</h2>
+<section id="imbalance-ratio" class="level2">
+<h2 class="anchored" data-anchor-id="imbalance-ratio">4. Imbalance ratio</h2>
+<p>To assess the imbalance more precisely, one common approach is to calculate the imbalance ratio. This ratio can be computed as the number of instances of the majority class divided by the number of instances of the minority class. Generally, an imbalance ratio of less than 5:1 is considered mild to moderate, while ratios greater than 10:1 are considered severe.</p>
 
 
 </section>

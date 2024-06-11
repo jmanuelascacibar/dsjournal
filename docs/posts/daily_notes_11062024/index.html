@@ -370,7 +370,7 @@ window.Quarto = {
 <p>Probably the best transformation is the Box-Cox transformation because it’s going to look for the parameter the best transform the data to a normal distribution.</p>
 <p>The equation looks like this: <span class="math display">\[w_t = \begin{cases} \log(y_t) &amp; \text{if } \lambda = 0 \\ \frac{y_t^\lambda - 1}{\lambda} &amp; \text{if } \lambda \neq 0 \end{cases}\]</span> where <span class="math inline">\(y_t\)</span> is the original data, <span class="math inline">\(w_t\)</span> is the transformed data, and <span class="math inline">\(\lambda\)</span> is the transformation parameter.</p>
 <p>When lambda is 0, the transformation is the log transformation. When lambda is 1, our data shift dow, but the the shape of the data doesn’t change. So if the optimal lambda is 1, we don’t need to do anything, the data is already normally distributed.</p>
-<p>Yo can find the optimal value of lambda using the <code>scipy.stats.boxcox</code> function.</p>
+<p>You can find the optimal value of lambda using the <code>scipy.stats.boxcox</code> function.</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> boxcox</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>air[<span class="st">'Passengers_boxcox'</span>], opt_l <span class="op">=</span> boxcox(air.Passengers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>

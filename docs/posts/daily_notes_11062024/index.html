@@ -256,12 +256,12 @@ window.Quarto = {
   <ul>
   <li><a href="#daily-note---11062024" id="toc-daily-note---11062024" class="nav-link active" data-scroll-target="#daily-note---11062024">Daily Note - 11/06/2024</a>
   <ul class="collapse">
-  <li><a href="#install-pycaret" id="toc-install-pycaret" class="nav-link" data-scroll-target="#install-pycaret">Install PyCaret</a></li>
-  <li><a href="#install-pytorch" id="toc-install-pytorch" class="nav-link" data-scroll-target="#install-pytorch">Install PyTorch</a></li>
-  <li><a href="#install-keras" id="toc-install-keras" class="nav-link" data-scroll-target="#install-keras">Install Keras</a></li>
-  <li><a href="#install-sktime" id="toc-install-sktime" class="nav-link" data-scroll-target="#install-sktime">Install sktime</a></li>
-  <li><a href="#install-prophet" id="toc-install-prophet" class="nav-link" data-scroll-target="#install-prophet">Install Prophet</a></li>
-  <li><a href="#install-yfinance" id="toc-install-yfinance" class="nav-link" data-scroll-target="#install-yfinance">Install yfinance</a></li>
+  <li><a href="#installation-of-pycaret" id="toc-installation-of-pycaret" class="nav-link" data-scroll-target="#installation-of-pycaret">Installation of PyCaret</a></li>
+  <li><a href="#installation-of-pytorch" id="toc-installation-of-pytorch" class="nav-link" data-scroll-target="#installation-of-pytorch">Installation of PyTorch</a></li>
+  <li><a href="#installation-of-keras" id="toc-installation-of-keras" class="nav-link" data-scroll-target="#installation-of-keras">Installation of Keras</a></li>
+  <li><a href="#installation-of-sktime" id="toc-installation-of-sktime" class="nav-link" data-scroll-target="#installation-of-sktime">Installation of sktime</a></li>
+  <li><a href="#installation-of-prophet" id="toc-installation-of-prophet" class="nav-link" data-scroll-target="#installation-of-prophet">Installation of Prophet</a></li>
+  <li><a href="#installation-of-yfinance" id="toc-installation-of-yfinance" class="nav-link" data-scroll-target="#installation-of-yfinance">Installation of yfinance</a></li>
   <li><a href="#download-a-time-series-data-with-yfinance" id="toc-download-a-time-series-data-with-yfinance" class="nav-link" data-scroll-target="#download-a-time-series-data-with-yfinance">Download a time series data with yfinance</a></li>
   <li><a href="#set-up-time-index" id="toc-set-up-time-index" class="nav-link" data-scroll-target="#set-up-time-index">Set up time index</a></li>
   <li><a href="#set-the-index-frequency-to-business-day" id="toc-set-the-index-frequency-to-business-day" class="nav-link" data-scroll-target="#set-the-index-frequency-to-business-day">Set the index frequency to business day</a></li>
@@ -288,33 +288,33 @@ window.Quarto = {
 <p><img src="designer.jpeg" class="img-fluid"></p>
 <section id="daily-note---11062024" class="level1">
 <h1>Daily Note - 11/06/2024</h1>
-<section id="install-pycaret" class="level2">
-<h2 class="anchored" data-anchor-id="install-pycaret">Install PyCaret</h2>
+<section id="installation-of-pycaret" class="level2">
+<h2 class="anchored" data-anchor-id="installation-of-pycaret">Installation of PyCaret</h2>
 <p><a href="https://pycaret.gitbook.io/docs/get-started/installation">Documentation</a></p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install full version</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>pip install pycaret[full]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="install-pytorch" class="level2">
-<h2 class="anchored" data-anchor-id="install-pytorch">Install PyTorch</h2>
+<section id="installation-of-pytorch" class="level2">
+<h2 class="anchored" data-anchor-id="installation-of-pytorch">Installation of PyTorch</h2>
 <p>First check the version of CUDA installed in your system using <code>nvidia-smi</code>. Install PyTorch following the <a href="https://pytorch.org/get-started/locally/">documentation</a></p>
 </section>
-<section id="install-keras" class="level2">
-<h2 class="anchored" data-anchor-id="install-keras">Install Keras</h2>
+<section id="installation-of-keras" class="level2">
+<h2 class="anchored" data-anchor-id="installation-of-keras">Installation of Keras</h2>
 <p>You can install Keras from pip:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>pip install <span class="op">--</span>upgrade keras</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="install-sktime" class="level2">
-<h2 class="anchored" data-anchor-id="install-sktime">Install sktime</h2>
+<section id="installation-of-sktime" class="level2">
+<h2 class="anchored" data-anchor-id="installation-of-sktime">Installation of sktime</h2>
 <p>To install sktime:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pip install sktime[all_extras]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="install-prophet" class="level2">
-<h2 class="anchored" data-anchor-id="install-prophet">Install Prophet</h2>
+<section id="installation-of-prophet" class="level2">
+<h2 class="anchored" data-anchor-id="installation-of-prophet">Installation of Prophet</h2>
 <div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>conda install <span class="op">-</span>c conda<span class="op">-</span>forge prophet</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><a href="https://facebook.github.io/prophet/">Documentation</a></p>
 </section>
-<section id="install-yfinance" class="level2">
-<h2 class="anchored" data-anchor-id="install-yfinance">Install yfinance</h2>
+<section id="installation-of-yfinance" class="level2">
+<h2 class="anchored" data-anchor-id="installation-of-yfinance">Installation of yfinance</h2>
 <div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pip install yfinance</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="download-a-time-series-data-with-yfinance" class="level2">

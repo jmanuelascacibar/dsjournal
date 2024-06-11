@@ -476,46 +476,46 @@
     "text": "Installation PyCaret, PyTorch, Keras, sktime, Prophet, yfinance, Set up time index, index frequency, Log transformation, Box-cox transformation, ACF and PACF, everything is reflected in today’s price, ACF and PACF, Stationarity and unit-root, Augmented Dickey-Fuller test"
   },
   {
-    "objectID": "posts/daily_notes_11062024/index.html#install-pycaret",
-    "href": "posts/daily_notes_11062024/index.html#install-pycaret",
+    "objectID": "posts/daily_notes_11062024/index.html#installation-of-pycaret",
+    "href": "posts/daily_notes_11062024/index.html#installation-of-pycaret",
     "title": "Daily Note - 11-06-2024",
-    "section": "Install PyCaret",
-    "text": "Install PyCaret\nDocumentation\n# install full version\npip install pycaret[full]"
+    "section": "Installation of PyCaret",
+    "text": "Installation of PyCaret\nDocumentation\n# install full version\npip install pycaret[full]"
   },
   {
-    "objectID": "posts/daily_notes_11062024/index.html#install-pytorch",
-    "href": "posts/daily_notes_11062024/index.html#install-pytorch",
+    "objectID": "posts/daily_notes_11062024/index.html#installation-of-pytorch",
+    "href": "posts/daily_notes_11062024/index.html#installation-of-pytorch",
     "title": "Daily Note - 11-06-2024",
-    "section": "Install PyTorch",
-    "text": "Install PyTorch\nFirst check the version of CUDA installed in your system using nvidia-smi. Install PyTorch following the documentation"
+    "section": "Installation of PyTorch",
+    "text": "Installation of PyTorch\nFirst check the version of CUDA installed in your system using nvidia-smi. Install PyTorch following the documentation"
   },
   {
-    "objectID": "posts/daily_notes_11062024/index.html#install-keras",
-    "href": "posts/daily_notes_11062024/index.html#install-keras",
+    "objectID": "posts/daily_notes_11062024/index.html#installation-of-keras",
+    "href": "posts/daily_notes_11062024/index.html#installation-of-keras",
     "title": "Daily Note - 11-06-2024",
-    "section": "Install Keras",
-    "text": "Install Keras\nYou can install Keras from pip:\npip install --upgrade keras"
+    "section": "Installation of Keras",
+    "text": "Installation of Keras\nYou can install Keras from pip:\npip install --upgrade keras"
   },
   {
-    "objectID": "posts/daily_notes_11062024/index.html#install-sktime",
-    "href": "posts/daily_notes_11062024/index.html#install-sktime",
+    "objectID": "posts/daily_notes_11062024/index.html#installation-of-sktime",
+    "href": "posts/daily_notes_11062024/index.html#installation-of-sktime",
     "title": "Daily Note - 11-06-2024",
-    "section": "Install sktime",
-    "text": "Install sktime\nTo install sktime:\npip install sktime[all_extras]"
+    "section": "Installation of sktime",
+    "text": "Installation of sktime\nTo install sktime:\npip install sktime[all_extras]"
   },
   {
-    "objectID": "posts/daily_notes_11062024/index.html#install-prophet",
-    "href": "posts/daily_notes_11062024/index.html#install-prophet",
+    "objectID": "posts/daily_notes_11062024/index.html#installation-of-prophet",
+    "href": "posts/daily_notes_11062024/index.html#installation-of-prophet",
     "title": "Daily Note - 11-06-2024",
-    "section": "Install Prophet",
-    "text": "Install Prophet\nconda install -c conda-forge prophet\nDocumentation"
+    "section": "Installation of Prophet",
+    "text": "Installation of Prophet\nconda install -c conda-forge prophet\nDocumentation"
   },
   {
-    "objectID": "posts/daily_notes_11062024/index.html#install-yfinance",
-    "href": "posts/daily_notes_11062024/index.html#install-yfinance",
+    "objectID": "posts/daily_notes_11062024/index.html#installation-of-yfinance",
+    "href": "posts/daily_notes_11062024/index.html#installation-of-yfinance",
     "title": "Daily Note - 11-06-2024",
-    "section": "Install yfinance",
-    "text": "Install yfinance\npip install yfinance"
+    "section": "Installation of yfinance",
+    "text": "Installation of yfinance\npip install yfinance"
   },
   {
     "objectID": "posts/daily_notes_11062024/index.html#download-a-time-series-data-with-yfinance",

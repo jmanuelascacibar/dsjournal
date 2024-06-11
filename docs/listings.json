@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/daily_notes_11062024/index.html",
       "/posts/daily_notes_03062024/index.html",
       "/posts/bagging_rf_boosting/index.html",
       "/posts/decision_tree_classification/index.html",

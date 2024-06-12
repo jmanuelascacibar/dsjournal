@@ -250,8 +250,15 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#working-plan-for-the-next-weeks" id="toc-working-plan-for-the-next-weeks" class="nav-link active" data-scroll-target="#working-plan-for-the-next-weeks">Working plan for the next weeks</a></li>
-  <li><a href="#daily-note---07052024" id="toc-daily-note---07052024" class="nav-link" data-scroll-target="#daily-note---07052024">Daily Note - 07/05/2024</a></li>
+  <li><a href="#daily-note---07052024" id="toc-daily-note---07052024" class="nav-link active" data-scroll-target="#daily-note---07052024">Daily Note - 07/05/2024</a>
+  <ul class="collapse">
+  <li><a href="#using-path-from-pathlib" id="toc-using-path-from-pathlib" class="nav-link" data-scroll-target="#using-path-from-pathlib">1. Using Path from pathlib:</a></li>
+  <li><a href="#pip-in-kaggle" id="toc-pip-in-kaggle" class="nav-link" data-scroll-target="#pip-in-kaggle">2. PIP in Kaggle</a></li>
+  <li><a href="#save-data-into-a-pickle-file" id="toc-save-data-into-a-pickle-file" class="nav-link" data-scroll-target="#save-data-into-a-pickle-file">3. Save data into a pickle file</a></li>
+  <li><a href="#remove-space-in-the-name-of-a-feature" id="toc-remove-space-in-the-name-of-a-feature" class="nav-link" data-scroll-target="#remove-space-in-the-name-of-a-feature">4. Remove space in the name of a feature</a></li>
+  <li><a href="#using-mathrm-in-latex" id="toc-using-mathrm-in-latex" class="nav-link" data-scroll-target="#using-mathrm-in-latex">5. Using <code>\mathrm</code> in latex</a></li>
+  <li><a href="#pandas-warnings" id="toc-pandas-warnings" class="nav-link" data-scroll-target="#pandas-warnings">6. Pandas warnings</a></li>
+  </ul></li>
   <li><a href="#findings-and-resources" id="toc-findings-and-resources" class="nav-link" data-scroll-target="#findings-and-resources">Findings and resources:</a></li>
   </ul>
 </nav>
@@ -265,25 +272,10 @@ window.Quarto = {
 
 <p><em>Using Path, pip install in kaggle, PCA resources, save/load data pickle files, Remove space in streams, <code>\mathrm</code> in latex, pandas warnings</em></p>
 <p><img src="designer.jpeg" class="img-fluid"></p>
-<section id="working-plan-for-the-next-weeks" class="level1">
-<h1>Working plan for the next weeks</h1>
-<ul class="task-list">
-<li><label><input type="checkbox">Coefficient of determination, <span class="math inline">\(R^2\)</span></label></li>
-<li><label><input type="checkbox">Flood Competition. Modelling the data and making predictions</label></li>
-<li><label><input type="checkbox">AMEX competition</label></li>
-<li><label><input type="checkbox">Concrete competition. Modelling the data and making predictions</label></li>
-<li><label><input type="checkbox">Shapley</label></li>
-<li><label><input type="checkbox">Inference and prediction</label></li>
-<li><label><input type="checkbox">PCA</label></li>
-<li><label><input type="checkbox">Target Transformations</label></li>
-<li><label><input type="checkbox">Richard Dawking explanation of FP and FN</label></li>
-<li><label><input type="checkbox">Finish Quarto blog</label></li>
-</ul>
-</section>
 <section id="daily-note---07052024" class="level1">
 <h1>Daily Note - 07/05/2024</h1>
-<section id="using-path-from-pathlib" class="level4">
-<h4 class="anchored" data-anchor-id="using-path-from-pathlib">1. Using Path from pathlib:</h4>
+<section id="using-path-from-pathlib" class="level2">
+<h2 class="anchored" data-anchor-id="using-path-from-pathlib">1. Using Path from pathlib:</h2>
 <p>I was basically trying to set up an if statement that allows the notebook to identify whether is running on Kaggle or locally.</p>
 <p>My error was to concatenate a the <code>path</code> variable with the filename using the <code>/</code> operator.</p>
 <p>I was able to fix this by using the <code>pathlib</code> library and the <code>Path</code> object.</p>
@@ -306,12 +298,12 @@ window.Quarto = {
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Initial Features</span></span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>init_feat <span class="op">=</span> <span class="bu">list</span>(test.columns)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="pip-in-kaggle" class="level4">
-<h4 class="anchored" data-anchor-id="pip-in-kaggle">2. PIP in Kaggle</h4>
+<section id="pip-in-kaggle" class="level2">
+<h2 class="anchored" data-anchor-id="pip-in-kaggle">2. PIP in Kaggle</h2>
 <p>Sometimes you need to install a package that is not available in the Kaggle environment. In order to do that, you can use the <code>!pip install</code> command. If you need to update a package, you can use the <code>!pip install --upgrade</code> command. Using the flag <code>-q</code> will make the installation process quiet, which means that it will not display the output of the installation process.</p>
 </section>
-<section id="save-data-into-a-pickle-file" class="level4">
-<h4 class="anchored" data-anchor-id="save-data-into-a-pickle-file">3. Save data into a pickle file</h4>
+<section id="save-data-into-a-pickle-file" class="level2">
+<h2 class="anchored" data-anchor-id="save-data-into-a-pickle-file">3. Save data into a pickle file</h2>
 <p>We import the pickle module. We define separate filenames for the pickle files. We use two separate with statements to open and save each dictionary to its respective pickle file. We use pickle.dump() to serialize and write each dictionary to its corresponding file. We use pickle.load() to read and deserialize each dictionary from its corresponding file. We print the contents of each dictionary to verify that the data was saved and loaded correctly.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>oof_filename <span class="op">=</span> <span class="st">'oof_pred.pkl'</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>tst_pred_filename <span class="op">=</span> <span class="st">'tst_pred.pkl'</span></span>
@@ -326,18 +318,18 @@ window.Quarto = {
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(tst_pred_filename, <span class="st">'rb'</span>) <span class="im">as</span> tst_pred_file:</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    tst_pred <span class="op">=</span> pickle.load(tst_pred_file)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="remove-space-in-the-name-of-a-feature" class="level4">
-<h4 class="anchored" data-anchor-id="remove-space-in-the-name-of-a-feature">4. Remove space in the name of a feature</h4>
+<section id="remove-space-in-the-name-of-a-feature" class="level2">
+<h2 class="anchored" data-anchor-id="remove-space-in-the-name-of-a-feature">4. Remove space in the name of a feature</h2>
 <p>The strip() method is used to remove leading and trailing spaces from a string. In this case, since there is only one trailing space, it will be effectively removed</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>original.columns <span class="op">=</span> original.columns.<span class="bu">str</span>.strip()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="using-mathrm-in-latex" class="level4">
-<h4 class="anchored" data-anchor-id="using-mathrm-in-latex">5. Using <code>\mathrm</code> in latex</h4>
+<section id="using-mathrm-in-latex" class="level2">
+<h2 class="anchored" data-anchor-id="using-mathrm-in-latex">5. Using <code>\mathrm</code> in latex</h2>
 <p>In LaTeX, <code>\mathrm</code> is used to typeset a mathematical expression in roman (upright) font, rather than the default italic font used for math.</p>
 <p><span class="math display">\[RMSE = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2}\]</span></p>
 </section>
-<section id="pandas-warnings" class="level4">
-<h4 class="anchored" data-anchor-id="pandas-warnings">6. Pandas warnings</h4>
+<section id="pandas-warnings" class="level2">
+<h2 class="anchored" data-anchor-id="pandas-warnings">6. Pandas warnings</h2>
 <p>You can suppress the warning by adding the following code at the top of your notebook.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">"ignore"</span>, category<span class="op">=</span><span class="pp">FutureWarning</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>

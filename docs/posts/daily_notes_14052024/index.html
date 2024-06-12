@@ -218,9 +218,18 @@ cookieconsent.run({
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#working-plan-for-the-next-weeks" id="toc-working-plan-for-the-next-weeks" class="nav-link active" data-scroll-target="#working-plan-for-the-next-weeks">Working plan for the next weeks</a></li>
-  <li><a href="#daily-note---14052024" id="toc-daily-note---14052024" class="nav-link" data-scroll-target="#daily-note---14052024">Daily Note - 14/05/2024</a></li>
-  <li><a href="#findings-and-resources" id="toc-findings-and-resources" class="nav-link" data-scroll-target="#findings-and-resources">Findings and resources:</a></li>
+  <li><a href="#daily-note---14052024" id="toc-daily-note---14052024" class="nav-link active" data-scroll-target="#daily-note---14052024">Daily Note - 14/05/2024</a>
+  <ul class="collapse">
+  <li><a href="#render-jupyter-notebooks-with-quarto" id="toc-render-jupyter-notebooks-with-quarto" class="nav-link" data-scroll-target="#render-jupyter-notebooks-with-quarto">1. Render Jupyter Notebooks with Quarto</a></li>
+  <li><a href="#quarto-first-block-raw" id="toc-quarto-first-block-raw" class="nav-link" data-scroll-target="#quarto-first-block-raw">2. Quarto first block <code>raw</code></a></li>
+  <li><a href="#add-table-of-content-to-your-document" id="toc-add-table-of-content-to-your-document" class="nav-link" data-scroll-target="#add-table-of-content-to-your-document">3. Add table of content to your document</a></li>
+  <li><a href="#converting-a-jupyter-notebook-to-quarto" id="toc-converting-a-jupyter-notebook-to-quarto" class="nav-link" data-scroll-target="#converting-a-jupyter-notebook-to-quarto">4. Converting a Jupyter Notebook to Quarto</a></li>
+  <li><a href="#path-in-bash" id="toc-path-in-bash" class="nav-link" data-scroll-target="#path-in-bash">6. <code>PATH</code> in bash:</a></li>
+  <li><a href="#bashrc-file" id="toc-bashrc-file" class="nav-link" data-scroll-target="#bashrc-file">7. <code>~/.bashrc</code> file</a></li>
+  <li><a href="#source-and-.-command" id="toc-source-and-.-command" class="nav-link" data-scroll-target="#source-and-.-command">8. <code>source</code> and <code>.</code> command</a></li>
+  <li><a href="#debugging-in-jupyter-notebooks" id="toc-debugging-in-jupyter-notebooks" class="nav-link" data-scroll-target="#debugging-in-jupyter-notebooks">9. Debugging in Jupyter Notebooks</a></li>
+  <li><a href="#findings-and-resources" id="toc-findings-and-resources" class="nav-link" data-scroll-target="#findings-and-resources">Findings and resources</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -233,23 +242,10 @@ cookieconsent.run({
 
 <p><em>Render in Quarto, quarto raw block, quarto table of content, quarto converting jupyter notebook to quarto, PATH in bash, bashrc, source, debugging notebooks</em></p>
 <p><img src="designer.jpeg" class="img-fluid"></p>
-<section id="working-plan-for-the-next-weeks" class="level1">
-<h1>Working plan for the next weeks</h1>
-<ul class="task-list">
-<li><label><input type="checkbox">Flood Competition. Modelling the data and making predictions</label></li>
-<li><label><input type="checkbox">AMEX competition</label></li>
-<li><label><input type="checkbox">Concrete competition. Modelling the data and making predictions</label></li>
-<li><label><input type="checkbox">Shapley</label></li>
-<li><label><input type="checkbox">Inference and prediction</label></li>
-<li><label><input type="checkbox">PCA</label></li>
-<li><label><input type="checkbox">Target Transformations</label></li>
-<li><label><input type="checkbox">Richard Dawking explanation of FP and FN</label></li>
-</ul>
-</section>
 <section id="daily-note---14052024" class="level1">
 <h1>Daily Note - 14/05/2024</h1>
-<section id="render-jupyter-notebooks-with-quarto" class="level4">
-<h4 class="anchored" data-anchor-id="render-jupyter-notebooks-with-quarto">1. Render Jupyter Notebooks with Quarto</h4>
+<section id="render-jupyter-notebooks-with-quarto" class="level2">
+<h2 class="anchored" data-anchor-id="render-jupyter-notebooks-with-quarto">1. Render Jupyter Notebooks with Quarto</h2>
 <p>Quarto can render Jupyter Notebooks, which is a great feature. The ideal workflow is to use <code>quarto preview</code> to get a preview of the notebook and the <code>quarto render</code> to render the notebook to a different format.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Terminal</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> preview notebook.ipynb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -260,22 +256,22 @@ cookieconsent.run({
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Terminal</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render notebook.ipynb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="quarto-first-block-raw" class="level4">
-<h4 class="anchored" data-anchor-id="quarto-first-block-raw">2. Quarto first block <code>raw</code></h4>
+<section id="quarto-first-block-raw" class="level2">
+<h2 class="anchored" data-anchor-id="quarto-first-block-raw">2. Quarto first block <code>raw</code></h2>
 <p>The first block in a Quarto document is the <code>raw</code> block. It is used to specify the document format, title, and author.</p>
 </section>
-<section id="add-table-of-content-to-your-document" class="level4">
-<h4 class="anchored" data-anchor-id="add-table-of-content-to-your-document">3. Add table of content to your document</h4>
+<section id="add-table-of-content-to-your-document" class="level2">
+<h2 class="anchored" data-anchor-id="add-table-of-content-to-your-document">3. Add table of content to your document</h2>
 <p>You can use the <code>toc</code> option to automatically generated table of content in the output document. You can also specify the number of levels using <code>toc-depth</code> option. <code>toc-expand</code> option can be used to expand the table of content. You can also use <code>toc-title</code> to specify the title of the table of content and specify the location using <code>toc-location</code>.</p>
 </section>
-<section id="converting-a-jupyter-notebook-to-quarto" class="level4">
-<h4 class="anchored" data-anchor-id="converting-a-jupyter-notebook-to-quarto">4. Converting a Jupyter Notebook to Quarto</h4>
+<section id="converting-a-jupyter-notebook-to-quarto" class="level2">
+<h2 class="anchored" data-anchor-id="converting-a-jupyter-notebook-to-quarto">4. Converting a Jupyter Notebook to Quarto</h2>
 <p>You can convert a Jupyter Notebook to Quarto using the <code>quarto convert</code> command.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Terminal</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> convert notebook.ipynb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="path-in-bash" class="level4">
-<h4 class="anchored" data-anchor-id="path-in-bash">6. <code>PATH</code> in bash:</h4>
+<section id="path-in-bash" class="level2">
+<h2 class="anchored" data-anchor-id="path-in-bash">6. <code>PATH</code> in bash:</h2>
 <p>The <code>PATH</code> is an environment variable that specifies a set of directories where executable programs are located. When you type a command in the terminal, the system searches through the directories specified in the <code>PATH</code> variable to find the executable program. This is like a python variable that lives in your shell.</p>
 <p>For example, if you want to know from where your python is running, you can use the following command:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Terminal</span></span>
@@ -284,20 +280,20 @@ cookieconsent.run({
 <div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Terminal</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$PATH</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="bashrc-file" class="level4">
-<h4 class="anchored" data-anchor-id="bashrc-file">7. <code>~/.bashrc</code> file</h4>
+<section id="bashrc-file" class="level2">
+<h2 class="anchored" data-anchor-id="bashrc-file">7. <code>~/.bashrc</code> file</h2>
 <p>It’s a shell configuration file that is executed when you start a new shell session. You can add environment variables, aliases, and other shell configurations to this file.</p>
 <p>For example you can create the alias <code>ll</code> to list all files in a directory:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">vim</span> ~/.bashrc</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">alias</span> ll = <span class="st">'ls -al'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="source-and-.-command" class="level4">
-<h4 class="anchored" data-anchor-id="source-and-.-command">8. <code>source</code> and <code>.</code> command</h4>
+<section id="source-and-.-command" class="level2">
+<h2 class="anchored" data-anchor-id="source-and-.-command">8. <code>source</code> and <code>.</code> command</h2>
 <p>In bash, the <code>source</code> command is used to execute commands from a file in the current shell session. Read the content of a file, which can be a script, a configuration file, or a file containing functions or aliases. Execute in the current shell environment.</p>
 <p>The dot <code>.</code> command is a synonym for the <code>source</code> command as we’ve seen before with <code>~/.bashrc</code>.</p>
 </section>
-<section id="debugging-in-jupyter-notebooks" class="level4">
-<h4 class="anchored" data-anchor-id="debugging-in-jupyter-notebooks">9. Debugging in Jupyter Notebooks</h4>
+<section id="debugging-in-jupyter-notebooks" class="level2">
+<h2 class="anchored" data-anchor-id="debugging-in-jupyter-notebooks">9. Debugging in Jupyter Notebooks</h2>
 <div id="for-loop-debugging" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(i)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -318,9 +314,8 @@ cookieconsent.run({
 <p><img src="debugging1.JPG" class="img-fluid"></p>
 <p>You can use the <code>Step Over</code> button to execute the current line and move to the next line. You can also use the <code>Step Into</code> button to move into a function or method call. The <code>Step Out</code> button allows you to move out of the current function or method. The <code>Continue</code> button allows you to continue the execution of the cell until the next breakpoint is reached. <img src="debugging2.JPG" class="img-fluid"></p>
 </section>
-</section>
-<section id="findings-and-resources" class="level1">
-<h1>Findings and resources:</h1>
+<section id="findings-and-resources" class="level2">
+<h2 class="anchored" data-anchor-id="findings-and-resources">Findings and resources</h2>
 <ul>
 <li>Wonderful markdown basic resource, <a href="https://quarto.org/docs/authoring/markdown-basics.html">here</a></li>
 <li>Quarto HTML basics (table of content, etc), <a href="https://quarto.org/docs/output-formats/html-basics.html">here</a></li>
@@ -329,6 +324,7 @@ cookieconsent.run({
 </ul>
 
 
+</section>
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->

@@ -249,8 +249,18 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#working-plan-for-the-next-weeks" id="toc-working-plan-for-the-next-weeks" class="nav-link active" data-scroll-target="#working-plan-for-the-next-weeks">Working plan for the next weeks</a></li>
-  <li><a href="#daily-note---08052024" id="toc-daily-note---08052024" class="nav-link" data-scroll-target="#daily-note---08052024">Daily Note - 08/05/2024</a></li>
+  <li><a href="#daily-note---08052024" id="toc-daily-note---08052024" class="nav-link active" data-scroll-target="#daily-note---08052024">Daily Note - 08/05/2024</a>
+  <ul class="collapse">
+  <li><a href="#symmetric-function" id="toc-symmetric-function" class="nav-link" data-scroll-target="#symmetric-function">1. Symmetric function</a></li>
+  <li><a href="#quantiles" id="toc-quantiles" class="nav-link" data-scroll-target="#quantiles">2. Quantiles</a></li>
+  <li><a href="#order-statistics" id="toc-order-statistics" class="nav-link" data-scroll-target="#order-statistics">3. Order Statistics</a></li>
+  <li><a href="#create-a-list-of-functions-to-apply-to-each-row-and-then-use-a-loop-to-create-new-columns-for-each-function" id="toc-create-a-list-of-functions-to-apply-to-each-row-and-then-use-a-loop-to-create-new-columns-for-each-function" class="nav-link" data-scroll-target="#create-a-list-of-functions-to-apply-to-each-row-and-then-use-a-loop-to-create-new-columns-for-each-function">4. Create a list of functions to apply to each row, and then use a loop to create new columns for each function</a></li>
+  <li><a href="#color-palette-in-seaborn" id="toc-color-palette-in-seaborn" class="nav-link" data-scroll-target="#color-palette-in-seaborn">5. Color Palette in Seaborn</a></li>
+  <li><a href="#implications-of-negative-correlation-between-features" id="toc-implications-of-negative-correlation-between-features" class="nav-link" data-scroll-target="#implications-of-negative-correlation-between-features">6. Implications of negative correlation between features:</a></li>
+  <li><a href="#standarize-before-creating-polynomial-features" id="toc-standarize-before-creating-polynomial-features" class="nav-link" data-scroll-target="#standarize-before-creating-polynomial-features">7. Standarize before creating polynomial features?</a></li>
+  <li><a href="#adding-plus-or-minus" id="toc-adding-plus-or-minus" class="nav-link" data-scroll-target="#adding-plus-or-minus">8. Adding Plus or Minus</a></li>
+  <li><a href="#get-not-equal-to-of-dataframe-and-other-element-wise-binary-operator-ne.---pandas-ne" id="toc-get-not-equal-to-of-dataframe-and-other-element-wise-binary-operator-ne.---pandas-ne" class="nav-link" data-scroll-target="#get-not-equal-to-of-dataframe-and-other-element-wise-binary-operator-ne.---pandas-ne">9. Get Not equal to of dataframe and other, element-wise (binary operator ne). -&gt; Pandas ne</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -263,41 +273,26 @@ window.Quarto = {
 
 <p><em>Concept symmetric function, Order statistics, Quantiles, Python args syntax, Color palette in seaborn, standarization, plus or minus shortkey, not equal element-wise numpy function</em></p>
 <p><img src="designer.jpeg" class="img-fluid"></p>
-<section id="working-plan-for-the-next-weeks" class="level1">
-<h1>Working plan for the next weeks</h1>
-<ul class="task-list">
-<li><label><input type="checkbox">Coefficient of determination, <span class="math inline">\(R^2\)</span></label></li>
-<li><label><input type="checkbox">Flood Competition. Modelling the data and making predictions</label></li>
-<li><label><input type="checkbox">AMEX competition</label></li>
-<li><label><input type="checkbox">Concrete competition. Modelling the data and making predictions</label></li>
-<li><label><input type="checkbox">Shapley</label></li>
-<li><label><input type="checkbox">Inference and prediction</label></li>
-<li><label><input type="checkbox">PCA</label></li>
-<li><label><input type="checkbox">Target Transformations</label></li>
-<li><label><input type="checkbox">Richard Dawking explanation of FP and FN</label></li>
-<li><label><input type="checkbox">Finish Quarto blog</label></li>
-</ul>
-</section>
 <section id="daily-note---08052024" class="level1">
 <h1>Daily Note - 08/05/2024</h1>
-<section id="symmetric-function" class="level4">
-<h4 class="anchored" data-anchor-id="symmetric-function">1. Symmetric function</h4>
+<section id="symmetric-function" class="level2">
+<h2 class="anchored" data-anchor-id="symmetric-function">1. Symmetric function</h2>
 <p>Symmetric function refer to a mathematical function that treats all input features equally and produce the same output regardless of the order or arrangement of the features. In other words, these functions are insensitive to the specific ordering or permutation of the input variables.</p>
 <p>Consider the following example:</p>
 <p><span class="math inline">\(f(x, y, z) = x + y + z\)</span> is a symmetric function because <span class="math inline">\(f(x, y, z) = f(y, z, x)\)</span> the order of the input variables does not matter. For example, <span class="math inline">\(f(1, 2, 3) = f(3, 2, 1) = 6\)</span>.</p>
 </section>
-<section id="quantiles" class="level4">
-<h4 class="anchored" data-anchor-id="quantiles">2. Quantiles</h4>
+<section id="quantiles" class="level2">
+<h2 class="anchored" data-anchor-id="quantiles">2. Quantiles</h2>
 <p>In statistics, quantiles are cut points dividing the range of a probability distribution into continuous intervals with equal probabilities, or dividing the observations in a sample in the same way. Common quantiles have special names: for instance quartiles(four groups), deciles(ten groups), and percentiles(hundred groups).</p>
 <p>Wikipedia <a href="https://en.wikipedia.org/wiki/Quantile#:~:text=In%20statistics%20and%20probability%2C%20quantiles,the%20number%20of%20groups%20created.">link</a></p>
 <p>Pandas quantile <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.quantile.html">link</a></p>
 </section>
-<section id="order-statistics" class="level4">
-<h4 class="anchored" data-anchor-id="order-statistics">3. Order Statistics</h4>
+<section id="order-statistics" class="level2">
+<h2 class="anchored" data-anchor-id="order-statistics">3. Order Statistics</h2>
 <p>In statistics, the k-th order statistic of a statistical sample is equal to its k-th smallest value. Together with rank statistics, order statistics are among the most fundamental tools in non-parametric statistics and inference. Important special cases are the minimum and maximum value of a sample.</p>
 </section>
-<section id="create-a-list-of-functions-to-apply-to-each-row-and-then-use-a-loop-to-create-new-columns-for-each-function" class="level4">
-<h4 class="anchored" data-anchor-id="create-a-list-of-functions-to-apply-to-each-row-and-then-use-a-loop-to-create-new-columns-for-each-function">4. Create a list of functions to apply to each row, and then use a loop to create new columns for each function</h4>
+<section id="create-a-list-of-functions-to-apply-to-each-row-and-then-use-a-loop-to-create-new-columns-for-each-function" class="level2">
+<h2 class="anchored" data-anchor-id="create-a-list-of-functions-to-apply-to-each-row-and-then-use-a-loop-to-create-new-columns-for-each-function">4. Create a list of functions to apply to each row, and then use a loop to create new columns for each function</h2>
 <p>This code defines a list of tuples, where each tuple contains a function and a column name.</p>
 <p>The <code>create_order_stats</code> function applies each function to the <code>init_feat</code> columns of the input DataFrame <code>df</code>. The <code>lambda</code> functions are used to create custom functions for the 95th and 5th percentiles. Finally, the code loops over the train and test DataFrames, applying the create_order_stats function to each one.</p>
 <p>I used the *args syntax to allow for functions with varying numbers of arguments. If a function has additional arguments (like np.percentile), they are passed as a dictionary in the args list. If a function has no additional arguments (like np.min), the args list is empty</p>
@@ -329,27 +324,27 @@ window.Quarto = {
 <span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> df <span class="kw">in</span> [train, test]:</span>
 <span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    create_order_stats(df, init_feat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="color-palette-in-seaborn" class="level4">
-<h4 class="anchored" data-anchor-id="color-palette-in-seaborn">5. Color Palette in Seaborn</h4>
+<section id="color-palette-in-seaborn" class="level2">
+<h2 class="anchored" data-anchor-id="color-palette-in-seaborn">5. Color Palette in Seaborn</h2>
 <p>You can find color palettes in seaborn <a href="https://seaborn.pydata.org/tutorial/color_palettes.html">here</a></p>
 </section>
-<section id="implications-of-negative-correlation-between-features" class="level4">
-<h4 class="anchored" data-anchor-id="implications-of-negative-correlation-between-features">6. Implications of negative correlation between features:</h4>
+<section id="implications-of-negative-correlation-between-features" class="level2">
+<h2 class="anchored" data-anchor-id="implications-of-negative-correlation-between-features">6. Implications of negative correlation between features:</h2>
 <p>A negative correlation between two variables can indicate that one attribute is sustitute for the other. This means that as one variable increases, the other decreases.</p>
 </section>
-<section id="standarize-before-creating-polynomial-features" class="level4">
-<h4 class="anchored" data-anchor-id="standarize-before-creating-polynomial-features">7. Standarize before creating polynomial features?</h4>
+<section id="standarize-before-creating-polynomial-features" class="level2">
+<h2 class="anchored" data-anchor-id="standarize-before-creating-polynomial-features">7. Standarize before creating polynomial features?</h2>
 <p>When applying polynomial features, it’s generally recommended to standarize your data after creating the polynomial features. If you didn’t standarize these new features after creating them, although the new features are “standarized” your new features will be one or more magnitude smaller than your old features.</p>
 <p><a href="https://datascience.stackexchange.com/questions/9020/do-i-have-to-standardize-my-new-polynomial-features">Do I have to standardize my new polynomial features?</a></p>
 <p><a href="https://datascience.stackexchange.com/questions/20525/should-i-standardize-first-or-generate-polynomials-first">Should I standardize first or generate polynomials first?</a></p>
 <p><span class="citation" data-cites="AMBROSM">@AMBROSM</span> standarize before…<a href="https://www.kaggle.com/code/ambrosm/pss4e5-eda-which-makes-sense">notebook</a></p>
 </section>
-<section id="adding-plus-or-minus" class="level4">
-<h4 class="anchored" data-anchor-id="adding-plus-or-minus">8. Adding Plus or Minus</h4>
+<section id="adding-plus-or-minus" class="level2">
+<h2 class="anchored" data-anchor-id="adding-plus-or-minus">8. Adding Plus or Minus</h2>
 <p>Hold down the Alt key and type 241. ±</p>
 </section>
-<section id="get-not-equal-to-of-dataframe-and-other-element-wise-binary-operator-ne.---pandas-ne" class="level4">
-<h4 class="anchored" data-anchor-id="get-not-equal-to-of-dataframe-and-other-element-wise-binary-operator-ne.---pandas-ne">9. Get Not equal to of dataframe and other, element-wise (binary operator ne). -&gt; Pandas ne</h4>
+<section id="get-not-equal-to-of-dataframe-and-other-element-wise-binary-operator-ne.---pandas-ne" class="level2">
+<h2 class="anchored" data-anchor-id="get-not-equal-to-of-dataframe-and-other-element-wise-binary-operator-ne.---pandas-ne">9. Get Not equal to of dataframe and other, element-wise (binary operator ne). -&gt; Pandas ne</h2>
 <p>Instead of using the <code>!=</code> operator, you can use the <code>ne</code> method to get the element-wise not equal to of the dataframe and other.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'hasBlastFurnaceSlag'</span>] <span class="op">=</span> df.BlastFurnaceSlag.ne(<span class="dv">0</span>).astype(<span class="bu">int</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 

@@ -132,35 +132,6 @@ cookieconsent.run({
 </script> 
   
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -248,9 +219,16 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#working-plan-for-the-next-weeks" id="toc-working-plan-for-the-next-weeks" class="nav-link active" data-scroll-target="#working-plan-for-the-next-weeks">Working plan for the next weeks</a></li>
-  <li><a href="#daily-note---13052024" id="toc-daily-note---13052024" class="nav-link" data-scroll-target="#daily-note---13052024">Daily Note - 13/05/2024</a></li>
-  <li><a href="#findings-and-resources" id="toc-findings-and-resources" class="nav-link" data-scroll-target="#findings-and-resources">Findings and resources:</a></li>
+  <li><a href="#daily-note---13052024" id="toc-daily-note---13052024" class="nav-link active" data-scroll-target="#daily-note---13052024">Daily Note - 13/05/2024</a>
+  <ul class="collapse">
+  <li><a href="#introduciton-to-git" id="toc-introduciton-to-git" class="nav-link" data-scroll-target="#introduciton-to-git">1. Introduciton to git</a></li>
+  <li><a href="#copying-multiple-files-at-once-in-the-terminal-to-a-specific-directory" id="toc-copying-multiple-files-at-once-in-the-terminal-to-a-specific-directory" class="nav-link" data-scroll-target="#copying-multiple-files-at-once-in-the-terminal-to-a-specific-directory">2. Copying multiple files at once in the terminal to a specific directory</a></li>
+  <li><a href="#change-to-your-most-recent-directory-in-the-terminal" id="toc-change-to-your-most-recent-directory-in-the-terminal" class="nav-link" data-scroll-target="#change-to-your-most-recent-directory-in-the-terminal">3. Change to your most recent directory in the terminal</a></li>
+  <li><a href="#instead-of-using-multiple-tab-terminals-use-tmux" id="toc-instead-of-using-multiple-tab-terminals-use-tmux" class="nav-link" data-scroll-target="#instead-of-using-multiple-tab-terminals-use-tmux">4. Instead of using multiple tab terminals, use tmux</a></li>
+  <li><a href="#quick-start-for-github-pages" id="toc-quick-start-for-github-pages" class="nav-link" data-scroll-target="#quick-start-for-github-pages">5. Quick start for GitHub pages</a></li>
+  <li><a href="#create-a-quarto-blog" id="toc-create-a-quarto-blog" class="nav-link" data-scroll-target="#create-a-quarto-blog">6 Create a Quarto blog</a></li>
+  <li><a href="#findings-and-resources" id="toc-findings-and-resources" class="nav-link" data-scroll-target="#findings-and-resources">Findings and resources</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -263,25 +241,10 @@ window.Quarto = {
 
 <p><em>Introduction to git, copying files in the terminal, tmux, GitHub Pages, and create a blog in Quarto</em></p>
 <p><img src="designer.jpeg" class="img-fluid"></p>
-<section id="working-plan-for-the-next-weeks" class="level1">
-<h1>Working plan for the next weeks</h1>
-<ul class="task-list">
-<li><label><input type="checkbox">Coefficient of determination, <span class="math inline">\(R^2\)</span></label></li>
-<li><label><input type="checkbox">Flood Competition. Modelling the data and making predictions</label></li>
-<li><label><input type="checkbox">AMEX competition</label></li>
-<li><label><input type="checkbox">Concrete competition. Modelling the data and making predictions</label></li>
-<li><label><input type="checkbox">Shapley</label></li>
-<li><label><input type="checkbox">Inference and prediction</label></li>
-<li><label><input type="checkbox">PCA</label></li>
-<li><label><input type="checkbox">Target Transformations</label></li>
-<li><label><input type="checkbox">Richard Dawking explanation of FP and FN</label></li>
-<li><label><input type="checkbox">Finish Quarto blog</label></li>
-</ul>
-</section>
 <section id="daily-note---13052024" class="level1">
 <h1>Daily Note - 13/05/2024</h1>
-<section id="introduciton-to-git" class="level4">
-<h4 class="anchored" data-anchor-id="introduciton-to-git">1. Introduciton to git</h4>
+<section id="introduciton-to-git" class="level2">
+<h2 class="anchored" data-anchor-id="introduciton-to-git">1. Introduciton to git</h2>
 <p>Git repository is a folder that contains all the files and folders of a project. It is a version control system that allows you to keep track of changes in your code. It is a distributed version control system, which means that you can work on your code locally and then push it to a remote repository.</p>
 <p>When you save, you basically take a snapshot of your code at that point in time (versoin control). This snapshot is called a commit. You can then go back to that commit at any time. You can also create branches, which are like parallel universes where you can work on different features of your code without affecting the main branch.</p>
 <p>To put your repository in your computer, you can use the command <code>git clone &lt;repository_url&gt;</code>. This will create a folder with the name of the repository in your computer. You can then navigate to that folder and start working on your code.</p>
@@ -291,8 +254,8 @@ window.Quarto = {
 <p>After adding the files, you need to commit them. To do this, you can use the command <code>git commit -m "message"</code>. The message is a short description of the changes you made in that commit.</p>
 <p>After committing the changes, you need to push them to the remote repository. To do this, you can use the command <code>git push origin main</code>. This will push the changes to the main branch of the remote repository.</p>
 </section>
-<section id="copying-multiple-files-at-once-in-the-terminal-to-a-specific-directory" class="level4">
-<h4 class="anchored" data-anchor-id="copying-multiple-files-at-once-in-the-terminal-to-a-specific-directory">2. Copying multiple files at once in the terminal to a specific directory</h4>
+<section id="copying-multiple-files-at-once-in-the-terminal-to-a-specific-directory" class="level2">
+<h2 class="anchored" data-anchor-id="copying-multiple-files-at-once-in-the-terminal-to-a-specific-directory">2. Copying multiple files at once in the terminal to a specific directory</h2>
 <p>You can use a list of files to copy multiple files at once to a specific directory.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Terminal</span> </span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> test.csv sample_submission.csv train.csv ~/git/PSS3E9</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -304,25 +267,25 @@ window.Quarto = {
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Terminal</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="dt">{test</span><span class="op">,</span><span class="dt">sample_submission</span><span class="op">,</span><span class="dt">train}</span>.csv ~/git/PSS3E9</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="change-to-your-most-recent-directory-in-the-terminal" class="level4">
-<h4 class="anchored" data-anchor-id="change-to-your-most-recent-directory-in-the-terminal">3. Change to your most recent directory in the terminal</h4>
+<section id="change-to-your-most-recent-directory-in-the-terminal" class="level2">
+<h2 class="anchored" data-anchor-id="change-to-your-most-recent-directory-in-the-terminal">3. Change to your most recent directory in the terminal</h2>
 <p>You can use the command <code>cd -</code> to change to your most recent directory in the terminal. This is useful when you want to go back to the directory you were before.</p>
 <p><code>pushd</code> and <code>popd</code> are also useful commands to navigate between directories. <code>pushd</code> saves the current directory and changes to the directory you specify. <code>popd</code> goes back to the directory you saved with <code>pushd</code>.</p>
 </section>
-<section id="instead-of-using-multiple-tab-terminals-use-tmux" class="level4">
-<h4 class="anchored" data-anchor-id="instead-of-using-multiple-tab-terminals-use-tmux">4. Instead of using multiple tab terminals, use tmux</h4>
+<section id="instead-of-using-multiple-tab-terminals-use-tmux" class="level2">
+<h2 class="anchored" data-anchor-id="instead-of-using-multiple-tab-terminals-use-tmux">4. Instead of using multiple tab terminals, use tmux</h2>
 <p>Tmux is a terminal multiplexer that allows you to split your terminal into multiple panes. This is useful when you want to work on multiple things at once. You can create a new pane with <code>Ctrl+b %</code> and navigate between panes with <code>Ctrl+b arrow keys</code>. To create a new pane down, you can use <code>Ctrl+b "</code>.</p>
 <p>You can close the panes with <code>exit</code> or <code>Ctrl+d</code>. To close tmux, you can use <code>Ctrl+b d</code>.</p>
 <p>To get more room in the pane you are working on, you can use <code>Ctrl+b z</code> to zoom in and out.</p>
 <p>The good thing about tmux is that runs in the background, so you can close your terminal and open it again and your panes will still be there. You need to first detach from tmux with <code>Ctrl+b d</code> and then close your terminal. To attach to tmux again, you can use <code>tmux attach</code>.</p>
 </section>
-<section id="quick-start-for-github-pages" class="level4">
-<h4 class="anchored" data-anchor-id="quick-start-for-github-pages">5. Quick start for GitHub pages</h4>
+<section id="quick-start-for-github-pages" class="level2">
+<h2 class="anchored" data-anchor-id="quick-start-for-github-pages">5. Quick start for GitHub pages</h2>
 <p>GitHub pages is a free service that allows you to host a website directly from a GitHub repository. You can use it to create a personal website, a blog, a portfolio, or a project page.</p>
 <p>Check the <a href="https://docs.github.com/en/pages/quickstart">GitHub Pages documentation</a> for more information on how to get started.</p>
 </section>
-<section id="create-a-quarto-blog" class="level4">
-<h4 class="anchored" data-anchor-id="create-a-quarto-blog">6 Create a Quarto blog</h4>
+<section id="create-a-quarto-blog" class="level2">
+<h2 class="anchored" data-anchor-id="create-a-quarto-blog">6 Create a Quarto blog</h2>
 <p>Quarto is a tool that allows you to create documents in markdown and publish them as a website. You can use it to create a blog, a journal, a report, or a book.</p>
 <p>First create a github repository with the same name of your project.</p>
 <p>Using Quarto extension in VSCode, you can start a new Quarto project from the command palette with <code>Quarto: New Project</code>. You can then select the type of project you want to create (e.g., blog, journal, report, book). This will create a new folder with the necessary files to start writing your document.</p>
@@ -341,9 +304,8 @@ window.Quarto = {
 <p>Go to the settings of your repository and select the source of your GitHub pages as <code>main</code> and the folder as <code>docs</code>.</p>
 <p>You can then access your website at <code>https://&lt;username&gt;.github.io/&lt;repository_name&gt;</code>.</p>
 </section>
-</section>
-<section id="findings-and-resources" class="level1">
-<h1>Findings and resources:</h1>
+<section id="findings-and-resources" class="level2">
+<h2 class="anchored" data-anchor-id="findings-and-resources">Findings and resources</h2>
 <ul>
 <li>Very good video about version control and jupyter notebooks <a href="https://www.youtube.com/watch?v=jLgkMa9DvaQ">here</a></li>
 <li>Joel Grus book about why he doesn’t like notebooks. His website is <a href="https://joelgrus.com/">here</a>. He has a book called Data Science from Scratch.</li>
@@ -357,6 +319,7 @@ window.Quarto = {
 </ul>
 
 
+</section>
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->

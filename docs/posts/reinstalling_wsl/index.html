@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="JM Ascacibar">
-<meta name="dcterms.date" content="2024-05-20">
+<meta name="dcterms.date" content="2024-06-13">
 
-<title>Random Forest</title>
+<title>A Fresh Start: Reinstalling and Configuring WSL for Multiple Environments</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -43,9 +77,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
-<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
-<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -148,10 +179,14 @@ cookieconsent.run({
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Random Forest</h1>
+      <h1 class="title">A Fresh Start: Reinstalling and Configuring WSL for Multiple Environments</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">Random Forest</div>
-                <div class="quarto-category">ML models</div>
+                <div class="quarto-category">WSL</div>
+                <div class="quarto-category">quarto</div>
+                <div class="quarto-category">git</div>
+                <div class="quarto-category">PyCaret</div>
+                <div class="quarto-category">mamba</div>
+                <div class="quarto-category">Keras</div>
               </div>
                   </div>
   </div>
@@ -169,7 +204,7 @@ cookieconsent.run({
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">May 20, 2024</p>
+        <p class="date">June 13, 2024</p>
       </div>
     </div>
     
@@ -185,9 +220,23 @@ cookieconsent.run({
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#why-random-forest" id="toc-why-random-forest" class="nav-link" data-scroll-target="#why-random-forest">Why Random Forest?</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References:</a></li>
+  <li><a href="#uninstall-everything" id="toc-uninstall-everything" class="nav-link active" data-scroll-target="#uninstall-everything">Uninstall Everything</a></li>
+  <li><a href="#reinstall-everything" id="toc-reinstall-everything" class="nav-link" data-scroll-target="#reinstall-everything">Reinstall Everything</a>
+  <ul class="collapse">
+  <li><a href="#wsl" id="toc-wsl" class="nav-link" data-scroll-target="#wsl">WSL</a></li>
+  <li><a href="#termninal" id="toc-termninal" class="nav-link" data-scroll-target="#termninal">Termninal</a></li>
+  <li><a href="#vscode" id="toc-vscode" class="nav-link" data-scroll-target="#vscode">VSCode</a></li>
+  <li><a href="#vscode-extensions-for-dsml" id="toc-vscode-extensions-for-dsml" class="nav-link" data-scroll-target="#vscode-extensions-for-dsml">VSCode extensions for DS/ML</a></li>
+  </ul></li>
+  <li><a href="#set-up-git-and-ssh-in-wsl" id="toc-set-up-git-and-ssh-in-wsl" class="nav-link" data-scroll-target="#set-up-git-and-ssh-in-wsl">Set up Git and SSH in WSL</a></li>
+  <li><a href="#install-mamba" id="toc-install-mamba" class="nav-link" data-scroll-target="#install-mamba">Install Mamba</a></li>
+  <li><a href="#install-quarto" id="toc-install-quarto" class="nav-link" data-scroll-target="#install-quarto">Install Quarto</a></li>
+  <li><a href="#creating-environments" id="toc-creating-environments" class="nav-link" data-scroll-target="#creating-environments">Creating Environments</a>
+  <ul class="collapse">
+  <li><a href="#pycaret" id="toc-pycaret" class="nav-link" data-scroll-target="#pycaret">PyCaret</a></li>
+  <li><a href="#installing-keras" id="toc-installing-keras" class="nav-link" data-scroll-target="#installing-keras">Installing Keras</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul>
 </nav>
     </div>
@@ -198,35 +247,90 @@ cookieconsent.run({
 
 
 
-<p><em>Understanding Random Forest</em></p>
-<p><a href="coefdetermai.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="coefdetermai.jpeg" class="img-fluid"></a></p>
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>Random Forest is a popular machine learning algorithm that belongs to the supervised learning technique. The general method of random decision forest was first proposed by Salzberg and Health in 1993. This method involves using a randomized decision tree algorithm to generate multiple differnet decison trees. Once these trees are generate, the final decision or prediction is made by combining the outputs of these trees using a technique known as majority voting. In majority voting, each tree in the forest cast a vote for a particular outcome, and the outcome that receives the most votes is chosen as the final prediction. In the case of regression task, where the outcome to be predicted is a continuous variable, the average of the outputs of all the trees is taken as the final prediction.</p>
-<p>Ho in 1995, established that allowing each tree in the forest to consider only a random subset of the features when making splits, the overall model performance can be improved. This is because it reduces the correlation between the trees in the forest, which in turn reduces the variance of the model. Subsequent work along the same lines concluded that regardless the specific method used for splitting the data, the key to avoid overfitting lis in introducing randomness in the model.</p>
-<p>The early development of Breiman’s notion of random forests was influenced by the work of Amit and Geman, who introduce the idea of searching over a random subset of splits. So instead of considering all possible splits at each node, the algorithm considers only a random subset of these splits, making the tree-growing process more diverse.</p>
-<p>Finally, the idea of randomized node optimization was introduced by Dietterich, who proposed that the decision at each node is selected by a randomized procedure rather than a deterministic one.</p>
-<p>The proper introduction of random forets as a machine learning algorithm is credited to Breiman 2001. His paper describes a method of building a forest of uncorrelated trees using a CART-like (Classification and Regression Trees), combined with randomized node optimization and bagging (bootstrap aggregating). This combination of techniques helps to create a diverse set of trees that are uncorrelated, which improve the accuracy of the predictions.</p>
-<p>He also uses out-of-bag error estimation to estimate the generalization error of the model. This is done by using the data that was not used to train each tree in the forest to estimate the error of the model. This is a powerful technique that allows the model to be evaluated without the need for a separate validation set.</p>
-<p>In addition, he also measure the variable importance through permutation (randomly shuffling) the values of each feature and observing how much this affects the model’s performance. If permuting a feature significantly reduces the model’s performance, then that feature is considered important.</p>
+<p><em>A Fresh Start: Reinstalling and Configuring WSL for Multiple Environments</em></p>
+<p><img src="image.webp" class="img-fluid"></p>
+<p>I don’t know what happens but when I turn on the computer, the connection between VSCode and WSL was broken. I tried to fix it but it didn’t work. So after an hour of despair, I decided to use heavy ordinance and make a fresh start.</p>
+<blockquote class="blockquote">
+<p>Important: I have backed up all my important files from my WSL environment</p>
+</blockquote>
+<section id="uninstall-everything" class="level2">
+<h2 class="anchored" data-anchor-id="uninstall-everything">Uninstall Everything</h2>
+<p>So the first obviuos step is to uninstall WSL. You don’t need to be an engineer genius to do this. Just open a PowerShell terminal or you can also do it from uninstall programs in the control panel.</p>
+<p>Next, you need to uninstall VSCode from Windows and this procedure is simple but a bit tricky. You need to uninstall the program and also delete the settings and extensions. Go to uninstall programs in the control panel and uninstall VSCode. Then go to the following folders <code>Delete %APPDATA%\Code</code>, <code>%USERPROFILE%\.vscode</code> and delete them. More info <a href="https://code.visualstudio.com/docs/setup/uninstall">here</a></p>
+<p>I don’t know why but also my terminal blows up so I need to uninstall it. Go to the control panel and uninstall the terminal. Easy.</p>
 </section>
-<section id="why-random-forest" class="level2">
-<h2 class="anchored" data-anchor-id="why-random-forest">Why Random Forest?</h2>
-<p>You might be wondering why you should use Random Forest instead of other machine learning algorithms. Why don’t you use somthing simple, like a linear/logistic regression?</p>
-<p>Jeremy Howard, a well-known data scientist, has a great answer to this question. &gt;A lot of people ask, “Why are you using machine learning? Why don’t you use something simple, like logistic regression?” &gt; &gt;In industry, I’ve seen far more examples of people screwing up logistic regression than successfully using it because it’s very difficult to do correctly. &gt; &gt;You’ve got to ensure you have the correct transformations, interactions, outlier handling, and so on. Anything you get wrong, the entire thing falls apart. With random forests, it’s very rare to see someone screw them up in industry. They’re resilient, and you’ll see why.</p>
+<section id="reinstall-everything" class="level2">
+<h2 class="anchored" data-anchor-id="reinstall-everything">Reinstall Everything</h2>
+<section id="wsl" class="level3">
+<h3 class="anchored" data-anchor-id="wsl">WSL</h3>
+<p>After throwing everything out of the window, it’s time to reinstall everything. First, you need to install WSL. You can follow the instructions from the <a href="https://learn.microsoft.com/en-us/windows/wsl/install">official Microsoft documentation</a> or just type in your powershell terminal as administrator the following command:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>wsl <span class="op">--</span>install</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References:</h2>
+<section id="termninal" class="level3">
+<h3 class="anchored" data-anchor-id="termninal">Termninal</h3>
+<p>I uninstalled the terminal so I need to install it again. You can install it from the Microsoft Store. Just type in the search bar <code>Windows Terminal</code> and install it.</p>
+</section>
+<section id="vscode" class="level3">
+<h3 class="anchored" data-anchor-id="vscode">VSCode</h3>
+<p>Now it’s time to install VSCode. Once installed, you need to install the WSL extension. You can do this by going to the extensions tab and searching for WSL. Install it and you are ready to go. Here is the <a href="https://code.visualstudio.com/docs/remote/wsl-tutorial">documentation</a></p>
+</section>
+<section id="vscode-extensions-for-dsml" class="level3">
+<h3 class="anchored" data-anchor-id="vscode-extensions-for-dsml">VSCode extensions for DS/ML</h3>
+<p>We don’t need to reinvent the wheel. <a href="https://code.visualstudio.com/docs/datascience/overview">Here</a> is a list of the must-have extensions and a tutorial.</p>
+</section>
+</section>
+<section id="set-up-git-and-ssh-in-wsl" class="level2">
+<h2 class="anchored" data-anchor-id="set-up-git-and-ssh-in-wsl">Set up Git and SSH in WSL</h2>
+<p>I have a GitHub account and I need to set up Git and SSH in WSL. First, set your username and email in Git. Open a terminal and type the following commands:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.name <span class="st">"John Doe"</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.email johndoe@example.com</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Next, you need to generate an SSH key. Open your terminal and type the following command:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>And copy your public key to your clipboard:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat .ssh/id_rsa.pub</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now you need to add your SSH key to your GitHub account. Go to your GitHub account and click on your profile picture and then settings. Click on SSH and GPG keys and then New SSH key. Paste your key and you are ready to go.</p>
+</section>
+<section id="install-mamba" class="level2">
+<h2 class="anchored" data-anchor-id="install-mamba">Install Mamba</h2>
+<p>We need to install a package manager. I used Conda but Mamba is Conda but faster. Check the <a href="https://github.com/conda-forge/miniforge?tab=readme-ov-file">documentation</a> and install miniforge for Linux.</p>
+</section>
+<section id="install-quarto" class="level2">
+<h2 class="anchored" data-anchor-id="install-quarto">Install Quarto</h2>
+<p>I need to install Quarto for my projects and website. You can check the <a href="https://quarto.org/docs/getting-started/installation.html">documentation</a> and install it or just open your terminal in Linux or WSL and use the wget command to download the Debian package from GitHub. Here is the command you need to use:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://github.com/quarto-dev/quarto-cli/releases/download/v1.5.45/quarto-1.5.45-linux-amd64.deb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Once the download is complete, you can install the package using dpkg, which is the package manager for Debian-based distributions. You might need to run this command with sudo to ensure you have the necessary permissions to install software:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dpkg <span class="at">-i</span> quarto-1.5.45-linux-amd64.deb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Next steps is to install the VSCode extension. You can find it <a href="https://quarto.org/docs/get-started/hello/vscode.html">here</a></p>
+</section>
+<section id="creating-environments" class="level2">
+<h2 class="anchored" data-anchor-id="creating-environments">Creating Environments</h2>
+<section id="pycaret" class="level3">
+<h3 class="anchored" data-anchor-id="pycaret">PyCaret</h3>
+<p>I need to create a PyCaret environment. Before I was using all my libraries in the same base environment but now I want to create a separate environment for libraries that install a lot of dependencies and can potentially break my base environment.</p>
+<p>First, I need to create a new environment. I will use Mamba to create the environment. Open your terminal and type the following command:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> create <span class="at">-n</span> pycaret_env python=3.11</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If you need to remove an environment, you can use the following command:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> remove pycaret_env</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This is going to install Python 3.11 and create a new environment called pycaret_env. Next step is to activate the environment. You can do this by typing the following command:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> activate pycaret_env</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now you can install PyCaret and all the dependencies. You can do this by typing the following command:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install pycaret<span class="pp">[</span><span class="ss">full</span><span class="pp">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="installing-keras" class="level3">
+<h3 class="anchored" data-anchor-id="installing-keras">Installing Keras</h3>
+<p>We are going to create another environment for Keras. Same steps as before.</p>
+<p>To use Keras 3, you will also need to install a backend framework – either JAX, TensorFlow, or PyTorch. Check before anything the requirements of Keras 3. Here is the <a href="https://keras.io/getting_started/">documentation</a></p>
+<p>So we are going to install all of them. Follow the following documentation to install each of them:</p>
 <ul>
-<li><a href="https://en.wikipedia.org/wiki/Random_forest">Random forest - Wikipedia</a> (History)</li>
-<li><a href="https://www.youtube.com/watch?v=_rXzeWq4C6w&amp;list=PLfYUBJiXbdtSvpQjSnJJ_PmDQB_VyT5iU&amp;index=5">Jeremy Howard’s quote</a> (01:26:44 - How random forests really work)</li>
+<li><a href="https://jax.readthedocs.io/en/latest/installation.html">JAX</a></li>
+<li><a href="https://www.tensorflow.org/install">TensorFlow</a></li>
+<li><a href="https://pytorch.org/get-started/locally/">PyTorch</a></li>
 </ul>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="r2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Wikipedia"><img src="r2.png" class="img-fluid figure-img" alt="Wikipedia"></a></p>
-<figcaption>Wikipedia</figcaption>
-</figure>
-</div>
+</section>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>I hope this guide helps you to reinstall and configure your WSL environment. I know it’s a pain but sometimes it’s necessary to start from scratch.</p>
 
 
 </section>
@@ -666,38 +770,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","closeEffect":"zoom","loop":false,"descPosition":"bottom","selector":".lightbox"});
-(function() {
-  let previousOnload = window.onload;
-  window.onload = () => {
-    if (previousOnload) {
-      previousOnload();
-    }
-    lightboxQuarto.on('slide_before_load', (data) => {
-      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-      const href = trigger.getAttribute('href');
-      if (href !== null) {
-        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
-        if (imgEl !== null) {
-          const srcAttr = imgEl.getAttribute("src");
-          if (srcAttr && srcAttr.startsWith("data:")) {
-            slideConfig.href = srcAttr;
-          }
-        }
-      } 
-    });
-  
-    lightboxQuarto.on('slide_after_load', (data) => {
-      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(slideNode);
-      }
-    });
-  
-  };
-  
-})();
-          </script>
 
 
 

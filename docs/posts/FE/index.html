@@ -329,7 +329,7 @@ window.Quarto = {
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>s1 <span class="op">=</span> <span class="fl">0.05</span></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>s2 <span class="op">=</span> <span class="fl">0.05</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-5" class="cell" data-execution_count="4">
+<div id="cell-5" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the t-statistic</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>numerator <span class="op">=</span> X1 <span class="op">-</span> X2</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>denominator <span class="op">=</span> math.sqrt((s1<span class="op">**</span><span class="dv">2</span> <span class="op">/</span> n1) <span class="op">+</span> (s2<span class="op">**</span><span class="dv">2</span> <span class="op">/</span> n2))</span>
@@ -341,22 +341,25 @@ window.Quarto = {
 </div>
 <p>Degrees of freedom (df) refer to the number of independent values or quantities that can vary in the analysis without breaking any constraints. It represent the number of values in the final calculation of a statistic that are free to vary. We can also say that the degrees of freedom quantify the number of independent pieces of information available to estimate another piece of information.</p>
 <p>When calculating the mean of a sample, <span class="math inline">\(n\)</span> values are involved. However, once the mean is known, only <span class="math inline">\(n-1\)</span> of those values can vary freely. Similarly, when calculating the sample variance, the mean is already calculated from the sample. The degrees of freedom are <span class="math inline">\(n-1\)</span> because the calculation of variance depends on <span class="math inline">\(n\)</span> data points, but only <span class="math inline">\(n-1\)</span> of them are free to vary.</p>
-<div id="cell-7" class="cell">
+<div id="cell-7" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the degrees of freedom</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>df_numerator <span class="op">=</span> ((s1<span class="op">**</span><span class="dv">2</span> <span class="op">/</span> n1) <span class="op">+</span> (s2<span class="op">**</span><span class="dv">2</span> <span class="op">/</span> n2))<span class="op">**</span><span class="dv">2</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>df_denominator <span class="op">=</span> ((s1<span class="op">**</span><span class="dv">2</span> <span class="op">/</span> n1)<span class="op">**</span><span class="dv">2</span> <span class="op">/</span> (n1 <span class="op">-</span> <span class="dv">1</span>)) <span class="op">+</span> ((s2<span class="op">**</span><span class="dv">2</span> <span class="op">/</span> n2)<span class="op">**</span><span class="dv">2</span> <span class="op">/</span> (n2 <span class="op">-</span> <span class="dv">1</span>))</span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df_numerator <span class="op">/</span> df_denominator</span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Degrees of freedom: </span><span class="sc">{</span>df<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Degrees of freedom: 198.0</code></pre>
+</div>
 </div>
 <p>The calculation <code>p_value = t.sf(abs(t_stat), df) * 2</code> is used to obtain the p-value for a two-tailed t-test. One-Tailed Test is used when the research hypothesis specifies a direction of the effect (e.g., Group A is greater than Group B). Two-Tailed Test is used when the research hypothesis does not specify a direction; it simply states that there is a difference (e.g., Group A is different from Group B).</p>
-<div id="cell-9" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the p-value</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>p_value <span class="op">=</span> t.sf(<span class="bu">abs</span>(t_stat), df) <span class="op">*</span> <span class="dv">2</span>  <span class="co"># two-tailed p-value</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"t-statistic: </span><span class="sc">{</span>t_stat<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Degrees of freedom: </span><span class="sc">{</span>df<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"p-value: </span><span class="sc">{</span>p_value<span class="sc">:.4f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-9" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the p-value</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>p_value <span class="op">=</span> t.sf(<span class="bu">abs</span>(t_stat), df) <span class="op">*</span> <span class="dv">2</span>  <span class="co"># two-tailed p-value</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"t-statistic: </span><span class="sc">{</span>t_stat<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Degrees of freedom: </span><span class="sc">{</span>df<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"p-value: </span><span class="sc">{</span>p_value<span class="sc">:.4f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>t-statistic: 7.0711
 Degrees of freedom: 198.0000
@@ -365,21 +368,21 @@ p-value: 0.0000</code></pre>
 </div>
 <p>Since the p-value is less than 0.05, you reject the null hypothesis and conclude that the 5% difference in hiring rates is statistically significant and not likely due to random noise</p>
 <p>It is possible to calculate the t-statistic directly using the scipy.stats library in Python. The scipy.stats.ttest_ind function can be used to perform a two-sample t-test, which will calculate the t-statistic and the p-value for you.</p>
-<div id="cell-12" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> ttest_ind</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate sample data</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">0</span>)  <span class="co"># for reproducibility</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>sample1 <span class="op">=</span> np.random.normal(loc<span class="op">=</span>X1, scale<span class="op">=</span>s1, size<span class="op">=</span>n1)</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>sample2 <span class="op">=</span> np.random.normal(loc<span class="op">=</span>X2, scale<span class="op">=</span>s2, size<span class="op">=</span>n2)</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform the t-test</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>t_stat, p_value <span class="op">=</span> ttest_ind(sample1, sample2)</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the results</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"t-statistic: </span><span class="sc">{</span>t_stat<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"p-value: </span><span class="sc">{</span>p_value<span class="sc">:.4f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-12" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> ttest_ind</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate sample data</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">0</span>)  <span class="co"># for reproducibility</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>sample1 <span class="op">=</span> np.random.normal(loc<span class="op">=</span>X1, scale<span class="op">=</span>s1, size<span class="op">=</span>n1)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>sample2 <span class="op">=</span> np.random.normal(loc<span class="op">=</span>X2, scale<span class="op">=</span>s2, size<span class="op">=</span>n2)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform the t-test</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>t_stat, p_value <span class="op">=</span> ttest_ind(sample1, sample2)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the results</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"t-statistic: </span><span class="sc">{</span>t_stat<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"p-value: </span><span class="sc">{</span>p_value<span class="sc">:.4f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>t-statistic: 6.7355
 p-value: 0.0000</code></pre>
@@ -516,7 +519,7 @@ p-value: 0.0000</code></pre>
 <section id="feature-selection" class="level2">
 <h2 class="anchored" data-anchor-id="feature-selection">Feature Selection</h2>
 <p>As we’ve already seen, feature selection is a critical step in improving the performance of a model by identifying and using the most relevant features.</p>
-<p>The correct approach through feature engineering is by creating Features in stages. For example, you might start with basic features like age and income, then add more complex features such as age squared or income-to-debt ratio.</p>
+<p>The correct approach through feature engineering is by creating features in stages. For example, you might start with basic features like age and income, then add more complex features such as age squared or income-to-debt ratio.</p>
 <p>After each set of new features is added, the model is evaluated using resampling techniques (cross-validation) to ensure robustness and avoid reliance on a single train-test split.</p>
 <p>When features are not pre-screened for statistical significance, there’s a risk that some of the added features might fit the noise in the training data rather than true patterns. Techniques like forward selection, backward elimination, and various statistical tests (e.g., t-tests, chi-square tests) are used to evaluate the importance of each feature.</p>
 <p>There are different strategies for supervised feature selection. We can classify them by how subsets of features are derived:</p>

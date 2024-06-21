@@ -307,7 +307,15 @@ window.Quarto = {
 <p>where: - <span class="math inline">\(\bar{X}_1\)</span> and <span class="math inline">\(\bar{X}_2\)</span> are the sample means of the two groups. - <span class="math inline">\(s_1^2\)</span> and <span class="math inline">\(s_2^2\)</span> are the sample variances of the two groups. - <span class="math inline">\(n_1\)</span> and <span class="math inline">\(n_2\)</span> are the sample sizes of the two groups.</p>
 <p>Using the calculated test statistic and the degrees of freedom, the p-value is found from the t-distribution.</p>
 <p>The&nbsp;p-value&nbsp;is&nbsp;the&nbsp;probability&nbsp;of&nbsp;observing&nbsp;a&nbsp;test&nbsp;statistic&nbsp;at&nbsp;least&nbsp;as&nbsp;extreme&nbsp;as&nbsp;the one&nbsp;observed given&nbsp;that&nbsp;the&nbsp;null&nbsp;hypothesis&nbsp;is&nbsp;true. If the p-value is less than the chosen significance level (commonly 𝛼=0.05), you reject the null hypothesis.</p>
-<p>Let’s have fun with the following example: - Sample size for men (<span class="math inline">\(n_1\)</span>) = 100 - Sample size for women (<span class="math inline">\(n_2\)</span>) = 100 - Hiring rate for men (<span class="math inline">\(\bar{X}_1\)</span>) = 0.5 - Hiring rate for women (<span class="math inline">\(\bar{X}_2\)</span>) = 0.45 - Standard deviation for men (<span class="math inline">\(s_1\)</span>) = 0.05 - Standard deviation for women (<span class="math inline">\(s_2\)</span>) = 0.05</p>
+<p>Let’s have fun with the following example:</p>
+<ul>
+<li><p>Sample size for men (<span class="math inline">\(n_1\)</span>) = 100</p></li>
+<li><p>Sample size for women (<span class="math inline">\(n_2\)</span>) = 100</p></li>
+<li><p>Hiring rate for men (<span class="math inline">\(\bar{X}_1\)</span>) = 0.5</p></li>
+<li><p>Hiring rate for women (<span class="math inline">\(\bar{X}_2\)</span>) = 0.45</p></li>
+<li><p>Standard deviation for men (<span class="math inline">\(s_1\)</span>) = 0.05</p></li>
+<li><p>Standard deviation for women (<span class="math inline">\(s_2\)</span>) = 0.05</p></li>
+</ul>
 <p>Calculate the test statistic and p-value for the two-sample t-test.</p>
 <div id="cell-4" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>

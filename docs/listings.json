@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/optimizing_memory_usage/index.html",
       "/posts/FE/index.html",
       "/posts/reinstalling_wsl/index.html",
       "/posts/daily_notes_11062024/index.html",

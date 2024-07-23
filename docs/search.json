@@ -532,48 +532,6 @@
     "text": "3. Whether or not to transform a target variable\n\n\n\nimage.png\n\n\nFirst assess the distribution of the data and understand why a transformation might be beneficial.\nMany statistical models assume that the residuals (errors) of the model are normally distributed. If your target variable is highly skewed, as the salary distribution, a transformation might help to achieve normality.\nHomoscedasticity refers to the assumption that the variance of the residuals is constant across all levels of the independent variables. A skewed predictor or target variable can lead to heteroscedasticity, which can violate this assumption. Transforming the target variable can help stabilize the variance.\nA skewed distribution often indicates the presence of outliers, which can disproportionately influence the model. Transforming the data can reduce the impact of these outliers."
   },
   {
-    "objectID": "posts/daily_notes_03062024/index.html",
-    "href": "posts/daily_notes_03062024/index.html",
-    "title": "Daily Note - 03-06-2024",
-    "section": "",
-    "text": "UCIML datasets from their API, Kernel machines, Barplot with percentages annotations, pie charts, Imbalance ratio"
-  },
-  {
-    "objectID": "posts/daily_notes_03062024/index.html#downloading-uciml-datasets-from-their-api",
-    "href": "posts/daily_notes_03062024/index.html#downloading-uciml-datasets-from-their-api",
-    "title": "Daily Note - 03-06-2024",
-    "section": "1. Downloading UCIML datasets from their API",
-    "text": "1. Downloading UCIML datasets from their API\n!pip3 install -U ucimlrepo \nDocumentation about the API here"
-  },
-  {
-    "objectID": "posts/daily_notes_03062024/index.html#barplot-with-percentages-annotations",
-    "href": "posts/daily_notes_03062024/index.html#barplot-with-percentages-annotations",
-    "title": "Daily Note - 03-06-2024",
-    "section": "2. Barplot with percentages annotations",
-    "text": "2. Barplot with percentages annotations\nA barplot with percentages annotations can be very useful to show the distribution of a categorical variable.\nAn easy way to do this is using pandas and matplotlib.\nThe first thing is to create a fig, ax object with matplotlib and specify the number of subplots that we are going to use.\nfig, ax = plt.subplots(1, 2, figsize=(12, 6))\nThen, we can use the value_counts method from pandas to get the counts of each category in the variable.\nyo.value_counts(normalize=True).plot(kind='barh', ax=ax[0])\nBecause we are ploting two plots we are going to do the same with the other one.\ndf.Target.value_counts(normalize=True).plot(kind='barh', ax=ax[1])\nWe can use the set_title method from matplotlib to add a title to each plot\nax[0].set_title('Original Dataset')\nax[1].set_title('Train Dataset')\nHere is the most oscure part of the code. First we need to iterate through the axes by for axis in ax. This line iterates over the axes in the ax array. ax is an array of the axes object created by plt.subplots. So contains the two axes that we created, ax[0] and ax[1]. After this we need to iterate through the patches of the barplot. Each bar in the bar plot is represented as a patch in matplotlib. axis.patches contains all the bars in the current axis.\nfor axis in ax:\n    for p in axis.patches:\nTo calculate the percentages, we can retrieves the width of the bar, which corresponds to the normalized value using p.get_width(). f'{p.get_width() * 100:.2f}%' creates a formatted string representing the percentage with a ‘%’ symbol. perc = f'{p.get_width() * 100:.2f}%'\nIn order to add the percentage to the bar, we can use axis.annotate method. This method adds an annotation to the plot. (p.get_width(), p.get_y() + p.get_height() / 2) sets the position of the annotation. p.get_width() is the x-coordinate of the annotation, placing it at the end of the bar. p.get_y() + p.get_height() / 2 is the y-coordinate of the annotation, centering it vertically within the bar. ha='left' sets the horizontal alignment to the left. va='center' sets the vertical alignment to the center. xytext=(-50, 0) specifies an offset for the text position (moving the text 50 points to the left of the bar). textcoords='offset points' tells annotate to interpret the xytext offset as being measured in points from the (x, y) position.\n        axis.annotate(perc, (p.get_width(), p.get_y() + p.get_height() / 2),\n                       ha='left', va='center', xytext=(-50, 0), textcoords='offset points')\nThe final code is:\nfig, ax = plt.subplots(1, 2, figsize=(14, 6))\nyo.value_counts(normalize=True).plot(kind='barh', ax=ax[0], color='skyblue')\nax[0].set_title('Original Dataset')\ndf.Target.value_counts(normalize=True).plot(kind='barh', ax=ax[1], color='skyblue')\nax[1].set_title('Train Dataset')\nfor axis in ax:\n    for p in axis.patches:\n        perc = f'{p.get_width() * 100:.2f}%'\n        axis.annotate(perc, (p.get_width(), p.get_y() + p.get_height() / 2), ha='left', va='center', xytext=(-50, 0), textcoords='offset points')\nplt.tight_layout()\nplt.show()"
-  },
-  {
-    "objectID": "posts/daily_notes_03062024/index.html#dont-use-pie-charts",
-    "href": "posts/daily_notes_03062024/index.html#dont-use-pie-charts",
-    "title": "Daily Note - 03-06-2024",
-    "section": "3. Don’t use pie charts",
-    "text": "3. Don’t use pie charts\nThe main issue is that humans are generally not good at accurately estimating areas and angles. In a 2D pie chart, the sie of each slice is determined by the angle and the area it occupies, which can be hard to compare precisely. A bar chart represent data with the length of the bars along a common baseline, which makes it easier to compare the values. This linear representation (lenght of bars) is more intuitive and allows for more accurate visual comparisons than the angular or area-based representations of a pie chart."
-  },
-  {
-    "objectID": "posts/daily_notes_03062024/index.html#imbalance-ratio",
-    "href": "posts/daily_notes_03062024/index.html#imbalance-ratio",
-    "title": "Daily Note - 03-06-2024",
-    "section": "4. Imbalance ratio",
-    "text": "4. Imbalance ratio\nTo assess the imbalance more precisely, one common approach is to calculate the imbalance ratio. This ratio can be computed as the number of instances of the majority class divided by the number of instances of the minority class. Generally, an imbalance ratio of less than 5:1 is considered mild to moderate, while ratios greater than 10:1 are considered severe."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "My Data Science Journal - JM Ascacibar",
-    "section": "",
-    "text": "Optimizing Memory Usage with Insurance Cross-Sell Prediction\n\n\n\n\n\n\nKaggle\n\n\ndata types\n\n\n\n\n\n\n\n\n\nJul 1, 2024\n\n\nJM Ascacibar\n\n\n\n\n\n\n\n\n\n\n\n\nEnhancing Predictive Models: A Practical Journey Through Feature Engineering - Part 1\n\n\n\n\n\n\nMachine Learning\n\n\nFeature Engineering\n\n\n\n\n\n\n\n\n\nJun 21, 2024\n\n\nJM Ascacibar\n\n\n\n\n\n\n\n\n\n\n\n\nA Fresh Start: Reinstalling and Configuring WSL for Multiple Environments\n\n\n\n\n\n\nWSL\n\n\nquarto\n\n\ngit\n\n\nPyCaret\n\n\nmamba\n\n\nKeras\n\n\n\n\n\n\n\n\n\nJun 13, 2024\n\n\nJM Ascacibar\n\n\n\n\n\n\n\n\n\n\n\n\nDaily Note - 11-06-2024\n\n\n\n\n\n\nPyCaret\n\n\nPyTorch\n\n\nKeras\n\n\nsktime\n\n\nProphet\n\n\nyfinance\n\n\npandas time series\n\n\ntransformations\n\n\nACF PACF\n\n\ntime series\n\n\nvisualizations\n\n\n\n\n\n\n\n\n\nJun 10, 2024\n\n\nJM Ascacibar\n\n\n\n\n\n\n\n\n\n\n\n\nDaily Note - 03-06-2024\n\n\n\n\n\n\nucimlrepo\n\n\nmatplotlib\n\n\nvisualizations\n\n\nimbalance classes\n\n\n\n\n\n\n\n\n\nJun 3, 2024\n\n\nJM Ascacibar\n\n\n\n\n\n\n\n\n\n\n\n\nBagging, Random Forest, and Boosting\n\n\n\n\n\n\nMachine Learning\n\n\nbased-tree models\n\n\nBoosting\n\n\nBoostrap\n\n\nRandom Forest\n\n\nBagging\n\n\nGradient Boosting\n\n\nHistGradientBoosting\n\n\n\n\n\n\n\n\n\nMay 30, 2024\n\n\nJM Ascacibar\n\n\n\n\n\n\n\n\n\n\n\n\nUnderstanding Decision Tree Classification\n\n\n\n\n\n\nMachine Learning\n\n\nbased-tree models\n\n\n\n\n\n\n\n\n\nMay 23, 2024\n\n\nJM Ascacibar\n\n\n\n\n\n\n\n\n\n\n\n\nUnderstanding Decision Tree Regression - Hitters dataset\n\n\n\n\n\n\nMachine Learning\n\n\nbased-tree models\n\n\n\n\n\n\n\n\n\nMay 22, 2024\n\n\nJM Ascacibar\n\n\n\n\n\n\n\n\n\n\n\n\nDaily Note - 21-05-2024\n\n\n\n\n\n\nquarto\n\n\npandas\n\n\nenconding\n\n\ntransformations\n\n\n\n\n\n\n\n\n\nMay 21, 2024\n\n\nJM Ascacibar\n\n\n\n\n\n\n\n\n\n\n\n\nDaily Note - 20-05-2024\n\n\n\n\n\n\nbash\n\n\nlightgbm\n\n\n\n\n\n\n\n\n\nMay 20, 2024\n\n\nJM Ascacibar\n\n\n\n\n\n\n\n\n\n\n\n\nWorking with Chunks in Pandas, PyArrow, and Parquet - Amex Competition Example\n\n\n\n\n\n\npandas\n\n\nPyArrow\n\n\nParquet\n\n\nAMEX\n\n\ndata transformation\n\n\ndata types\n\n\n\n\n\n\n\n\n\nMay 17, 2024\n\n\nJM Ascacibar\n\n\n\n\n\n\n\n\n\n\n\n\nDaily Note - 16-05-2024\n\n\n\n\n\n\nquarto\n\n\nbash\n\n\npython\n\n\ndebugging\n\n\nAMEX\n\n\npandas\n\n\n\n\n\n\n\n\n\nMay 16, 2024\n\n\nJM Ascacibar\n\n\n\n\n\n\n\n\n\n\n\n\nDaily Note - 17-05-2024\n\n\n\n\n\n\ngit\n\n\n\n\n\n\n\n\n\nMay 16, 2024\n\n\nJM Ascacibar\n\n\n\n\n\n\n\n\n\n\n\n\nDaily Note - 15-05-2024\n\n\n\n\n\n\nAMEX\n\n\nbash\n\n\npython\n\n\nmamba\n\n\npandas\n\n\n\n\n\n\n\n\n\nMay 15, 2024\n\n\nJM Ascacibar\n\n\n\n\n\n\n\n\n\n\n\n\nDaily Note - 14-05-2024\n\n\n\n\n\n\nquarto\n\n\nbash\n\n\npython\n\n\ndebugging\n\n\n\n\n\n\n\n\n\nMay 14, 2024\n\n\nJM Ascacibar\n\n\n\n\n\n\n\n\n\n\n\n\nCoefficient of determination (R2)\n\n\n\n\n\n\nStatistics\n\n\n\n\n\n\n\n\n\nMay 14, 2024\n\n\nJM Ascacibar\n\n\n\n\n\n\n\n\n\n\n\n\nDaily Note - 13-05-2024\n\n\n\n\n\n\ngit\n\n\ngithub\n\n\nbash\n\n\ntmux\n\n\nquarto\n\n\n\n\n\n\n\n\n\nMay 13, 2024\n\n\nJM Ascacibar\n\n\n\n\n\n\n\n\n\n\n\n\nDaily Note - 10-05-2024\n\n\n\n\n\n\nStatistics\n\n\n\n\n\n\n\n\n\nMay 10, 2024\n\n\nJM Ascacibar\n\n\n\n\n\n\n\n\n\n\n\n\nDaily Note - 09-05-2024\n\n\n\n\n\n\nscikit-learn\n\n\nprobability theory\n\n\npartial Dependence plots\n\n\n\n\n\n\n\n\n\nMay 9, 2024\n\n\nJM Ascacibar\n\n\n\n\n\n\n\n\n\n\n\n\nDaily Note - 08-05-2024\n\n\n\n\n\n\nStatistics\n\n\npython\n\n\npartial Dependence plots\n\n\nseaborn\n\n\nstandardization\n\n\nnumpy\n\n\n\n\n\n\n\n\n\nMay 8, 2024\n\n\nJM Ascacibar\n\n\n\n\n\n\n\n\n\n\n\n\nDaily Note - 07-05-2024\n\n\n\n\n\n\nKaggle Environment\n\n\npip\n\n\nPCA\n\n\npickle\n\n\npython\n\n\nlatex\n\n\npandas\n\n\n\n\n\n\n\n\n\nMay 7, 2024\n\n\nJM Ascacibar\n\n\n\n\n\n\nNo matching items\n\n Back to top"
-  },
-  {
     "objectID": "posts/optimizing_memory_usage/index.html",
     "href": "posts/optimizing_memory_usage/index.html",
     "title": "Optimizing Memory Usage with Insurance Cross-Sell Prediction",
@@ -628,6 +586,97 @@
     "title": "Optimizing Memory Usage with Insurance Cross-Sell Prediction",
     "section": "Conclusion",
     "text": "Conclusion\nWe significantly reduced memory usage by optimizing data types, making large datasets more manageable. We also converted CSV files to Parquet format, which preserves data types and allows for faster data loading in future analyses.\nThese techniques are crucial when working with big data, as they allow for more efficient data processing and analysis, especially in environments with limited computational resources."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "My Data Science Journal - JM Ascacibar",
+    "section": "",
+    "text": "Messing with Intuition: A Review of Basic Probability Concepts\n\n\n\n\n\n\nprobability theory\n\n\n\n\n\n\n\n\n\nJul 23, 2024\n\n\nJM Ascacibar\n\n\n\n\n\n\n\n\n\n\n\n\nOptimizing Memory Usage with Insurance Cross-Sell Prediction\n\n\n\n\n\n\nKaggle\n\n\ndata types\n\n\n\n\n\n\n\n\n\nJul 1, 2024\n\n\nJM Ascacibar\n\n\n\n\n\n\n\n\n\n\n\n\nEnhancing Predictive Models: A Practical Journey Through Feature Engineering - Part 1\n\n\n\n\n\n\nMachine Learning\n\n\nFeature Engineering\n\n\n\n\n\n\n\n\n\nJun 21, 2024\n\n\nJM Ascacibar\n\n\n\n\n\n\n\n\n\n\n\n\nA Fresh Start: Reinstalling and Configuring WSL for Multiple Environments\n\n\n\n\n\n\nWSL\n\n\nquarto\n\n\ngit\n\n\nPyCaret\n\n\nmamba\n\n\nKeras\n\n\n\n\n\n\n\n\n\nJun 13, 2024\n\n\nJM Ascacibar\n\n\n\n\n\n\n\n\n\n\n\n\nDaily Note - 11-06-2024\n\n\n\n\n\n\nPyCaret\n\n\nPyTorch\n\n\nKeras\n\n\nsktime\n\n\nProphet\n\n\nyfinance\n\n\npandas time series\n\n\ntransformations\n\n\nACF PACF\n\n\ntime series\n\n\nvisualizations\n\n\n\n\n\n\n\n\n\nJun 10, 2024\n\n\nJM Ascacibar\n\n\n\n\n\n\n\n\n\n\n\n\nDaily Note - 03-06-2024\n\n\n\n\n\n\nucimlrepo\n\n\nmatplotlib\n\n\nvisualizations\n\n\nimbalance classes\n\n\n\n\n\n\n\n\n\nJun 3, 2024\n\n\nJM Ascacibar\n\n\n\n\n\n\n\n\n\n\n\n\nBagging, Random Forest, and Boosting\n\n\n\n\n\n\nMachine Learning\n\n\nbased-tree models\n\n\nBoosting\n\n\nBoostrap\n\n\nRandom Forest\n\n\nBagging\n\n\nGradient Boosting\n\n\nHistGradientBoosting\n\n\n\n\n\n\n\n\n\nMay 30, 2024\n\n\nJM Ascacibar\n\n\n\n\n\n\n\n\n\n\n\n\nUnderstanding Decision Tree Classification\n\n\n\n\n\n\nMachine Learning\n\n\nbased-tree models\n\n\n\n\n\n\n\n\n\nMay 23, 2024\n\n\nJM Ascacibar\n\n\n\n\n\n\n\n\n\n\n\n\nUnderstanding Decision Tree Regression - Hitters dataset\n\n\n\n\n\n\nMachine Learning\n\n\nbased-tree models\n\n\n\n\n\n\n\n\n\nMay 22, 2024\n\n\nJM Ascacibar\n\n\n\n\n\n\n\n\n\n\n\n\nDaily Note - 21-05-2024\n\n\n\n\n\n\nquarto\n\n\npandas\n\n\nenconding\n\n\ntransformations\n\n\n\n\n\n\n\n\n\nMay 21, 2024\n\n\nJM Ascacibar\n\n\n\n\n\n\n\n\n\n\n\n\nDaily Note - 20-05-2024\n\n\n\n\n\n\nbash\n\n\nlightgbm\n\n\n\n\n\n\n\n\n\nMay 20, 2024\n\n\nJM Ascacibar\n\n\n\n\n\n\n\n\n\n\n\n\nWorking with Chunks in Pandas, PyArrow, and Parquet - Amex Competition Example\n\n\n\n\n\n\npandas\n\n\nPyArrow\n\n\nParquet\n\n\nAMEX\n\n\ndata transformation\n\n\ndata types\n\n\n\n\n\n\n\n\n\nMay 17, 2024\n\n\nJM Ascacibar\n\n\n\n\n\n\n\n\n\n\n\n\nDaily Note - 16-05-2024\n\n\n\n\n\n\nquarto\n\n\nbash\n\n\npython\n\n\ndebugging\n\n\nAMEX\n\n\npandas\n\n\n\n\n\n\n\n\n\nMay 16, 2024\n\n\nJM Ascacibar\n\n\n\n\n\n\n\n\n\n\n\n\nDaily Note - 17-05-2024\n\n\n\n\n\n\ngit\n\n\n\n\n\n\n\n\n\nMay 16, 2024\n\n\nJM Ascacibar\n\n\n\n\n\n\n\n\n\n\n\n\nDaily Note - 15-05-2024\n\n\n\n\n\n\nAMEX\n\n\nbash\n\n\npython\n\n\nmamba\n\n\npandas\n\n\n\n\n\n\n\n\n\nMay 15, 2024\n\n\nJM Ascacibar\n\n\n\n\n\n\n\n\n\n\n\n\nDaily Note - 14-05-2024\n\n\n\n\n\n\nquarto\n\n\nbash\n\n\npython\n\n\ndebugging\n\n\n\n\n\n\n\n\n\nMay 14, 2024\n\n\nJM Ascacibar\n\n\n\n\n\n\n\n\n\n\n\n\nCoefficient of determination (R2)\n\n\n\n\n\n\nStatistics\n\n\n\n\n\n\n\n\n\nMay 14, 2024\n\n\nJM Ascacibar\n\n\n\n\n\n\n\n\n\n\n\n\nDaily Note - 13-05-2024\n\n\n\n\n\n\ngit\n\n\ngithub\n\n\nbash\n\n\ntmux\n\n\nquarto\n\n\n\n\n\n\n\n\n\nMay 13, 2024\n\n\nJM Ascacibar\n\n\n\n\n\n\n\n\n\n\n\n\nDaily Note - 10-05-2024\n\n\n\n\n\n\nStatistics\n\n\n\n\n\n\n\n\n\nMay 10, 2024\n\n\nJM Ascacibar\n\n\n\n\n\n\n\n\n\n\n\n\nDaily Note - 09-05-2024\n\n\n\n\n\n\nscikit-learn\n\n\nprobability theory\n\n\npartial Dependence plots\n\n\n\n\n\n\n\n\n\nMay 9, 2024\n\n\nJM Ascacibar\n\n\n\n\n\n\n\n\n\n\n\n\nDaily Note - 08-05-2024\n\n\n\n\n\n\nStatistics\n\n\npython\n\n\npartial Dependence plots\n\n\nseaborn\n\n\nstandardization\n\n\nnumpy\n\n\n\n\n\n\n\n\n\nMay 8, 2024\n\n\nJM Ascacibar\n\n\n\n\n\n\n\n\n\n\n\n\nDaily Note - 07-05-2024\n\n\n\n\n\n\nKaggle Environment\n\n\npip\n\n\nPCA\n\n\npickle\n\n\npython\n\n\nlatex\n\n\npandas\n\n\n\n\n\n\n\n\n\nMay 7, 2024\n\n\nJM Ascacibar\n\n\n\n\n\n\nNo matching items\n\n Back to top"
+  },
+  {
+    "objectID": "posts/daily_notes_03062024/index.html",
+    "href": "posts/daily_notes_03062024/index.html",
+    "title": "Daily Note - 03-06-2024",
+    "section": "",
+    "text": "UCIML datasets from their API, Kernel machines, Barplot with percentages annotations, pie charts, Imbalance ratio"
+  },
+  {
+    "objectID": "posts/daily_notes_03062024/index.html#downloading-uciml-datasets-from-their-api",
+    "href": "posts/daily_notes_03062024/index.html#downloading-uciml-datasets-from-their-api",
+    "title": "Daily Note - 03-06-2024",
+    "section": "1. Downloading UCIML datasets from their API",
+    "text": "1. Downloading UCIML datasets from their API\n!pip3 install -U ucimlrepo \nDocumentation about the API here"
+  },
+  {
+    "objectID": "posts/daily_notes_03062024/index.html#barplot-with-percentages-annotations",
+    "href": "posts/daily_notes_03062024/index.html#barplot-with-percentages-annotations",
+    "title": "Daily Note - 03-06-2024",
+    "section": "2. Barplot with percentages annotations",
+    "text": "2. Barplot with percentages annotations\nA barplot with percentages annotations can be very useful to show the distribution of a categorical variable.\nAn easy way to do this is using pandas and matplotlib.\nThe first thing is to create a fig, ax object with matplotlib and specify the number of subplots that we are going to use.\nfig, ax = plt.subplots(1, 2, figsize=(12, 6))\nThen, we can use the value_counts method from pandas to get the counts of each category in the variable.\nyo.value_counts(normalize=True).plot(kind='barh', ax=ax[0])\nBecause we are ploting two plots we are going to do the same with the other one.\ndf.Target.value_counts(normalize=True).plot(kind='barh', ax=ax[1])\nWe can use the set_title method from matplotlib to add a title to each plot\nax[0].set_title('Original Dataset')\nax[1].set_title('Train Dataset')\nHere is the most oscure part of the code. First we need to iterate through the axes by for axis in ax. This line iterates over the axes in the ax array. ax is an array of the axes object created by plt.subplots. So contains the two axes that we created, ax[0] and ax[1]. After this we need to iterate through the patches of the barplot. Each bar in the bar plot is represented as a patch in matplotlib. axis.patches contains all the bars in the current axis.\nfor axis in ax:\n    for p in axis.patches:\nTo calculate the percentages, we can retrieves the width of the bar, which corresponds to the normalized value using p.get_width(). f'{p.get_width() * 100:.2f}%' creates a formatted string representing the percentage with a ‘%’ symbol. perc = f'{p.get_width() * 100:.2f}%'\nIn order to add the percentage to the bar, we can use axis.annotate method. This method adds an annotation to the plot. (p.get_width(), p.get_y() + p.get_height() / 2) sets the position of the annotation. p.get_width() is the x-coordinate of the annotation, placing it at the end of the bar. p.get_y() + p.get_height() / 2 is the y-coordinate of the annotation, centering it vertically within the bar. ha='left' sets the horizontal alignment to the left. va='center' sets the vertical alignment to the center. xytext=(-50, 0) specifies an offset for the text position (moving the text 50 points to the left of the bar). textcoords='offset points' tells annotate to interpret the xytext offset as being measured in points from the (x, y) position.\n        axis.annotate(perc, (p.get_width(), p.get_y() + p.get_height() / 2),\n                       ha='left', va='center', xytext=(-50, 0), textcoords='offset points')\nThe final code is:\nfig, ax = plt.subplots(1, 2, figsize=(14, 6))\nyo.value_counts(normalize=True).plot(kind='barh', ax=ax[0], color='skyblue')\nax[0].set_title('Original Dataset')\ndf.Target.value_counts(normalize=True).plot(kind='barh', ax=ax[1], color='skyblue')\nax[1].set_title('Train Dataset')\nfor axis in ax:\n    for p in axis.patches:\n        perc = f'{p.get_width() * 100:.2f}%'\n        axis.annotate(perc, (p.get_width(), p.get_y() + p.get_height() / 2), ha='left', va='center', xytext=(-50, 0), textcoords='offset points')\nplt.tight_layout()\nplt.show()"
+  },
+  {
+    "objectID": "posts/daily_notes_03062024/index.html#dont-use-pie-charts",
+    "href": "posts/daily_notes_03062024/index.html#dont-use-pie-charts",
+    "title": "Daily Note - 03-06-2024",
+    "section": "3. Don’t use pie charts",
+    "text": "3. Don’t use pie charts\nThe main issue is that humans are generally not good at accurately estimating areas and angles. In a 2D pie chart, the sie of each slice is determined by the angle and the area it occupies, which can be hard to compare precisely. A bar chart represent data with the length of the bars along a common baseline, which makes it easier to compare the values. This linear representation (lenght of bars) is more intuitive and allows for more accurate visual comparisons than the angular or area-based representations of a pie chart."
+  },
+  {
+    "objectID": "posts/daily_notes_03062024/index.html#imbalance-ratio",
+    "href": "posts/daily_notes_03062024/index.html#imbalance-ratio",
+    "title": "Daily Note - 03-06-2024",
+    "section": "4. Imbalance ratio",
+    "text": "4. Imbalance ratio\nTo assess the imbalance more precisely, one common approach is to calculate the imbalance ratio. This ratio can be computed as the number of instances of the majority class divided by the number of instances of the minority class. Generally, an imbalance ratio of less than 5:1 is considered mild to moderate, while ratios greater than 10:1 are considered severe."
+  },
+  {
+    "objectID": "posts/intro_prob/index.html",
+    "href": "posts/intro_prob/index.html",
+    "title": "Messing with Intuition: A Review of Basic Probability Concepts",
+    "section": "",
+    "text": "Messing with Intuition: A Review of Basic Probability Concepts\nYou might think it’s a total waste of time to revisit probability theory and its laws. The problem that follows was presented by Amos Tversky and Daniel Kahneman to illustrate how people violate the principles of probability when making intuitive judgments.\nLinda is 31 years old, single, outspoken, and very bright. She majored in philosophy. As a student, she was deeply concerned with issues of discrimination and social justice, and also participated in anti-nuclear demonstrations. Which is more probable?"
+  },
+  {
+    "objectID": "posts/intro_prob/index.html#conjunction",
+    "href": "posts/intro_prob/index.html#conjunction",
+    "title": "Messing with Intuition: A Review of Basic Probability Concepts",
+    "section": "Conjunction",
+    "text": "Conjunction\nConjunction is just another name for the logical operation and, which is the probability of the two events both ocurring. It’s also referred as joint probability -&gt; \\(P(A\\cap B) = P(A|B) P(B)\\) “product rule”.\n\n# Prob of being banker and extreme liberal\nprob(banker & altliberal)\n\n0.00022316899979711908\n\n\nQuite low!\n\n# Prob of being banker and strong republican\nstRep = gss.partyid == 6\nprob(banker & stRep)\n\n0.0018259281801582471\n\n\nHigher if you are strong Republican 😃"
+  },
+  {
+    "objectID": "posts/intro_prob/index.html#conditional",
+    "href": "posts/intro_prob/index.html#conditional",
+    "title": "Messing with Intuition: A Review of Basic Probability Concepts",
+    "section": "Conditional",
+    "text": "Conditional\nConditional probability is a probability that depends on a condition (conditional probability distribution).\n\\[P(A|B) = P(A\\cap B) / P(B)\\]\nWhat is the probability that a respondent is a Democrat, given that they are liberal?\n\ndemocrat = gss.partyid &lt;=1\nliberal = gss.polviews &lt;=3\nprob(democrat[liberal])\n\n0.5206403320240125\n\n\nA bit more of 50% liberals are democrats.\nWhat is the probability that a respondent is female, given that they are banker?\n\nprob(female[banker])\n\n0.7706043956043956\n\n\n77% of the banker are females.\n\ndef conditional(proposition, given):\n    return prob(proposition[given])\n\n\nconditional(female, banker)\n\n0.7706043956043956\n\n\nAs conjunction was commutative (A&B == B&A), conditional probability is not.\nconditional(A,B) != conditional(B,A)\n\nconditional(female,given=banker), conditional(banker, given=female)\n\n(0.7706043956043956, 0.02116102749801969)\n\n\n77% of the bankers are female, only about 2% of female respondents are bankers\n\nmale = gss.sex == 1\nconditional(male, banker), conditional(banker, male)\n\n(0.22939560439560439, 0.007331313929496466)\n\n\n23% of the bankers are males, and 0.7% of the males are banker.\nWe can also combine conditional probability with conjuction.\nWhat is the probability a respondent is female, given that they are a liberal and Democrat?\n\nprob(female[liberal & democrat])\n\n0.576085409252669\n\n\nWe can say that above 57% of all liberals and Democrats are female."
+  },
+  {
+    "objectID": "posts/intro_prob/index.html#theorem-1",
+    "href": "posts/intro_prob/index.html#theorem-1",
+    "title": "Messing with Intuition: A Review of Basic Probability Concepts",
+    "section": "Theorem 1",
+    "text": "Theorem 1\n\\[P(A|B) = \\frac{P(A~\\mathrm{and}~B)}{P(B)}\\]\nFor example if we want to know the fraction of banker that are female, \\(P(\\text{female} \\mid \\text{banker})\\), we can use the conditional probability function as we did before.\n\nconditional(female, given=banker)\n\n0.7706043956043956\n\n\nThe operation as we’ve seen before is:\n\nfemale[banker].mean()\n\n0.7706043956043956\n\n\nWe could also compute the probability of being female and banker, and divided by the probability of being banker\n\n(female & banker).mean() / banker.mean()\n\n0.7706043956043956\n\n\nThe result is the same."
+  },
+  {
+    "objectID": "posts/intro_prob/index.html#theorem-2",
+    "href": "posts/intro_prob/index.html#theorem-2",
+    "title": "Messing with Intuition: A Review of Basic Probability Concepts",
+    "section": "Theorem 2",
+    "text": "Theorem 2\nFrom the theorem 1, we can compute a conjunction by the product of two probabilities.\n\\[P(A~\\mathrm{and}~B) = P(B) P(A|B)\\]\n\n# Conjunction of female and banker by the product of two probabilities\nbanker.mean() * female[banker].mean()\n\n0.011381618989653074\n\n\n\n# Conjuction of female and banker\n(female & banker).mean()\n\n0.011381618989653074\n\n\n\n# Same using our functions\nprob(banker) * conditional(female, given=banker) \n\n0.011381618989653074"
+  },
+  {
+    "objectID": "posts/intro_prob/index.html#theorem-3",
+    "href": "posts/intro_prob/index.html#theorem-3",
+    "title": "Messing with Intuition: A Review of Basic Probability Concepts",
+    "section": "Theorem 3",
+    "text": "Theorem 3\nAs we’ve already seen, conjunction is commutative but conditional is not. This means that \\(P(A~\\mathrm{and}~B) = P(B~\\mathrm{and}~A)\\).\nIf we apply the theorem 2 in both sides: \\[P(A~\\mathrm{and}~B) = P(B) P(A|B)\\]\n\\[P(B~\\mathrm{and}~A) = P(A) P(B|A)\\]\n\\[P(B) P(A|B) = P(A) P(B|A)\\]\nSo if we divide by \\(P(B)\\), we get the theorem 3 that is the Bayes’s theorem: \\[P(A|B) = \\frac{P(A)P(B|A)}{P(B)}\\]\n\n(female.mean() * banker[female].mean()) / banker.mean()\n\n0.7706043956043955\n\n\n\nprob(female) * conditional(banker, given=female) / prob(banker)\n\n0.7706043956043955"
+  },
+  {
+    "objectID": "posts/intro_prob/index.html#the-law-of-total-probability",
+    "href": "posts/intro_prob/index.html#the-law-of-total-probability",
+    "title": "Messing with Intuition: A Review of Basic Probability Concepts",
+    "section": "The Law of Total Probability",
+    "text": "The Law of Total Probability\nIn addition to the three theorems, there’s also the law of total probability:\nThe total probability of A is the sum of two probabilities: \\[P(A) = P(B_1~\\mathrm{and}~A) + P(B_2~\\mathrm{and}A)\\]\nOnly if \\(B_1\\) and \\(B_2\\) are: 1. Mutually exclusive (they can’t occur at the same time) 2. Collectively exhaustive (at least one of the events must occur)\n\n# prob of a banker\nprob(banker)\n\n0.014769730168391155\n\n\n\n# Total probability of a banker\nprob(male & banker) + prob(female & banker)\n\n0.014769730168391155\n\n\nBecause maleand female are mutually exclusive and colectively exhaustive (MECE), we get the same result we got by computing the probability of banker directly.\nApplying the theorem 2 to the total probability law: \\[P(A) = P(B_1)P(A|B_1) + P(B_2)P(A|B_2)\\]\n\nprob(male) * conditional(banker, male) + prob(female) * conditional(banker, female)\n\n0.014769730168391153\n\n\nWhen there’re more than two conditions, we can write the total probability law as: \\[P(A) = \\sum_i P(B_i) P(A|B_i)\\] Remember this holds as long as \\(B_i\\) are mutually exclusive and collectively exhaustive.\n\ngss.polviews.value_counts(normalize=True).sort_index()\n\npolviews\n1.0    0.029255\n2.0    0.117833\n3.0    0.126659\n4.0    0.384317\n5.0    0.161087\n6.0    0.148489\n7.0    0.032360\nName: proportion, dtype: float64\n\n\n\n# Probability of a banker using the total probability law\nsum=0 \nfor i in range(1, 8):\n    sum += prob(gss.polviews==i) * conditional(banker, gss.polviews==i)\nprint(sum)\n\n0.014769730168391157"
   },
   {
     "objectID": "posts/random_forest/index.html",
